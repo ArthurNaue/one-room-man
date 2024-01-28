@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpqxtxchik3cp"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/player/weapons/bomb/projectile/bombProjectile.gd" id="1_2xard"]
+[ext_resource type="PackedScene" uid="uid://cyp7sgxikdb8v" path="res://scenes/game/entities/player/weapons/bomb/explosion/explosion.tscn" id="2_wqgbq"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="3_4tqcq"]
+[ext_resource type="Texture2D" uid="uid://bon664hw5tsvq" path="res://assets/images/game/player/weapons/bomb/projectile/bomb_projectile.png" id="3_75qid"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dlpjd"]
+radius = 7.0
+
+[sub_resource type="Animation" id="Animation_n5ct1"]
+resource_name = "projectile"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.6001, 0.6002, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 3.14159, 4.71239, 4.71239, 4.71239, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_ytdmr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cnmmn"]
+_data = {
+"RESET": SubResource("Animation_ytdmr"),
+"rotate": SubResource("Animation_n5ct1")
+}
+
+[node name="bombProjectile" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_2xard")
+speed = 100
+explosionScene = ExtResource("2_wqgbq")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+texture = ExtResource("3_75qid")
+offset = Vector2(-1, 0)
+
+[node name="explodeTimer" type="Timer" parent="."]
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_4tqcq")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_dlpjd")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cnmmn")
+}
+autoplay = "rotate"
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

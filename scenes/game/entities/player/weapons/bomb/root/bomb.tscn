@@ -1,84 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://df2lkjyblaxja"]
+[gd_scene load_steps=7 format=3 uid="uid://df2lkjyblaxja"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/player/weapons/bomb/root/bomb.gd" id="1_34rs1"]
 [ext_resource type="Texture2D" uid="uid://eme1ehju77su" path="res://assets/images/game/player/weapons/bomb/root/bomb.png" id="1_mfyt2"]
-[ext_resource type="PackedScene" uid="uid://cyp7sgxikdb8v" path="res://scenes/game/entities/player/weapons/bomb/explosion/explosion.tscn" id="2_7fcfl"]
+[ext_resource type="PackedScene" uid="uid://bpqxtxchik3cp" path="res://scenes/game/entities/player/weapons/bomb/projectile/bombProjectile.tscn" id="2_8b6th"]
 
-[sub_resource type="Animation" id="Animation_2n0sg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("areaCol/col:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_disv8"]
-resource_name = "attack"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(20, -1.90735e-06), Vector2(40, 0), Vector2(60, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("areaCol/col:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_icocj"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_mvl2o"]
+resource_name = "throw"
 length = 0.1
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -87,64 +19,39 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(20, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+
+[sub_resource type="Animation" id="Animation_wokxt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("areaCol/col:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [Vector2(20, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fh4sx"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehluq"]
 _data = {
-"RESET": SubResource("Animation_2n0sg"),
-"attack": SubResource("Animation_disv8"),
-"idle": SubResource("Animation_icocj")
+"RESET": SubResource("Animation_wokxt"),
+"idle": SubResource("Animation_mvl2o")
 }
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kidpa"]
-radius = 6.08276
 
 [node name="bomb" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_34rs1")
 weaponCooldown = 5.0
-explosionScene = ExtResource("2_7fcfl")
+projectileScene = ExtResource("2_8b6th")
 
 [node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(20, 0)
 texture = ExtResource("1_mfyt2")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_fh4sx")
+"": SubResource("AnimationLibrary_ehluq")
 }
-autoplay = "idle"
-
-[node name="areaCol" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 4
-
-[node name="col" type="CollisionShape2D" parent="areaCol"]
-position = Vector2(0.3, 1)
-shape = SubResource("CircleShape2D_kidpa")
-disabled = true
-
-[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
-[connection signal="area_entered" from="areaCol" to="." method="_on_area_col_area_entered"]
