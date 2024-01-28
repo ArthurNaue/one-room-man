@@ -5,6 +5,9 @@ class_name Game
 @export var weaponPickupScene: PackedScene
 
 func _ready():
+	spawnEntitie(Enemies.eye, Vector2(140, 150))
+	spawnEntitie(Enemies.eye, Vector2(140, 150))
+	spawnEntitie(Enemies.eye, Vector2(140, 150))
 	spawnEntitie(Enemies.shadowcat, Vector2(140, 150))
 	spawnWeaponPickup(Weapons.dagger, Weapons.daggerImg, Vector2(50, 250))
 	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 250))
