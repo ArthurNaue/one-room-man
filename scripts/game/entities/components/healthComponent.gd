@@ -19,5 +19,4 @@ func Damage(attack: Attack):
 
 	#verifica se a vida chegou a 0
 	if health <= 0:
-		#destroi o objeto
 		get_parent().queue_free()
