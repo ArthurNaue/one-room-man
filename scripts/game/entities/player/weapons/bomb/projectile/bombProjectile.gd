@@ -28,3 +28,6 @@ func Explode():
 	explosion.global_position = global_position
 	get_parent().add_child(explosion)
 	queue_free()
+
+func _on_explode_timer_timeout():
+	Explode()

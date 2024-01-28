@@ -17,6 +17,8 @@ func _process(delta:float):
 	if Input.is_action_pressed("mouse_left"):
 		#verifica se o cooldown acabou
 		if player.weaponCooldown <= 0:
+			#toca a animacao de ataque
+			anim.play("attack")
 			#atira a bomba
 			Throw()
 
@@ -27,3 +29,6 @@ func Throw():
 	player.get_parent().add_child(projectile)
 	#reseta o cooldown
 	player.weaponCooldown = weaponCooldown
+
+func _on_anim_animation_finished(attack):
+	anim.play("idle")

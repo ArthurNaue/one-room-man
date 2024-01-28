@@ -49,7 +49,7 @@ _data = {
 [node name="bombProjectile" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_2xard")
-speed = 100
+speed = 150
 explosionScene = ExtResource("2_wqgbq")
 
 [node name="sprite" type="Sprite2D" parent="."]
@@ -58,6 +58,7 @@ texture = ExtResource("3_75qid")
 offset = Vector2(-1, 0)
 
 [node name="explodeTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -74,4 +75,5 @@ libraries = {
 }
 autoplay = "rotate"
 
+[connection signal="timeout" from="explodeTimer" to="." method="_on_explode_timer_timeout"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
