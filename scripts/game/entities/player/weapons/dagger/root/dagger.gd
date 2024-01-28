@@ -14,7 +14,7 @@ func _ready():
 func _process(delta:float):
 	if Input.is_action_pressed("mouse_left"):
 		if player.weaponCooldown <= 0:
-			player.weaponCooldown = 1
+			player.weaponCooldown = weaponCooldown
 			anim.play("attack")
 			weaponsNode.attacking = true
 			SpawnEffect(attackEffect)
