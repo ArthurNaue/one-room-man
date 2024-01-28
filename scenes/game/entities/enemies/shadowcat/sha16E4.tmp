@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://bql38jl280n2v"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/shadowcat/shadowcat.gd" id="1_loc1v"]
+[ext_resource type="Texture2D" uid="uid://cv8j2g4teb7jd" path="res://assets/images/game/enemies/shadowcat/shadowcat1.png" id="1_sypkk"]
+[ext_resource type="Texture2D" uid="uid://6avhyremw5m8" path="res://assets/images/game/enemies/shadowcat/shadowcat2.png" id="2_q3odi"]
+[ext_resource type="Texture2D" uid="uid://dxrat15nskt1q" path="res://assets/images/game/enemies/shadowcat/shadowcat3.png" id="3_52iuv"]
+[ext_resource type="Texture2D" uid="uid://dbrffxabad5mw" path="res://assets/images/game/enemies/shadowcat/shadowcat4.png" id="4_4dgsk"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="5_t4rdx"]
+[ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="6_tsinw"]
+[ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="7_po0bp"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="8_4dmet"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qfig8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sypkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_q3odi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_52iuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4dgsk")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sj4s7"]
+radius = 4.0
+height = 24.8329
+
+[node name="shadowcat" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_loc1v")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qfig8")
+animation = &"walk"
+frame = 2
+frame_progress = 0.851601
+
+[node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
+script = ExtResource("5_t4rdx")
+maxHealth = 5
+healthBar = NodePath("../healthBar")
+
+[node name="healthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("6_tsinw")]
+offset_left = -14.0
+offset_top = 19.0
+offset_right = 18.0
+offset_bottom = 23.0
+health = NodePath("../health")
+
+[node name="damageIndicatorComponent" parent="." instance=ExtResource("7_po0bp")]
+position = Vector2(1, -26)
+scale = Vector2(1.00357, 1)
+
+[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health", "damageIndicator") groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("8_4dmet")
+health = NodePath("../health")
+damageIndicator = NodePath("../damageIndicatorComponent")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(1, -2)
+scale = Vector2(1, 1.047)
+shape = SubResource("CapsuleShape2D_sj4s7")
+
+[node name="col" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2)
+scale = Vector2(1, 1.047)
+shape = SubResource("CapsuleShape2D_sj4s7")

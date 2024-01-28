@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://0yj50uwiio7u"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/root/enemies.gd" id="1_ax23a"]
+[ext_resource type="PackedScene" uid="uid://ia5h2t4fo243" path="res://scenes/game/entities/enemies/eye/eye.tscn" id="2_db7uh"]
+[ext_resource type="PackedScene" uid="uid://bql38jl280n2v" path="res://scenes/game/entities/enemies/shadowcat/root/shadowcat.tscn" id="3_8y2t3"]
+
+[node name="enemies" type="Node2D"]
+script = ExtResource("1_ax23a")
+eye = ExtResource("2_db7uh")
+shadowcat = ExtResource("3_8y2t3")

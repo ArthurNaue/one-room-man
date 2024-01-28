@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://d3xvxhxldpv5t"]
+
+[ext_resource type="Script" path="res://scripts/game/mapObjects/nextLevelDoor.gd" id="1_dlvys"]
+[ext_resource type="Texture2D" uid="uid://bqay5oqur5e6u" path="res://assets/images/game/mapOjects/NextLevelDoor/NextLevelDoor1.png" id="2_ogmun"]
+[ext_resource type="Texture2D" uid="uid://dom5nm1j14183" path="res://assets/images/game/mapOjects/NextLevelDoor/NextLevelDoor2.png" id="3_ak1j7"]
+[ext_resource type="Texture2D" uid="uid://ctxmdjrfidq8l" path="res://assets/images/game/mapOjects/NextLevelDoor/NextLevelDoor3.png" id="4_gd4ab"]
+[ext_resource type="Texture2D" uid="uid://c4330vrjptv7o" path="res://assets/images/game/mapOjects/NextLevelDoor/NextLevelDoor4.png" id="5_bj431"]
+[ext_resource type="Texture2D" uid="uid://c2b1wljttie78" path="res://assets/images/game/mapOjects/NextLevelDoor/NextLevelDoor5.png" id="6_c1xsm"]
+[ext_resource type="Texture2D" uid="uid://6obckvdrco34" path="res://assets/images/game/mapOjects/NextLevelDoor/NextLevelDoor6.png" id="7_024h0"]
+[ext_resource type="Texture2D" uid="uid://b5spuv3co0l28" path="res://assets/images/game/mapOjects/NextLevelDoor/NextLevelDoor7.png" id="8_y4g3p"]
+[ext_resource type="Texture2D" uid="uid://bvr03brsaieic" path="res://assets/images/game/mapOjects/NextLevelDoor/NextLevelDoor8.png" id="9_hhqij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2kcs"]
+size = Vector2(24, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_on3kw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ogmun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ak1j7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gd4ab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bj431")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c1xsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_024h0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y4g3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hhqij")
+}],
+"loop": false,
+"name": &"open",
+"speed": 25.0
+}]
+
+[node name="NextLevelDoor" type="StaticBody2D"]
+texture_filter = 1
+collision_mask = 2
+script = ExtResource("1_dlvys")
+
+[node name="areaCol" type="Area2D" parent="." groups=["nextLevel"]]
+collision_mask = 2
+
+[node name="col" type="CollisionShape2D" parent="areaCol"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_f2kcs")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_on3kw")
+animation = &"open"
+frame = 7
+frame_progress = 1.0
+
+[connection signal="area_entered" from="areaCol" to="." method="_on_area_col_area_entered"]
+[connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]

@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://ct4hj4n15vn4a"]
+
+[ext_resource type="Texture2D" uid="uid://blkmnouobf75c" path="res://assets/images/game/player/weapons/pistol/root/pistol.png" id="1_e4rcc"]
+[ext_resource type="Script" path="res://scripts/game/entities/player/weapons/pistol/root/pistol.gd" id="1_m4c16"]
+[ext_resource type="PackedScene" uid="uid://bmhitfcvekb3l" path="res://scenes/game/entities/player/weapons/pistol/bullet/pistolBullet.tscn" id="2_gdxq5"]
+
+[sub_resource type="Animation" id="Animation_o7fq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_86obd"]
+resource_name = "attack"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(20, 0), Vector2(18, 0), Vector2(20, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ul145"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x4dj3"]
+_data = {
+"RESET": SubResource("Animation_o7fq1"),
+"attack": SubResource("Animation_86obd"),
+"idle": SubResource("Animation_ul145")
+}
+
+[node name="pistol" type="Node2D"]
+texture_filter = 1
+position = Vector2(20, 0)
+script = ExtResource("1_m4c16")
+bulletScene = ExtResource("2_gdxq5")
+
+[node name="pistol" type="Sprite2D" parent="."]
+texture = ExtResource("1_e4rcc")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x4dj3")
+}
+autoplay = "idle"
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

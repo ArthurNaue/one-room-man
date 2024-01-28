@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqhjmtojt74cb"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/shadowcat/handAttack/shadowCatHandAttack.gd" id="1_jkx13"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="2_0ntc3"]
+[ext_resource type="Texture2D" uid="uid://bjk7rexxce2yc" path="res://assets/images/game/enemies/shadowcat/handAttack/root/shadowCat_handAttack1.png" id="3_orbth"]
+[ext_resource type="Texture2D" uid="uid://u48h44n5l0g6" path="res://assets/images/game/enemies/shadowcat/handAttack/root/shadowCat_handAttack2.png" id="4_fjfen"]
+[ext_resource type="Texture2D" uid="uid://d2t5ibdaxqbsn" path="res://assets/images/game/enemies/shadowcat/handAttack/root/shadowCat_handAttack3.png" id="5_4xmm3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2r87"]
+size = Vector2(11, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxdqb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_orbth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fjfen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4xmm3")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}]
+
+[node name="shadowCatHandAttack" type="StaticBody2D"]
+texture_filter = 1
+script = ExtResource("1_jkx13")
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_0ntc3")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_y2r87")
+
+[node name="despawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kxdqb")
+animation = &"attack"
+autoplay = "attack"
+frame = 2
+frame_progress = 1.0
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="despawnTimer" to="." method="_on_despawn_timer_timeout"]

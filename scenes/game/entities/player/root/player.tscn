@@ -1,0 +1,118 @@
+[gd_scene load_steps=18 format=3 uid="uid://ccfqa7gl05jnd"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/player/root/player.gd" id="1_twwux"]
+[ext_resource type="PackedScene" uid="uid://bva7lrsw2bkx3" path="res://scenes/game/weaponsPickup/weaponPickup.tscn" id="2_j7m8h"]
+[ext_resource type="Script" path="res://scripts/game/entities/player/weapons/root/weaponsNode.gd" id="7_h5lb5"]
+[ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="18_4lf64"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="18_lp28r"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="19_2280a"]
+[ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="19_es2wa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkxgk"]
+size = Vector2(6, 15)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e8jhx"]
+load_path = "res://.godot/imported/player_idle1.png-ec47c1b721c4daba7ef3887a697063e1.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i6g65"]
+load_path = "res://.godot/imported/player_idle2.png-a2630c95772e4b63396d6b3e7c5014c3.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s13nq"]
+load_path = "res://.godot/imported/player_walking1.png-f42f07ba614d0a9f0f73df4a0bc78598.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_86ddf"]
+load_path = "res://.godot/imported/player_walking2.png-88edeb2cb74312d8499bdce686c17cf6.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fjcx3"]
+load_path = "res://.godot/imported/player_walking3.png-64575ba324c6f0da477fd6b3db090298.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tb0cc"]
+load_path = "res://.godot/imported/player_walking4.png-031ed34ce4645dc82c0b52473414d81c.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b6nu1"]
+load_path = "res://.godot/imported/player_walking5.png-abec7ab32734920aa1551893dff65273.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yduw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_e8jhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_i6g65")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_s13nq")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_86ddf")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_fjcx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_tb0cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_b6nu1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8p6h"]
+size = Vector2(8, 13)
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+texture_filter = 1
+collision_layer = 2
+script = ExtResource("1_twwux")
+speed = 100.0
+weaponPickupScene = ExtResource("2_j7m8h")
+
+[node name="col" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_lkxgk")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_yduw3")
+animation = &"idle"
+
+[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health", "damageIndicator") groups=["player"]]
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("18_lp28r")
+health = NodePath("../health")
+damageIndicator = NodePath("../damageIndicatorComponent")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_b8p6h")
+
+[node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
+script = ExtResource("19_2280a")
+maxHealth = 3
+healthBar = NodePath("../healthBar")
+
+[node name="damageIndicatorComponent" parent="." instance=ExtResource("19_es2wa")]
+position = Vector2(0, -23)
+
+[node name="healthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("18_4lf64")]
+offset_left = -16.0
+offset_top = 15.0
+offset_right = 16.0
+offset_bottom = 18.0
+value = 0.0
+health = NodePath("../health")
+
+[node name="weapons" type="Node2D" parent="."]
+script = ExtResource("7_h5lb5")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

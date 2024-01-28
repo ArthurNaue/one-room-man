@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://ccfqa7gl05jnd"]
+
+[ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="1_icnwm"]
+[ext_resource type="Script" path="res://scripts/game/player/root/player.gd" id="1_t7ef0"]
+[ext_resource type="Texture2D" uid="uid://cay5thyvthm3p" path="res://assets/images/game/enemies/enemy1/enemy1.png" id="2_bg0yx"]
+[ext_resource type="Script" path="res://scripts/game/player/states/playerIdle.gd" id="3_tehy3"]
+[ext_resource type="Script" path="res://scripts/game/player/states/playerWalk.gd" id="4_74b64"]
+[ext_resource type="Script" path="res://scripts/game/player/states/playerAttack.gd" id="6_74url"]
+[ext_resource type="Script" path="res://scripts/game/player/camera.gd" id="7_yt4b4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8p6h"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_ulhql"]
+resource_name = "attack"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7bhyc"]
+_data = {
+"attack": SubResource("Animation_ulhql")
+}
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+texture_filter = 1
+script = ExtResource("1_t7ef0")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_bg0yx")
+
+[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
+script = ExtResource("1_icnwm")
+initialState = NodePath("idle")
+
+[node name="idle" type="Node" parent="stateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("3_tehy3")
+player = NodePath("../..")
+
+[node name="walk" type="Node" parent="stateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("4_74b64")
+player = NodePath("../..")
+
+[node name="attack" type="Node" parent="stateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("6_74url")
+player = NodePath("../..")
+
+[node name="col" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b8p6h")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7bhyc")
+}
+
+[node name="camera" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+script = ExtResource("7_yt4b4")

@@ -1,0 +1,161 @@
+[gd_scene load_steps=28 format=3 uid="uid://ccfqa7gl05jnd"]
+
+[ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="1_icnwm"]
+[ext_resource type="Script" path="res://scripts/game/entities/player/root/player.gd" id="1_twwux"]
+[ext_resource type="Texture2D" uid="uid://dajxn8eseokid" path="res://assets/images/game/player/states/idle/player_idle1.png" id="2_7qeuh"]
+[ext_resource type="Script" path="res://scripts/game/entities/player/states/playerDaggerAttack.gd" id="5_3b8b3"]
+[ext_resource type="Script" path="res://scripts/game/entities/player/states/playerPistolAttack.gd" id="6_a7k0h"]
+[ext_resource type="Texture2D" uid="uid://ddwqhpn5fy2ti" path="res://assets/images/game/player/states/idle/player_idle2.png" id="7_j3786"]
+[ext_resource type="Script" path="res://scripts/game/entities/player/states/playerNull.gd" id="8_57dx6"]
+[ext_resource type="Texture2D" uid="uid://blnnrh6nbf5fm" path="res://assets/images/game/player/states/walking/player_walking1.png" id="8_lrroh"]
+[ext_resource type="Texture2D" uid="uid://cgskx8upt7iwd" path="res://assets/images/game/player/states/walking/player_walking2.png" id="9_es8iu"]
+[ext_resource type="Texture2D" uid="uid://befnjwo83wqje" path="res://assets/images/game/player/states/walking/player_walking3.png" id="10_0ndan"]
+[ext_resource type="PackedScene" uid="uid://bmhitfcvekb3l" path="res://scenes/game/entities/player/weapons/pistol/bullet/pistolBullet.tscn" id="11_ersbe"]
+[ext_resource type="Texture2D" uid="uid://djg7u33sulc5b" path="res://assets/images/game/player/states/walking/player_walking4.png" id="11_kqnpl"]
+[ext_resource type="Texture2D" uid="uid://djkyj8jbkuc15" path="res://assets/images/game/player/states/walking/player_walking5.png" id="12_jws3k"]
+[ext_resource type="PackedScene" uid="uid://b8vqo0ivljrlv" path="res://scenes/game/entities/player/weapons/dagger/dagger.tscn" id="14_dv5hj"]
+[ext_resource type="PackedScene" uid="uid://ct4hj4n15vn4a" path="res://scenes/game/entities/player/weapons/pistol/pistol.tscn" id="15_f5kkq"]
+[ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="18_4lf64"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="18_lp28r"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="19_2280a"]
+[ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="19_es2wa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkxgk"]
+size = Vector2(6, 15)
+
+[sub_resource type="Animation" id="Animation_4pahv"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ulhql"]
+resource_name = "attack"
+length = 0.5
+step = 0.01
+
+[sub_resource type="Animation" id="Animation_ji30p"]
+resource_name = "pistolAttack"
+length = 0.2
+
+[sub_resource type="Animation" id="Animation_06r3v"]
+resource_name = "ready"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7bhyc"]
+_data = {
+"RESET": SubResource("Animation_4pahv"),
+"daggerAttack": SubResource("Animation_ulhql"),
+"pistolAttack": SubResource("Animation_ji30p"),
+"ready": SubResource("Animation_06r3v")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yduw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7qeuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j3786")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_lrroh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_es8iu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0ndan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kqnpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jws3k")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8p6h"]
+size = Vector2(8, 13)
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+texture_filter = 1
+collision_layer = 2
+script = ExtResource("1_twwux")
+speed = 100.0
+weaponCooldown = 2.0
+daggerScene = ExtResource("14_dv5hj")
+pistolScene = ExtResource("15_f5kkq")
+
+[node name="col" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_lkxgk")
+
+[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
+script = ExtResource("1_icnwm")
+initialState = NodePath("null")
+
+[node name="daggerAttack" type="Node" parent="stateMachine" node_paths=PackedStringArray("player", "dagger")]
+script = ExtResource("5_3b8b3")
+player = NodePath("../..")
+dagger = NodePath("")
+
+[node name="pistolAttack" type="Node" parent="stateMachine" node_paths=PackedStringArray("player", "weaponsNode")]
+script = ExtResource("6_a7k0h")
+player = NodePath("../..")
+weaponsNode = NodePath("../../weapons")
+bulletScene = ExtResource("11_ersbe")
+bulletSpeed = 200
+
+[node name="null" type="Node" parent="stateMachine" node_paths=PackedStringArray("player", "weaponsNode")]
+script = ExtResource("8_57dx6")
+player = NodePath("../..")
+weaponsNode = NodePath("../../weapons")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7bhyc")
+}
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yduw3")
+animation = &"idle"
+
+[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health", "damageIndicator") groups=["player"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("18_lp28r")
+health = NodePath("../health")
+damageIndicator = NodePath("../damageIndicatorComponent")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_b8p6h")
+
+[node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
+script = ExtResource("19_2280a")
+maxHealth = 3
+healthBar = NodePath("../healthBar")
+
+[node name="damageIndicatorComponent" parent="." instance=ExtResource("19_es2wa")]
+position = Vector2(0, -23)
+
+[node name="healthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("18_4lf64")]
+z_index = 0
+offset_left = -16.0
+offset_top = 15.0
+offset_right = 16.0
+offset_bottom = 19.0
+value = 0.0
+health = NodePath("../health")
+
+[node name="weapons" type="Node2D" parent="."]
+rotation = -1.5708
+
+[connection signal="animation_finished" from="anim" to="stateMachine/daggerAttack" method="_on_anim_animation_finished"]
+[connection signal="animation_finished" from="anim" to="stateMachine/pistolAttack" method="_on_anim_animation_finished"]

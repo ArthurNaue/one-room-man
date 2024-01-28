@@ -1,0 +1,102 @@
+[gd_scene load_steps=18 format=3 uid="uid://ia5h2t4fo243"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/eye/eye.gd" id="1_cpvka"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/eye/states/eyeWalk.gd" id="3_f45h4"]
+[ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="3_tui0w"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/eye/states/eyeFollow.gd" id="4_d70of"]
+[ext_resource type="Texture2D" uid="uid://bl51a1bwxvba4" path="res://assets/images/game/enemies/eye/follow/eye_follow1.png" id="5_2farh"]
+[ext_resource type="Texture2D" uid="uid://bavxx2x7dahon" path="res://assets/images/game/enemies/eye/walking/eye_walking1.png" id="5_jas3x"]
+[ext_resource type="Texture2D" uid="uid://daofefknofmrb" path="res://assets/images/game/enemies/eye/follow/eye_follow2.png" id="6_dr5b6"]
+[ext_resource type="Texture2D" uid="uid://fuiwaifmeli2" path="res://assets/images/game/enemies/eye/walking/eye_walking2.png" id="8_wcbs6"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="9_pamxm"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="10_v4xbu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ul7q"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_nfgdw"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_s0pek"]
+resource_name = "follow"
+
+[sub_resource type="Animation" id="Animation_vgdmk"]
+resource_name = "run"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eor0e"]
+_data = {
+"RESET": SubResource("Animation_nfgdw"),
+"follow": SubResource("Animation_s0pek"),
+"run": SubResource("Animation_vgdmk")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mskwu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2farh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dr5b6")
+}],
+"loop": true,
+"name": &"follow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_jas3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wcbs6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dibwb"]
+size = Vector2(16, 16)
+
+[node name="eye" type="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(384, 200)
+collision_layer = 4
+script = ExtResource("1_cpvka")
+
+[node name="col" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0ul7q")
+
+[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
+script = ExtResource("3_tui0w")
+initialState = NodePath("follow")
+
+[node name="idle" type="Node" parent="stateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("3_f45h4")
+enemy = NodePath("../..")
+
+[node name="follow" type="Node" parent="stateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_d70of")
+enemy = NodePath("../..")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eor0e")
+}
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mskwu")
+animation = &"walk"
+
+[node name="health" type="Node2D" parent="."]
+script = ExtResource("9_pamxm")
+maxHealth = 3
+
+[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("10_v4xbu")
+health = NodePath("../health")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_dibwb")

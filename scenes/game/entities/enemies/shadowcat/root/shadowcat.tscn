@@ -1,0 +1,133 @@
+[gd_scene load_steps=19 format=3 uid="uid://bql38jl280n2v"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/shadowcat/root/shadowcat.gd" id="1_4gs5q"]
+[ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="2_jv3w5"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/shadowcat/states/follow/shadowcatFollow.gd" id="3_43gr0"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/shadowcat/states/handAttack/shadowCatHandAttack.gd" id="4_c4h6e"]
+[ext_resource type="PackedScene" uid="uid://bqhjmtojt74cb" path="res://scenes/game/entities/enemies/shadowcat/handAttack/shadowCatHandAttack.tscn" id="5_dmxw3"]
+[ext_resource type="Texture2D" uid="uid://cv8j2g4teb7jd" path="res://assets/images/game/enemies/shadowcat/follow/shadowcat1.png" id="5_guj4a"]
+[ext_resource type="Texture2D" uid="uid://5ybufwnyvqgn" path="res://assets/images/game/enemies/shadowcat/handAttack/shadowcat_handAttack1.png" id="6_77ggt"]
+[ext_resource type="Texture2D" uid="uid://6avhyremw5m8" path="res://assets/images/game/enemies/shadowcat/follow/shadowcat2.png" id="6_y73hy"]
+[ext_resource type="Texture2D" uid="uid://mdoog8u1onu1" path="res://assets/images/game/enemies/shadowcat/handAttack/shadowcat_handAttack2.png" id="7_5sdqf"]
+[ext_resource type="Texture2D" uid="uid://dxrat15nskt1q" path="res://assets/images/game/enemies/shadowcat/follow/shadowcat3.png" id="7_64yvy"]
+[ext_resource type="Texture2D" uid="uid://dbrffxabad5mw" path="res://assets/images/game/enemies/shadowcat/follow/shadowcat4.png" id="8_p4phw"]
+[ext_resource type="Texture2D" uid="uid://d0v6lypy0v85q" path="res://assets/images/game/enemies/shadowcat/handAttack/shadowcat_handAttack3.png" id="8_pvjma"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="9_1qwo3"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="10_emljb"]
+[ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="11_vigev"]
+[ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="12_74b4s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_akcks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_guj4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y73hy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_64yvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p4phw")
+}],
+"loop": true,
+"name": &"follow",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_77ggt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5sdqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pvjma")
+}],
+"loop": false,
+"name": &"handAttackEnter",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_pvjma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5sdqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_77ggt")
+}],
+"loop": false,
+"name": &"handAttackExit",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bojf"]
+radius = 4.0
+height = 26.0
+
+[node name="shadowcat" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_4gs5q")
+
+[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
+script = ExtResource("2_jv3w5")
+initialState = NodePath("follow")
+
+[node name="follow" type="Node" parent="stateMachine"]
+script = ExtResource("3_43gr0")
+moveSpeed = 60
+
+[node name="handAttack" type="Node" parent="stateMachine"]
+script = ExtResource("4_c4h6e")
+handAttackScene = ExtResource("5_dmxw3")
+
+[node name="attackTimer" type="Timer" parent="stateMachine/handAttack"]
+wait_time = 0.4
+
+[node name="stateTimer" type="Timer" parent="stateMachine"]
+wait_time = 5.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_akcks")
+animation = &"handAttackExit"
+
+[node name="col" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_0bojf")
+
+[node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
+script = ExtResource("9_1qwo3")
+maxHealth = 10
+healthBar = NodePath("../healthBar")
+
+[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health", "damageIndicator") groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("10_emljb")
+health = NodePath("../health")
+damageIndicator = NodePath("../damageIndicatorComponent")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_0bojf")
+
+[node name="healthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("11_vigev")]
+offset_left = -25.0
+offset_top = 19.0
+offset_right = 24.0
+offset_bottom = 22.0
+value = 0.0
+health = NodePath("../health")
+
+[node name="damageIndicatorComponent" parent="." instance=ExtResource("12_74b4s")]
+position = Vector2(1, -24)
+
+[connection signal="timeout" from="stateMachine/handAttack/attackTimer" to="stateMachine/handAttack" method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

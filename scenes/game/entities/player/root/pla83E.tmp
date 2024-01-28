@@ -1,0 +1,513 @@
+[gd_scene load_steps=31 format=3 uid="uid://ccfqa7gl05jnd"]
+
+[ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="1_icnwm"]
+[ext_resource type="Script" path="res://scripts/game/player/root/player.gd" id="1_t7ef0"]
+[ext_resource type="Texture2D" uid="uid://dajxn8eseokid" path="res://assets/images/game/player/states/idle/player_idle1.png" id="2_7qeuh"]
+[ext_resource type="Script" path="res://scripts/game/player/states/playerIdle.gd" id="3_tehy3"]
+[ext_resource type="Script" path="res://scripts/game/player/states/playerWalk.gd" id="4_74b64"]
+[ext_resource type="Script" path="res://scripts/game/player/states/playerDaggerAttack.gd" id="6_jueaw"]
+[ext_resource type="Texture2D" uid="uid://ddwqhpn5fy2ti" path="res://assets/images/game/player/states/idle/player_idle2.png" id="7_j3786"]
+[ext_resource type="Script" path="res://scripts/game/player/states/playerPistolAttack.gd" id="7_r0mda"]
+[ext_resource type="Script" path="res://scripts/game/player/camera/camera.gd" id="7_yt4b4"]
+[ext_resource type="Texture2D" uid="uid://blnnrh6nbf5fm" path="res://assets/images/game/player/states/walking/player_walking1.png" id="8_lrroh"]
+[ext_resource type="Texture2D" uid="uid://cgskx8upt7iwd" path="res://assets/images/game/player/states/walking/player_walking2.png" id="9_es8iu"]
+[ext_resource type="Texture2D" uid="uid://befnjwo83wqje" path="res://assets/images/game/player/states/walking/player_walking3.png" id="10_0ndan"]
+[ext_resource type="PackedScene" uid="uid://bmhitfcvekb3l" path="res://scenes/game/player/weapons/pistol/bullet/pistolBullet.tscn" id="11_ersbe"]
+[ext_resource type="Texture2D" uid="uid://djg7u33sulc5b" path="res://assets/images/game/player/states/walking/player_walking4.png" id="11_kqnpl"]
+[ext_resource type="Texture2D" uid="uid://djkyj8jbkuc15" path="res://assets/images/game/player/states/walking/player_walking5.png" id="12_jws3k"]
+[ext_resource type="PackedScene" uid="uid://b8vqo0ivljrlv" path="res://scenes/game/player/weapons/dagger/dagger.tscn" id="14_dv5hj"]
+[ext_resource type="PackedScene" uid="uid://ct4hj4n15vn4a" path="res://scenes/game/player/weapons/pistol/pistol.tscn" id="15_f5kkq"]
+[ext_resource type="Texture2D" uid="uid://c4nl2fsoahxjr" path="res://assets/images/game/player/weapons/dagger/dagger.png" id="17_ke0ub"]
+[ext_resource type="Script" path="res://scenes/game/player/weapons/pistol/pistol.gd" id="19_pjtsu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8p6h"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_4pahv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon/dagger:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon/pistol:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon/pistol:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(17, -2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weapon/dagger/daggerCol:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weapon/dagger:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -23)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weapon/dagger:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.309]
+}
+
+[sub_resource type="Animation" id="Animation_ulhql"]
+resource_name = "attack"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon/dagger:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon/pistol:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon/dagger/daggerCol:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weapon/dagger:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -23), Vector2(10, -19), Vector2(22, -4.54747e-13), Vector2(4.61853e-12, 26), Vector2(20, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weapon/dagger:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.309, 2.87979, 4.97418, 6.80677, 3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_3un3b"]
+resource_name = "walk"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon/dagger:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon/pistol:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon/dagger:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weapon/dagger:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mtxph"]
+resource_name = "awlk"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon/dagger:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon/pistol:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon/dagger:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weapon/dagger:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_ji30p"]
+resource_name = "pistolAttack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon/dagger:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon/pistol:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon/pistol:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(22, -1), Vector2(20, -1), Vector2(22, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_d345n"]
+resource_name = "pistolIdle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon/dagger:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon/pistol:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon/pistol:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(22, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_rjvbq"]
+resource_name = "pistolWalk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon/dagger:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon/pistol:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon/pistol:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(22, -1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7bhyc"]
+_data = {
+"RESET": SubResource("Animation_4pahv"),
+"daggerAttack": SubResource("Animation_ulhql"),
+"daggerIdle": SubResource("Animation_3un3b"),
+"daggerWalk": SubResource("Animation_mtxph"),
+"pistolAttack": SubResource("Animation_ji30p"),
+"pistolIdle": SubResource("Animation_d345n"),
+"pistolWalk": SubResource("Animation_rjvbq")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yduw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7qeuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j3786")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_lrroh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_es8iu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0ndan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kqnpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jws3k")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2lw"]
+size = Vector2(6, 13)
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+texture_filter = 1
+collision_layer = 2
+script = ExtResource("1_t7ef0")
+
+[node name="stateMachine" type="Node" parent="."]
+script = ExtResource("1_icnwm")
+
+[node name="idle" type="Node" parent="stateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("3_tehy3")
+player = NodePath("../..")
+
+[node name="walk" type="Node" parent="stateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("4_74b64")
+player = NodePath("../..")
+
+[node name="daggerAttack" type="Node" parent="stateMachine" node_paths=PackedStringArray("player", "dagger")]
+script = ExtResource("6_jueaw")
+player = NodePath("../..")
+dagger = NodePath("../../weapon/dagger")
+speed = 300
+
+[node name="pistolAttack" type="Node" parent="stateMachine" node_paths=PackedStringArray("player", "pistol")]
+script = ExtResource("7_r0mda")
+player = NodePath("../..")
+pistol = NodePath("../../weapon/pistol")
+bulletScene = ExtResource("11_ersbe")
+speed = 300
+bulletSpeed = 200
+
+[node name="col" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b8p6h")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7bhyc")
+}
+
+[node name="camera" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+script = ExtResource("7_yt4b4")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yduw3")
+animation = &"walk"
+frame_progress = 0.265485
+
+[node name="weapon" type="Node2D" parent="."]
+
+[node name="dagger" parent="weapon" node_paths=PackedStringArray("player", "weapon", "stateMachine", "attacking") instance=ExtResource("14_dv5hj")]
+position = Vector2(0, -23)
+rotation = 1.309
+scale = Vector2(-1, 1)
+collision_layer = 2
+collision_mask = 4
+player = NodePath("../..")
+weapon = NodePath("..")
+stateMachine = NodePath("../../stateMachine")
+attacking = NodePath("../../stateMachine/daggerAttack")
+
+[node name="daggerCol" type="CollisionShape2D" parent="weapon/dagger"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_qi2lw")
+disabled = true
+
+[node name="daggerSprite" type="Sprite2D" parent="weapon/dagger"]
+rotation = 3.14159
+texture = ExtResource("17_ke0ub")
+
+[node name="pistol" parent="weapon" instance=ExtResource("15_f5kkq")]
+position = Vector2(17, -2)
+script = ExtResource("19_pjtsu")
+
+[connection signal="animation_finished" from="anim" to="stateMachine/daggerAttack" method="_on_anim_animation_finished"]
