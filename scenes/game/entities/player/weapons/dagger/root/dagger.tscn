@@ -1,11 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8vqo0ivljrlv"]
+[gd_scene load_steps=8 format=3 uid="uid://b8vqo0ivljrlv"]
 
-[ext_resource type="Script" path="res://scripts/game/entities/player/weapons/dagger/dagger.gd" id="1_qw0sk"]
-[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="2_chnxh"]
-[ext_resource type="Texture2D" uid="uid://c4nl2fsoahxjr" path="res://assets/images/game/player/weapons/dagger/dagger.png" id="2_qeryr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6m2h"]
-size = Vector2(8, 15)
+[ext_resource type="Script" path="res://scripts/game/entities/player/weapons/dagger/root/dagger.gd" id="1_jgstc"]
+[ext_resource type="PackedScene" uid="uid://dr4cvmf5iqwtx" path="res://scenes/game/entities/player/weapons/dagger/effect/daggerEffect.tscn" id="2_xj8ix"]
+[ext_resource type="Texture2D" uid="uid://c4nl2fsoahxjr" path="res://assets/images/game/player/weapons/dagger/root/dagger.png" id="3_i7xr7"]
 
 [sub_resource type="Animation" id="Animation_voeun"]
 length = 0.001
@@ -32,18 +29,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("hitbox/col:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_i2el5"]
@@ -72,18 +57,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, -20), Vector2(20, -9.53675e-07), Vector2(-1, 20), Vector2(20, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("hitbox/col:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_44en0"]
@@ -126,20 +99,12 @@ _data = {
 texture_filter = 1
 rotation = -0.872665
 scale = Vector2(-1, 1)
-script = ExtResource("1_qw0sk")
-
-[node name="hitbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 4
-script = ExtResource("2_chnxh")
-
-[node name="col" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_w6m2h")
-disabled = true
+script = ExtResource("1_jgstc")
+weaponCooldown = 2.0
+attackEffect = ExtResource("2_xj8ix")
 
 [node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_qeryr")
+texture = ExtResource("3_i7xr7")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
@@ -147,5 +112,4 @@ libraries = {
 }
 autoplay = "idle"
 
-[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

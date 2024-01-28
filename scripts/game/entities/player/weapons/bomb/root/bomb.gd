@@ -1,6 +1,7 @@
 extends Node2D
 class_name Bomb
 
+@export var weaponCooldown: float
 @export var explosionScene: PackedScene
 @onready var weaponsNode = get_parent()
 @onready var player = get_parent().get_parent()
@@ -8,7 +9,7 @@ class_name Bomb
 
 func _ready():
 	#reseta o cooldown
-	player.weaponCooldown = 5
+	player.weaponCooldown = 2
 	#reseta a animacao
 	anim.play("idle")
 
@@ -16,8 +17,8 @@ func _process(delta:float):
 	#verifica se o botao esquerdo do mouse foi clicado
 	if Input.is_action_pressed("mouse_left"):
 		#verifica se o cooldown acabou
-		if player.weaponCooldown <= 0:
 			#atira a bomba
+		if player.weaponCooldown <= 0:
 			anim.play("attack")
 			weaponsNode.attacking = true
 
@@ -35,7 +36,7 @@ func explode():
 	#reseta a animacao
 	anim.play("idle")
 	#reseta o cooldown
-	player.weaponCooldown = 5
+	player.weaponCooldown = weaponCooldown
 	weaponsNode.attacking = false
 	$areaCol/col.disabled = true
 

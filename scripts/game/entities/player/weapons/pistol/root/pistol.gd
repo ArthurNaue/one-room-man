@@ -1,12 +1,13 @@
 extends Node2D
 class_name Pistol
 
+@export var weaponCooldown: float
 @export var bulletScene: PackedScene
 @onready var player = get_parent().get_parent()
 @onready var anim = $anim
 
 func _ready():
-	player.weaponCooldown = 0.5
+	player.weaponCooldown = weaponCooldown
 	anim.play("idle")
 
 func _process(delta: float):
@@ -27,4 +28,4 @@ func Fire():
 	#spawna a bala
 	player.get_parent().add_child(bullet)
 	#ajusta o cooldown
-	player.weaponCooldown = 0.5
+	player.weaponCooldown = weaponCooldown

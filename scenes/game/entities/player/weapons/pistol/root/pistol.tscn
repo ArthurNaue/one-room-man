@@ -64,6 +64,7 @@ _data = {
 texture_filter = 1
 position = Vector2(20, 0)
 script = ExtResource("1_m4c16")
+weaponCooldown = 1.0
 bulletScene = ExtResource("2_gdxq5")
 
 [node name="pistol" type="Sprite2D" parent="."]

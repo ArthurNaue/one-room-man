@@ -88,7 +88,7 @@ script = ExtResource("4_c4h6e")
 handAttackScene = ExtResource("5_dmxw3")
 
 [node name="attackTimer" type="Timer" parent="stateMachine/handAttack"]
-wait_time = 0.5
+wait_time = 0.4
 
 [node name="stateTimer" type="Timer" parent="stateMachine"]
 wait_time = 5.0
