@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjwjwtjallm3k"]
+
+[ext_resource type="Script" path="res://scripts/game/coin/root/coin.gd" id="1_6lt2j"]
+[ext_resource type="Texture2D" uid="uid://bp5icjdar2j8e" path="res://assets/images/game/coin/coin.png" id="1_88ijm"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="2_t0mhy"]
+
+[sub_resource type="Animation" id="Animation_hdke0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitbox/col:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_1f6jf"]
+resource_name = "coin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitbox/col:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v1gsx"]
+_data = {
+"RESET": SubResource("Animation_hdke0"),
+"coin": SubResource("Animation_1f6jf")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lr4q4"]
+size = Vector2(8, 12)
+
+[node name="coin" type="StaticBody2D"]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_6lt2j")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_88ijm")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v1gsx")
+}
+autoplay = "coin"
+
+[node name="hitbox" type="Area2D" parent="." groups=["coin"]]
+collision_mask = 2
+script = ExtResource("2_t0mhy")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_lr4q4")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

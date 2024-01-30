@@ -4,11 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://ccfqa7gl05jnd" path="res://scenes/game/entities/player/root/player.tscn" id="2_0pf0n"]
 [ext_resource type="TileSet" uid="uid://i6hidr2rf12c" path="res://assets/images/game/tileset/tileset.tres" id="3_18gqc"]
 [ext_resource type="Script" path="res://scripts/game/camera/camera.gd" id="4_e3v2g"]
-[ext_resource type="PackedScene" uid="uid://cjwjwtjallm3k" path="res://scenes/game/coin/coin.tscn" id="5_lpqej"]
+[ext_resource type="PackedScene" uid="uid://cjwjwtjallm3k" path="res://scenes/game/coin/root/coin.tscn" id="5_lpqej"]
 [ext_resource type="PackedScene" uid="uid://1fvj2efha2hp" path="res://scenes/game/mapObjects/shop/shop.tscn" id="6_uk1fs"]
 [ext_resource type="PackedScene" uid="uid://bva7lrsw2bkx3" path="res://scenes/game/weaponsPickup/weaponPickup.tscn" id="7_8wu3q"]
 [ext_resource type="Texture2D" uid="uid://bp5icjdar2j8e" path="res://assets/images/game/coin/coin.png" id="7_p0fmq"]
-[ext_resource type="Script" path="res://scripts/game/hud/coinText/coinText.gd" id="9_nbedm"]
+
+[sub_resource type="GDScript" id="GDScript_bow10"]
+script/source = "extends Label
+class_name coinsText
+"
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -44,4 +48,4 @@ offset_top = 279.0
 offset_right = 31.0
 offset_bottom = 302.0
 text = "1"
-script = ExtResource("9_nbedm")
+script = SubResource("GDScript_bow10")
