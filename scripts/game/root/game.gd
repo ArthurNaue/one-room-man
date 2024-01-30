@@ -4,6 +4,8 @@ class_name Game
 @export var level: int
 @export var weaponPickupScene: PackedScene
 @export var coinScene: PackedScene
+var enemyPosition: Vector2
+var round: int
 var coins = 0
 
 func _ready():
@@ -14,6 +16,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("esq"):
 		#fecha o jogo
 		get_tree().quit()
+	$roundText.text = str(int($newRoundTimer.time_left))
 
 func spawnEntitie(entitieScene: PackedScene, entitiePosition: Vector2):
 	var entitie = entitieScene.instantiate() as CharacterBody2D
@@ -34,3 +37,35 @@ func spawnCoin(desiredPosition: Vector2):
 
 func addCoin():
 	coins += 1
+
+func _on_new_round_timer_timeout():
+	round += 1
+	if round == 1:
+		randomizeEnemyPosition()
+		spawnEntitie(Enemies.eye, enemyPosition)
+	elif round == 2:
+		randomizeEnemyPosition()
+		spawnEntitie(Enemies.eye, enemyPosition)
+		randomizeEnemyPosition()
+		spawnEntitie(Enemies.eye, enemyPosition)
+	elif round == 3:
+		randomizeEnemyPosition()
+		spawnEntitie(Enemies.eye, enemyPosition)
+		randomizeEnemyPosition()
+		spawnEntitie(Enemies.eye, enemyPosition)
+		randomizeEnemyPosition()
+		spawnEntitie(Enemies.eye, enemyPosition)
+	elif round == 4:
+		randomizeEnemyPosition()
+		spawnEntitie(Enemies.eye, enemyPosition)
+		randomizeEnemyPosition()
+		spawnEntitie(Enemies.eye, enemyPosition)
+		randomizeEnemyPosition()
+		spawnEntitie(Enemies.eye, enemyPosition)
+		randomizeEnemyPosition()
+		spawnEntitie(Enemies.eye, enemyPosition)
+	elif round == 5:
+		spawnEntitie(Enemies.shadowcat, Vector2(150, 100))
+
+func randomizeEnemyPosition():
+	enemyPosition = Vector2(randf_range(70, 230), randf_range(70, 150))
