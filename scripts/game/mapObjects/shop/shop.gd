@@ -41,4 +41,4 @@ func rerollPrice():
 	elif weaponNumber == 3:
 		weaponScene = Weapons.bomb
 		weaponImg = Weapons.bombImg
-	priceText.text = "$" + str(price)
+	priceText.text = "-$" + str(price)

@@ -4,7 +4,7 @@ class_name Game
 @export var level: int
 @export var weaponPickupScene: PackedScene
 @export var coinScene: PackedScene
-var coins = 100
+var coins = 0
 
 func _ready():
 	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 150))

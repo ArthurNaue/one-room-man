@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bml1qftn0bn5q"]
+
+[ext_resource type="Script" path="res://scripts/game/mapObjects/weaponBuyer/weaponBuyer.gd" id="1_u1dta"]
+[ext_resource type="Texture2D" uid="uid://bautkb6cy0g1p" path="res://assets/images/game/mapOjects/weaponBuyer/weaponBuyer.png" id="1_x4quy"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="3_3lylg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4b54i"]
+size = Vector2(32, 4.5)
+
+[node name="weaponBuyer" type="StaticBody2D"]
+texture_filter = 1
+script = ExtResource("1_u1dta")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_x4quy")
+
+[node name="interactText" type="Label" parent="."]
+visible = false
+offset_left = -32.0
+offset_top = -5.0
+offset_right = -23.0
+offset_bottom = 18.0
+scale = Vector2(0.5, 0.5)
+text = "E"
+
+[node name="priceText" type="Label" parent="."]
+visible = false
+offset_left = 24.0
+offset_top = -6.0
+offset_right = 64.0
+offset_bottom = 17.0
+scale = Vector2(0.5, 0.5)
+text = "$10"
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("3_3lylg")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 14.25)
+shape = SubResource("RectangleShape2D_4b54i")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]
