@@ -40,31 +40,10 @@ func addCoin():
 
 func _on_new_round_timer_timeout():
 	round += 1
-	if round == 1:
+	for x in round:
 		randomizeEnemyPosition()
 		spawnEntitie(Enemies.eye, enemyPosition)
-	elif round == 2:
-		randomizeEnemyPosition()
-		spawnEntitie(Enemies.eye, enemyPosition)
-		randomizeEnemyPosition()
-		spawnEntitie(Enemies.eye, enemyPosition)
-	elif round == 3:
-		randomizeEnemyPosition()
-		spawnEntitie(Enemies.eye, enemyPosition)
-		randomizeEnemyPosition()
-		spawnEntitie(Enemies.eye, enemyPosition)
-		randomizeEnemyPosition()
-		spawnEntitie(Enemies.eye, enemyPosition)
-	elif round == 4:
-		randomizeEnemyPosition()
-		spawnEntitie(Enemies.eye, enemyPosition)
-		randomizeEnemyPosition()
-		spawnEntitie(Enemies.eye, enemyPosition)
-		randomizeEnemyPosition()
-		spawnEntitie(Enemies.eye, enemyPosition)
-		randomizeEnemyPosition()
-		spawnEntitie(Enemies.eye, enemyPosition)
-	elif round == 5:
+	if round == 5:
 		spawnEntitie(Enemies.shadowcat, Vector2(150, 100))
 
 func randomizeEnemyPosition():
