@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5spuv3co0l28"
-path="res://.godot/imported/NextLevelDoor7.png-af0cbd4d1de5fc390b643530f402f7e3.ctex"
+path="res://.godot/imported/NextLevelDoor7.png-587fd105648a9927b672a89895c7e6fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/game/mapOjects/NextLevelDoor/NextLevelDoor7.png"
-dest_files=["res://.godot/imported/NextLevelDoor7.png-af0cbd4d1de5fc390b643530f402f7e3.ctex"]
+source_file="res://assets/images/game/mapOjects/nextLevelDoor/NextLevelDoor7.png"
+dest_files=["res://.godot/imported/NextLevelDoor7.png-587fd105648a9927b672a89895c7e6fd.ctex"]
 
 [params]
 

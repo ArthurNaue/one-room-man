@@ -11,7 +11,7 @@ func _ready():
 	player.weaponCooldown = weaponCooldown
 	anim.play("idle")
 
-func _process(delta:float):
+func _process(_delta):
 	if Input.is_action_pressed("mouse_left"):
 		if player.weaponCooldown <= 0:
 			player.weaponCooldown = weaponCooldown
@@ -19,7 +19,7 @@ func _process(delta:float):
 			weaponsNode.attacking = true
 			SpawnEffect(attackEffect)
 
-func _on_anim_animation_finished(attack):
+func _on_anim_animation_finished(_attack):
 	anim.play("idle")
 	weaponsNode.attacking = false
 

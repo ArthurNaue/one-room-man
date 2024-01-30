@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctxmdjrfidq8l"
-path="res://.godot/imported/NextLevelDoor3.png-3c28bb79cdeef3051178e2df340479c1.ctex"
+uid="uid://bt05wdkf1y0to"
+path="res://.godot/imported/player_idle1.png-9c8cd70d941721ff50a690fb75f7d4fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/game/mapOjects/nextLevelDoor/NextLevelDoor3.png"
-dest_files=["res://.godot/imported/NextLevelDoor3.png-3c28bb79cdeef3051178e2df340479c1.ctex"]
+source_file="res://assets/images/game/player/root/idle/player_idle1.png"
+dest_files=["res://.godot/imported/player_idle1.png-9c8cd70d941721ff50a690fb75f7d4fc.ctex"]
 
 [params]
 

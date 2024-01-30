@@ -11,5 +11,5 @@ func _on_hitbox_area_entered(area):
 			#aplica 4 de dano
 			area.Damage(attack)
 
-func _on_anim_animation_finished(explosion):
+func _on_anim_animation_finished(_explosion):
 	queue_free()

@@ -19,7 +19,7 @@ func Enter():
 	Randomize_Wander()
 	
 	
-func Update(delta: float):
+func Update(delta : float):
 	#verifica se o tempo de espera para se mover e maior que 0
 	if wanderTime > 0:
 		#diminui o tempo de espera por delta
@@ -28,7 +28,7 @@ func Update(delta: float):
 		#executa a funcao de randomizar a direcao do inimigo
 		Randomize_Wander()
 
-func Physics_Update(delta: float):
+func Physics_Update(_delta):
 	#verifica se o inimigo existe
 	if enemy:
 		#faz o inimigo se mover na direcao selecionada

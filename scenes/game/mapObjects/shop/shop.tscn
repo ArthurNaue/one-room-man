@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://1fvj2efha2hp"]
+
+[ext_resource type="Texture2D" uid="uid://dy65me3cbrjdj" path="res://assets/images/game/mapOjects/shop/shop.png" id="1_5p61t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hv7f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5p61t")
+}],
+"loop": true,
+"name": &"shop",
+"speed": 5.0
+}]
+
+[node name="shop" type="StaticBody2D"]
+texture_filter = 1
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2hv7f")
+animation = &"shop"

@@ -16,7 +16,7 @@ func Enter():
 	#troca de estado
 	Transitioned.emit(self, "handAttack")
 
-func Physics_Update(delta: float):
+func Physics_Update(_delta):
 	#define a direcao como a diferenca entre a posicao do player e do inimigo
 	var direction = player.global_position - enemy.global_position
 

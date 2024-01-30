@@ -3,7 +3,7 @@ class_name Eye
 
 @onready var sprite = $sprite
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	#muda a direcao da sprite baseado na direcao do inimigo
 	if velocity.x > 0:
 		sprite.flip_h = false

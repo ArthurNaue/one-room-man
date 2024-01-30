@@ -19,7 +19,7 @@ func _process(delta: float):
 	
 	sprite.play()
 
-func _physics_process(delta: float):
+func _physics_process(_delta):
 	#adiciona a direcao do player ao Vector2
 	inputVector.x = Input.get_action_strength("D") - Input.get_action_strength("A")
 	inputVector.y = Input.get_action_strength("S") - Input.get_action_strength("W")

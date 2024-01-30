@@ -65,13 +65,11 @@ script = ExtResource("1_7xenj")
 script = ExtResource("3_tui0w")
 initialState = NodePath("follow")
 
-[node name="walk" type="Node" parent="stateMachine" node_paths=PackedStringArray("enemy")]
+[node name="walk" type="Node" parent="stateMachine"]
 script = ExtResource("3_f45h4")
-enemy = NodePath("../..")
 
-[node name="follow" type="Node" parent="stateMachine" node_paths=PackedStringArray("enemy")]
+[node name="follow" type="Node" parent="stateMachine"]
 script = ExtResource("4_d70of")
-enemy = NodePath("../..")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {

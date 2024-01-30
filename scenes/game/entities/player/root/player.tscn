@@ -2,7 +2,14 @@
 
 [ext_resource type="Script" path="res://scripts/game/entities/player/root/player.gd" id="1_twwux"]
 [ext_resource type="PackedScene" uid="uid://bva7lrsw2bkx3" path="res://scenes/game/weaponsPickup/weaponPickup.tscn" id="2_j7m8h"]
+[ext_resource type="Texture2D" uid="uid://bt05wdkf1y0to" path="res://assets/images/game/player/root/idle/player_idle1.png" id="3_nuq5t"]
+[ext_resource type="Texture2D" uid="uid://cfvy6phk117xq" path="res://assets/images/game/player/root/idle/player_idle2.png" id="4_8gjck"]
+[ext_resource type="Texture2D" uid="uid://bx56glhcp4k82" path="res://assets/images/game/player/root/walking/player_walking1.png" id="5_a6lsn"]
+[ext_resource type="Texture2D" uid="uid://m7iji4aplml6" path="res://assets/images/game/player/root/walking/player_walking2.png" id="6_weos0"]
+[ext_resource type="Texture2D" uid="uid://msxdwpm0uvfx" path="res://assets/images/game/player/root/walking/player_walking3.png" id="7_ah10f"]
 [ext_resource type="Script" path="res://scripts/game/entities/player/weapons/root/weaponsNode.gd" id="7_h5lb5"]
+[ext_resource type="Texture2D" uid="uid://dhmj26jiskiso" path="res://assets/images/game/player/root/walking/player_walking4.png" id="8_20ay7"]
+[ext_resource type="Texture2D" uid="uid://uftcnmfsr1uo" path="res://assets/images/game/player/root/walking/player_walking5.png" id="9_qfp7o"]
 [ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="18_4lf64"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="18_lp28r"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="19_2280a"]
@@ -11,35 +18,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkxgk"]
 size = Vector2(6, 15)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e8jhx"]
-load_path = "res://.godot/imported/player_idle1.png-ec47c1b721c4daba7ef3887a697063e1.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i6g65"]
-load_path = "res://.godot/imported/player_idle2.png-a2630c95772e4b63396d6b3e7c5014c3.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s13nq"]
-load_path = "res://.godot/imported/player_walking1.png-f42f07ba614d0a9f0f73df4a0bc78598.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_86ddf"]
-load_path = "res://.godot/imported/player_walking2.png-88edeb2cb74312d8499bdce686c17cf6.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fjcx3"]
-load_path = "res://.godot/imported/player_walking3.png-64575ba324c6f0da477fd6b3db090298.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tb0cc"]
-load_path = "res://.godot/imported/player_walking4.png-031ed34ce4645dc82c0b52473414d81c.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b6nu1"]
-load_path = "res://.godot/imported/player_walking5.png-abec7ab32734920aa1551893dff65273.ctex"
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_yduw3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_e8jhx")
+"texture": ExtResource("3_nuq5t")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_i6g65")
+"texture": ExtResource("4_8gjck")
 }],
 "loop": true,
 "name": &"idle",
@@ -47,19 +33,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_s13nq")
+"texture": ExtResource("5_a6lsn")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_86ddf")
+"texture": ExtResource("6_weos0")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_fjcx3")
+"texture": ExtResource("7_ah10f")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_tb0cc")
+"texture": ExtResource("8_20ay7")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_b6nu1")
+"texture": ExtResource("9_qfp7o")
 }],
 "loop": true,
 "name": &"walk",

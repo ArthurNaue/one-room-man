@@ -23,11 +23,11 @@ func Enter():
 	await get_tree().create_timer(0.6).timeout
 	Transitioned.emit(self, "follow")
 
-func attack(attackPosition: Vector2):
+func attack(desiredAttackPosition: Vector2):
 	#spawna o objeto do ataque
 	var handAttack = handAttackScene.instantiate() as StaticBody2D
 	enemy.add_child(handAttack)
-	handAttack.global_position = attackPosition
+	handAttack.global_position = desiredAttackPosition
 	
 func _on_attack_timer_timeout():
 	#define a posicao do ataque

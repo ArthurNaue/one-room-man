@@ -12,7 +12,7 @@ func _ready():
 	#toca a animacao de ficar parado
 	anim.play("idle")
 
-func _process(delta:float):
+func _process(_delta):
 	#verifica se o botao esquerdo do mouse foi clicado
 	if Input.is_action_pressed("mouse_left"):
 		#verifica se o cooldown acabou
@@ -30,5 +30,5 @@ func Throw():
 	#reseta o cooldown
 	player.weaponCooldown = weaponCooldown
 
-func _on_anim_animation_finished(attack):
+func _on_anim_animation_finished(_attack):
 	anim.play("idle")

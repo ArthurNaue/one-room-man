@@ -6,7 +6,7 @@ var attacking: bool
 func _ready():
 	attacking = false
 
-func _process(delta: float):
+func _process(_delta):
 	if attacking == false:
 		Direction()
 

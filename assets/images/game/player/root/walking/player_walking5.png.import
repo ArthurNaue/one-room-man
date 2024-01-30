@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daofefknofmrb"
-path="res://.godot/imported/eye_follow2.png-4b89b2b2470dad6b11094b53833a0c20.ctex"
+uid="uid://uftcnmfsr1uo"
+path="res://.godot/imported/player_walking5.png-15d822fdcb6bcf2108af8dd6f3f6b6f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/game/enemies/eye/follow/eye_follow2.png"
-dest_files=["res://.godot/imported/eye_follow2.png-4b89b2b2470dad6b11094b53833a0c20.ctex"]
+source_file="res://assets/images/game/player/root/walking/player_walking5.png"
+dest_files=["res://.godot/imported/player_walking5.png-15d822fdcb6bcf2108af8dd6f3f6b6f7.ctex"]
 
 [params]
 

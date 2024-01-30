@@ -14,7 +14,7 @@ func _ready():
 	pickupText(false)
 	anim.play("pickup")
 
-func _process(delta:float):
+func _process(_delta):
 	if pickupTextNode.visible == true:
 		if Input.is_action_just_pressed("E"):
 			pickup()
@@ -29,5 +29,5 @@ func pickup():
 	#deleta o pickup
 	queue_free()
 
-func pickupText(visible: bool):
-	pickupTextNode.visible = visible
+func pickupText(desiredVisibility: bool):
+	pickupTextNode.visible = desiredVisibility

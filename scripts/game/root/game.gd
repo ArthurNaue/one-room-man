@@ -13,7 +13,7 @@ func _ready():
 	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 250))
 	spawnWeaponPickup(Weapons.bomb, Weapons.bombImg, Vector2(250, 250))
 
-func _process(delta: float):
+func _process(_delta):
 	#verifica se o player clicou ESQ
 	if Input.is_action_just_pressed("esq"):
 		#fecha o jogo
@@ -24,9 +24,9 @@ func spawnEntitie(entitieScene: PackedScene, entitiePosition: Vector2):
 	entitie.global_position = entitiePosition
 	add_child(entitie)
 
-func spawnWeaponPickup(choosenWeaponPickupScene, image: Texture, position: Vector2):
+func spawnWeaponPickup(choosenWeaponPickupScene, image: Texture, desiredPosition: Vector2):
 	var weaponPickup = weaponPickupScene.instantiate() as StaticBody2D
 	weaponPickup.weaponScene = choosenWeaponPickupScene
 	weaponPickup.image = image
-	weaponPickup.global_position = position
+	weaponPickup.global_position = desiredPosition
 	add_child(weaponPickup)

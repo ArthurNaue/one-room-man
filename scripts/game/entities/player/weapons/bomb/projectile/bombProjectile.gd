@@ -10,7 +10,7 @@ func _ready():
 	#muda o angulo para a direcao do mouse
 	look_at(get_global_mouse_position())
 
-func _physics_process(delta: float):
+func _physics_process(_delta):
 	#aplica movimento na bala
 	velocity = direction * speed
 	move_and_slide()
