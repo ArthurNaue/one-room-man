@@ -4,19 +4,23 @@ class_name Game
 @export var level: int
 @export var weaponPickupScene: PackedScene
 @export var coinScene: PackedScene
+@onready var hudRounds = $hudRounds
+@onready var roundText = $roundText
+@onready var newRoundTimer = $newRoundTimer
 var enemyPosition: Vector2
-var round: int
+var rounds = 1
 var coins = 0
 
 func _ready():
 	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 150))
 
 func _process(_delta):
+	hudRounds.frame = (rounds - 1)
 	#verifica se o player clicou ESQ
 	if Input.is_action_just_pressed("esq"):
 		#fecha o jogo
 		get_tree().quit()
-	$roundText.text = str(int($newRoundTimer.time_left))
+	roundText.text = str(int(newRoundTimer.time_left))
 
 func spawnEntitie(entitieScene: PackedScene, entitiePosition: Vector2):
 	var entitie = entitieScene.instantiate() as CharacterBody2D
@@ -39,11 +43,11 @@ func addCoin():
 	coins += 1
 
 func _on_new_round_timer_timeout():
-	round += 1
-	for x in round:
+	rounds += 1
+	for x in rounds:
 		randomizeEnemyPosition()
 		spawnEntitie(Enemies.eye, enemyPosition)
-	match round:
+	match rounds:
 		5:
 			spawnEntitie(Enemies.shadowcat, Vector2(150, 100))
 		10:

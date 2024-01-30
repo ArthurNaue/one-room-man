@@ -25,7 +25,7 @@ func _on_hitbox_area_entered(area):
 		interactText.visible = true
 		priceText.visible = true
 
-func _on_hitbox_area_exited(area):
+func _on_hitbox_area_exited(_area):
 	interactText.visible = false
 	priceText.visible = false
 

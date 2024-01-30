@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxvmdr7u32nj3"]
+[gd_scene load_steps=30 format=3 uid="uid://cxvmdr7u32nj3"]
 
 [ext_resource type="Script" path="res://scripts/game/root/game.gd" id="1_8ckrm"]
 [ext_resource type="PackedScene" uid="uid://ccfqa7gl05jnd" path="res://scenes/game/entities/player/root/player.tscn" id="2_0pf0n"]
@@ -8,8 +8,88 @@
 [ext_resource type="PackedScene" uid="uid://1fvj2efha2hp" path="res://scenes/game/mapObjects/shop/shop.tscn" id="6_uk1fs"]
 [ext_resource type="PackedScene" uid="uid://bva7lrsw2bkx3" path="res://scenes/game/weaponsPickup/weaponPickup.tscn" id="7_8wu3q"]
 [ext_resource type="Texture2D" uid="uid://bp5icjdar2j8e" path="res://assets/images/game/coin/coin.png" id="7_p0fmq"]
+[ext_resource type="Texture2D" uid="uid://bnb1v4masxd0y" path="res://assets/images/game/hud/rounds/round1.png" id="7_p3owl"]
+[ext_resource type="Texture2D" uid="uid://djfk47wywpdar" path="res://assets/images/game/hud/rounds/round2.png" id="8_yxx28"]
+[ext_resource type="Texture2D" uid="uid://bdsro02ahpdq" path="res://assets/images/game/hud/rounds/round3.png" id="9_jgtay"]
 [ext_resource type="Script" path="res://scripts/game/hud/coinText/coinText.gd" id="9_nbedm"]
 [ext_resource type="PackedScene" uid="uid://bml1qftn0bn5q" path="res://scenes/game/mapObjects/weaponBuyer/weaponBuyer.tscn" id="10_l0wmb"]
+[ext_resource type="Texture2D" uid="uid://dxee6v7lmk0wg" path="res://assets/images/game/hud/rounds/round4.png" id="10_uynax"]
+[ext_resource type="Texture2D" uid="uid://c7sg7gbhewmpw" path="res://assets/images/game/hud/rounds/round5.png" id="11_r8dck"]
+[ext_resource type="Texture2D" uid="uid://i7pwvdlrcvg2" path="res://assets/images/game/hud/rounds/round6.png" id="12_ebk4k"]
+[ext_resource type="Texture2D" uid="uid://c3an3v2ri1hnh" path="res://assets/images/game/hud/rounds/round7.png" id="13_14kjy"]
+[ext_resource type="Texture2D" uid="uid://h0usu4t6dewt" path="res://assets/images/game/hud/rounds/round8.png" id="14_artrm"]
+[ext_resource type="Texture2D" uid="uid://d0euwsjgbjgl4" path="res://assets/images/game/hud/rounds/round9.png" id="15_6rl7j"]
+[ext_resource type="Texture2D" uid="uid://ijvxi5qyunjl" path="res://assets/images/game/hud/rounds/round10.png" id="16_th7sb"]
+[ext_resource type="Texture2D" uid="uid://dijroejyomiwt" path="res://assets/images/game/hud/rounds/round11.png" id="17_yyrpi"]
+[ext_resource type="Texture2D" uid="uid://ct1f7u33i3rmc" path="res://assets/images/game/hud/rounds/round12.png" id="18_w28ul"]
+[ext_resource type="Texture2D" uid="uid://cogplabcdm8di" path="res://assets/images/game/hud/rounds/round13.png" id="19_rhulj"]
+[ext_resource type="Texture2D" uid="uid://bhmay63w6wdxl" path="res://assets/images/game/hud/rounds/round14.png" id="20_00j7q"]
+[ext_resource type="Texture2D" uid="uid://dmtu3djpcus5l" path="res://assets/images/game/hud/rounds/round15.png" id="21_i7n2d"]
+[ext_resource type="Texture2D" uid="uid://cm2nxauq0gp1m" path="res://assets/images/game/hud/rounds/round16.png" id="22_fjoft"]
+[ext_resource type="Texture2D" uid="uid://b65xtu2e0daox" path="res://assets/images/game/hud/rounds/round17.png" id="23_rgw0y"]
+[ext_resource type="Texture2D" uid="uid://35yw3w0ovnvs" path="res://assets/images/game/hud/rounds/round18.png" id="24_ybghf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xh7d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_p3owl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yxx28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jgtay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uynax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r8dck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ebk4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_14kjy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_artrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6rl7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_th7sb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_yyrpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_w28ul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rhulj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_00j7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_i7n2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_fjoft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_rgw0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ybghf")
+}],
+"loop": false,
+"name": &"rounds",
+"speed": 0.0
+}]
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -31,23 +111,28 @@ offset_right = 157.0
 offset_bottom = 175.0
 text = "0"
 
-[node name="player" parent="." instance=ExtResource("2_0pf0n")]
-position = Vector2(154, 241)
-
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(152, 152)
 zoom = Vector2(2, 2)
 script = ExtResource("4_e3v2g")
 
 [node name="hudCoin" type="Sprite2D" parent="."]
-position = Vector2(13, 291)
+position = Vector2(39, 280)
 texture = ExtResource("7_p0fmq")
 
+[node name="hudRounds" type="AnimatedSprite2D" parent="."]
+position = Vector2(240, 283)
+sprite_frames = SubResource("SpriteFrames_8xh7d")
+animation = &"rounds"
+autoplay = "rounds"
+frame = 16
+frame_progress = 0.724583
+
 [node name="coinsText" type="Label" parent="."]
-offset_left = 20.0
-offset_top = 285.0
-offset_right = 30.0
-offset_bottom = 308.0
+offset_left = 46.0
+offset_top = 274.0
+offset_right = 56.0
+offset_bottom = 297.0
 scale = Vector2(0.5, 0.5)
 text = "1"
 script = ExtResource("9_nbedm")
@@ -64,5 +149,8 @@ player = NodePath("../player")
 [node name="newRoundTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="player" parent="." instance=ExtResource("2_0pf0n")]
+position = Vector2(154, 241)
 
 [connection signal="timeout" from="newRoundTimer" to="." method="_on_new_round_timer_timeout"]
