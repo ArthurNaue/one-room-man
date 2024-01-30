@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://1fvj2efha2hp"]
+[gd_scene load_steps=6 format=3 uid="uid://1fvj2efha2hp"]
 
 [ext_resource type="Texture2D" uid="uid://dy65me3cbrjdj" path="res://assets/images/game/mapOjects/shop/shop.png" id="1_5p61t"]
+[ext_resource type="Script" path="res://scripts/game/mapObjects/shop/shop.gd" id="1_dadve"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="3_3xpkk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2hv7f"]
 animations = [{
@@ -13,9 +15,42 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xeoj"]
+size = Vector2(32, 4.5)
+
 [node name="shop" type="StaticBody2D"]
 texture_filter = 1
+script = ExtResource("1_dadve")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2hv7f")
 animation = &"shop"
+
+[node name="interactText" type="Label" parent="."]
+visible = false
+offset_left = -32.0
+offset_top = -5.0
+offset_right = -23.0
+offset_bottom = 18.0
+scale = Vector2(0.5, 0.5)
+text = "E"
+
+[node name="priceText" type="Label" parent="."]
+visible = false
+offset_left = 24.0
+offset_top = -6.0
+offset_right = 64.0
+offset_bottom = 17.0
+scale = Vector2(0.5, 0.5)
+text = "$10"
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("3_3xpkk")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 14.25)
+shape = SubResource("RectangleShape2D_2xeoj")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]

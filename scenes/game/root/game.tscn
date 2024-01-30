@@ -31,17 +31,19 @@ position = Vector2(152, 152)
 zoom = Vector2(2, 2)
 script = ExtResource("4_e3v2g")
 
-[node name="shop" parent="." instance=ExtResource("6_uk1fs")]
-position = Vector2(150, 21)
-
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="hudCoin" type="Sprite2D" parent="."]
 position = Vector2(13, 291)
 texture = ExtResource("7_p0fmq")
 
 [node name="coinsText" type="Label" parent="."]
-offset_left = 21.0
-offset_top = 279.0
-offset_right = 31.0
-offset_bottom = 302.0
+offset_left = 20.0
+offset_top = 285.0
+offset_right = 30.0
+offset_bottom = 308.0
+scale = Vector2(0.5, 0.5)
 text = "1"
 script = ExtResource("9_nbedm")
+
+[node name="shop" parent="." node_paths=PackedStringArray("game") instance=ExtResource("6_uk1fs")]
+position = Vector2(150, 21)
+game = NodePath("..")

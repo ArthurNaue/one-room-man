@@ -4,16 +4,10 @@ class_name Game
 @export var level: int
 @export var weaponPickupScene: PackedScene
 @export var coinScene: PackedScene
-var coins = 0
+var coins = 100
 
 func _ready():
-	spawnEntitie(Enemies.eye, Vector2(140, 150))
-	spawnEntitie(Enemies.eye, Vector2(140, 150))
-	spawnEntitie(Enemies.eye, Vector2(140, 150))
-	spawnEntitie(Enemies.shadowcat, Vector2(140, 150))
-	spawnWeaponPickup(Weapons.dagger, Weapons.daggerImg, Vector2(50, 250))
-	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 250))
-	spawnWeaponPickup(Weapons.bomb, Weapons.bombImg, Vector2(250, 250))
+	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 150))
 
 func _process(_delta):
 	#verifica se o player clicou ESQ
