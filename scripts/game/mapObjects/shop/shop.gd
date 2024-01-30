@@ -32,13 +32,14 @@ func _on_hitbox_area_exited(area):
 func rerollPrice():
 	price = randi_range(5, 10)
 	weaponNumber = randi_range(1, 3)
-	if weaponNumber == 1:
-		weaponScene = Weapons.dagger
-		weaponImg = Weapons.daggerImg
-	elif weaponNumber == 2:
-		weaponScene = Weapons.pistol
-		weaponImg = Weapons.pistolImg
-	elif weaponNumber == 3:
-		weaponScene = Weapons.bomb
-		weaponImg = Weapons.bombImg
+	match weaponNumber:
+		1:
+			weaponScene = Weapons.dagger
+			weaponImg = Weapons.daggerImg
+		2:
+			weaponScene = Weapons.pistol
+			weaponImg = Weapons.pistolImg
+		3:
+			weaponScene = Weapons.bomb
+			weaponImg = Weapons.bombImg
 	priceText.text = "-$" + str(price)

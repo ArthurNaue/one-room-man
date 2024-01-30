@@ -43,8 +43,11 @@ func _on_new_round_timer_timeout():
 	for x in round:
 		randomizeEnemyPosition()
 		spawnEntitie(Enemies.eye, enemyPosition)
-	if round == 5:
-		spawnEntitie(Enemies.shadowcat, Vector2(150, 100))
+	match round:
+		5:
+			spawnEntitie(Enemies.shadowcat, Vector2(150, 100))
+		10:
+			spawnEntitie(Enemies.shadowcat, Vector2(150, 100))
 
 func randomizeEnemyPosition():
 	enemyPosition = Vector2(randf_range(70, 230), randf_range(70, 150))
