@@ -14,7 +14,6 @@ func _ready():
 	spawnWeaponPickup(Weapons.dagger, Weapons.daggerImg, Vector2(50, 250))
 	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 250))
 	spawnWeaponPickup(Weapons.bomb, Weapons.bombImg, Vector2(250, 250))
-	spawnCoin(Vector2(260, 250))
 
 func _process(_delta):
 	#verifica se o player clicou ESQ

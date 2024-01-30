@@ -20,3 +20,5 @@ func Damage(attack: Attack):
 	#verifica se a vida chegou a 0
 	if health <= 0:
 		get_parent().queue_free()
+		if get_parent().is_in_group("enemy"):
+			get_parent().get_parent().spawnCoin(global_position)
