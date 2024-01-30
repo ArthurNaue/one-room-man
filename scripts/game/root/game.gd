@@ -15,6 +15,7 @@ func _ready():
 	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 150))
 
 func _process(_delta):
+	#atualiza o frame do hud de rounds
 	hudRounds.frame = (rounds - 1)
 	#verifica se o player clicou ESQ
 	if Input.is_action_just_pressed("esq"):
