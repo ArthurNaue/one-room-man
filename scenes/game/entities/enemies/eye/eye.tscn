@@ -83,7 +83,7 @@ animation = &"follow"
 
 [node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("9_pamxm")
-maxHealth = 4
+maxHealth = 2
 healthBar = NodePath("../healthBar")
 
 [node name="col" type="CollisionShape2D" parent="."]

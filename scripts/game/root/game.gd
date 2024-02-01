@@ -12,6 +12,7 @@ var rounds = 1
 var coins = 0
 
 func _ready():
+	spawnEntitie(Enemies.eye, Vector2(150, 100))
 	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 150))
 
 func _process(_delta):
@@ -45,10 +46,11 @@ func addCoin():
 
 func _on_new_round_timer_timeout():
 	rounds += 1
-	for x in rounds:
-		randomizeEnemyPosition()
-		spawnEntitie(Enemies.eye, enemyPosition)
 	match rounds:
+		1, 2, 3, 4:
+			for x in rounds:
+				randomizeEnemyPosition()
+				spawnEntitie(Enemies.eye, enemyPosition)
 		5:
 			spawnEntitie(Enemies.shadowcat, Vector2(150, 100))
 		10:
