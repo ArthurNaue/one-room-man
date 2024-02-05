@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bql38jl280n2v"]
+[gd_scene load_steps=20 format=3 uid="uid://bql38jl280n2v"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/shadowcat/root/shadowcat.gd" id="1_4gs5q"]
 [ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="2_jv3w5"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="10_emljb"]
 [ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="11_vigev"]
 [ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="12_74b4s"]
+[ext_resource type="AudioStream" uid="uid://drc2njixypxbm" path="res://assets/audio/game/entities/enemies/shadowcat/handAttack/handAttackSound.wav" id="17_udhjm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_akcks"]
 animations = [{
@@ -128,6 +129,9 @@ health = NodePath("../health")
 
 [node name="damageIndicatorComponent" parent="." instance=ExtResource("12_74b4s")]
 position = Vector2(1, -24)
+
+[node name="handAttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_udhjm")
 
 [connection signal="timeout" from="stateMachine/handAttack/attackTimer" to="stateMachine/handAttack" method="_on_attack_timer_timeout"]
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]

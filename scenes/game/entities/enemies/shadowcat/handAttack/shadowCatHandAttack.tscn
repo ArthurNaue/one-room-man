@@ -20,6 +20,27 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_4xmm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4xmm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4xmm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4xmm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4xmm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fjfen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fjfen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_orbth")
 }],
 "loop": false,
 "name": &"attack",
@@ -46,8 +67,6 @@ autostart = true
 sprite_frames = SubResource("SpriteFrames_kxdqb")
 animation = &"attack"
 autoplay = "attack"
-frame = 2
-frame_progress = 1.0
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="despawnTimer" to="." method="_on_despawn_timer_timeout"]

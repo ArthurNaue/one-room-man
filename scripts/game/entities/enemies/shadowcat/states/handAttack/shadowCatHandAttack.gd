@@ -14,6 +14,8 @@ func Enter():
 	#comeca o timer do ataque
 	attackTimer.start()
 	enemy.velocity = Vector2.ZERO
+	await get_tree().create_timer(0.45).timeout
+	enemy.get_node("handAttackSound").play()
 	await get_tree().create_timer(5).timeout
 	attackTimer.stop()
 	await get_tree().create_timer(1).timeout

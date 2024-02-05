@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjwjwtjallm3k"]
+[gd_scene load_steps=9 format=3 uid="uid://cjwjwtjallm3k"]
 
 [ext_resource type="Script" path="res://scripts/game/coin/root/coin.gd" id="1_6lt2j"]
 [ext_resource type="Texture2D" uid="uid://bp5icjdar2j8e" path="res://assets/images/game/coin/coin.png" id="1_88ijm"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="2_t0mhy"]
+[ext_resource type="AudioStream" uid="uid://cs2hi2iqdvqum" path="res://assets/audio/game/coin/coinPickupSound.wav" id="4_ggwsb"]
 
 [sub_resource type="Animation" id="Animation_hdke0"]
 length = 0.001
@@ -90,5 +91,9 @@ script = ExtResource("2_t0mhy")
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_lr4q4")
 
+[node name="coinPickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ggwsb")
+
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="finished" from="coinPickupSound" to="." method="_on_coin_pickup_sound_finished"]

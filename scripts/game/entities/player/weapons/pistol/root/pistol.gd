@@ -5,6 +5,7 @@ class_name Pistol
 @export var bulletScene: PackedScene
 @onready var player = get_parent().get_parent()
 @onready var anim = $anim
+@onready var shootSound = $shootSound
 
 func _ready():
 	player.weaponCooldown = weaponCooldown
@@ -21,6 +22,8 @@ func _on_anim_animation_finished(_attack):
 
 #funcao que faz o player atirar
 func Fire():
+	#toca o som de tiro
+	shootSound.play()
 	#pega o node da bala
 	var bullet = bulletScene.instantiate() as CharacterBody2D
 	#define a posicao do node da bala para a posicao da pistola

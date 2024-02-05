@@ -1,6 +1,11 @@
 extends StaticBody2D
 class_name BombExplosion
 
+@onready var explosionSound = $explosionSound
+
+func _ready():
+	explosionSound.play()
+
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("enemy"):
 		#verifica se pode sofrer dano
