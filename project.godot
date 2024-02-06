@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Finite State Machine"
+config/name="One Room Man"
 run/main_scene="res://scenes/game/root/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://assets/images/game/player/root/idle/player_idle1.png"
 
 [autoload]
 
