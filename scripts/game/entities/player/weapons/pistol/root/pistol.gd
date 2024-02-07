@@ -6,16 +6,19 @@ class_name Pistol
 @onready var player = get_parent().get_parent()
 @onready var anim = $anim
 @onready var shootSound = $shootSound
+var upgraded: bool
 
 func _ready():
+	upgraded = false
 	player.weaponCooldown = weaponCooldown
 	anim.play("idle")
 
 func _process(_delta):
 	if Input.is_action_pressed("mouse_left"):
 		if player.weaponCooldown <= 0:
-			anim.play("attack")
-			Fire()
+			if upgraded == false:
+				anim.play("attack")
+				Fire()
 
 func _on_anim_animation_finished(_attack):
 	anim.play("idle")
