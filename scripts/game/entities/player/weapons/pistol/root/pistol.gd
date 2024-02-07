@@ -3,6 +3,7 @@ class_name Pistol
 
 @export var weaponCooldown: float
 @export var bulletScene: PackedScene
+@export var upgradedBulletScene: PackedScene
 @onready var player = get_parent().get_parent()
 @onready var anim = $anim
 @onready var shootSound = $shootSound
@@ -19,6 +20,9 @@ func _process(_delta):
 			if upgraded == false:
 				anim.play("attack")
 				Fire()
+			else:
+				anim.play("attack")
+				upgradedFire()
 
 func _on_anim_animation_finished(_attack):
 	anim.play("idle")
@@ -29,6 +33,19 @@ func Fire():
 	shootSound.play()
 	#pega o node da bala
 	var bullet = bulletScene.instantiate() as CharacterBody2D
+	#define a posicao do node da bala para a posicao da pistola
+	bullet.global_position = global_position
+	#spawna a bala
+	player.get_parent().add_child(bullet)
+	#ajusta o cooldown
+	player.weaponCooldown = weaponCooldown
+	
+#funcao que faz o player atirar com upgrade
+func upgradedFire():
+	#toca o som de tiro
+	shootSound.play()
+	#pega o node da bala
+	var bullet = upgradedBulletScene.instantiate() as CharacterBody2D
 	#define a posicao do node da bala para a posicao da pistola
 	bullet.global_position = global_position
 	#spawna a bala

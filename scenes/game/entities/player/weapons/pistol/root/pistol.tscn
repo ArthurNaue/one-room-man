@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ct4hj4n15vn4a"]
+[gd_scene load_steps=10 format=3 uid="uid://ct4hj4n15vn4a"]
 
 [ext_resource type="Texture2D" uid="uid://blkmnouobf75c" path="res://assets/images/game/player/weapons/pistol/root/pistol.png" id="1_e4rcc"]
 [ext_resource type="Script" path="res://scripts/game/entities/player/weapons/pistol/root/pistol.gd" id="1_m4c16"]
 [ext_resource type="PackedScene" uid="uid://bmhitfcvekb3l" path="res://scenes/game/entities/player/weapons/pistol/bullet/pistolBullet.tscn" id="2_gdxq5"]
+[ext_resource type="PackedScene" uid="uid://y4rjlddo8vlh" path="res://scenes/game/entities/player/weapons/pistol/upgradedBullet/upgradedBullet.tscn" id="3_ip46u"]
 [ext_resource type="AudioStream" uid="uid://do2upg3qr5j8e" path="res://assets/audio/game/player/weapons/pistol/shootSound.wav" id="4_fnpce"]
 
 [sub_resource type="Animation" id="Animation_o7fq1"]
@@ -67,6 +68,7 @@ position = Vector2(20, 0)
 script = ExtResource("1_m4c16")
 weaponCooldown = 1.0
 bulletScene = ExtResource("2_gdxq5")
+upgradedBulletScene = ExtResource("3_ip46u")
 
 [node name="pistol" type="Sprite2D" parent="."]
 texture = ExtResource("1_e4rcc")
