@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8vqo0ivljrlv"]
+[gd_scene load_steps=9 format=3 uid="uid://b8vqo0ivljrlv"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/player/weapons/dagger/root/dagger.gd" id="1_jgstc"]
 [ext_resource type="PackedScene" uid="uid://dr4cvmf5iqwtx" path="res://scenes/game/entities/player/weapons/dagger/effect/daggerEffect.tscn" id="2_xj8ix"]
+[ext_resource type="PackedScene" uid="uid://cvng0ff204tj8" path="res://scenes/game/entities/player/weapons/dagger/upgradedEffect/upgradedDaggerEffect.tscn" id="3_07nnc"]
 [ext_resource type="Texture2D" uid="uid://c4nl2fsoahxjr" path="res://assets/images/game/player/weapons/dagger/root/dagger.png" id="3_i7xr7"]
 
 [sub_resource type="Animation" id="Animation_voeun"]
@@ -102,6 +103,7 @@ scale = Vector2(-1, 1)
 script = ExtResource("1_jgstc")
 weaponCooldown = 2.0
 attackEffect = ExtResource("2_xj8ix")
+upgradedAttackEffect = ExtResource("3_07nnc")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_i7xr7")

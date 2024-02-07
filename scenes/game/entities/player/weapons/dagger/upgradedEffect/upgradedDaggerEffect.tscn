@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvng0ff204tj8"]
+
+[ext_resource type="Texture2D" uid="uid://bne17ctfutw8q" path="res://assets/images/game/player/weapons/dagger/upgradedEffect/upgradedDaggerEffect1.png" id="1_tryvp"]
+[ext_resource type="Texture2D" uid="uid://colvxau64en26" path="res://assets/images/game/player/weapons/dagger/upgradedEffect/upgradedDaggerEffect2.png" id="2_xb4xx"]
+[ext_resource type="Texture2D" uid="uid://bxb7upexa3xic" path="res://assets/images/game/player/weapons/dagger/upgradedEffect/upgradedDaggerEffect3.png" id="3_wjeyc"]
+[ext_resource type="Script" path="res://scripts/game/entities/player/weapons/dagger/upgradedEffect/upgradedDaggerEffect.gd" id="4_cehj1"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="5_ynh1j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a2uqr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tryvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xb4xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wjeyc")
+}],
+"loop": false,
+"name": &"upgradedEffect",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nb5s"]
+size = Vector2(14, 59)
+
+[node name="upgradedDaggerEffect" type="AnimatedSprite2D"]
+texture_filter = 1
+position = Vector2(3, 0)
+sprite_frames = SubResource("SpriteFrames_a2uqr")
+animation = &"upgradedEffect"
+autoplay = "upgradedEffect"
+offset = Vector2(18, 0)
+script = ExtResource("4_cehj1")
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("5_ynh1j")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(19, 0.5)
+shape = SubResource("RectangleShape2D_8nb5s")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

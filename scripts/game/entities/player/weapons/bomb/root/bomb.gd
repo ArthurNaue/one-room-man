@@ -26,6 +26,9 @@ func _process(_delta):
 				#atira a bomba
 				Throw()
 			else:
+				#toca a animacao de ataque
+				anim.play("attack")
+				#atira a bomba melhorada
 				upgradedThrow()
 
 func Throw():

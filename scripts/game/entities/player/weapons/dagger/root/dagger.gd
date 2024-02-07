@@ -3,9 +3,11 @@ class_name Dagger
 
 @export var weaponCooldown: float
 @export var attackEffect: PackedScene
+@export var upgradedAttackEffect: PackedScene
 @onready var weaponsNode = get_parent()
 @onready var player = get_parent().get_parent()
 @onready var anim = $anim
+var upgraded: bool
 
 func _ready():
 	player.weaponCooldown = weaponCooldown
@@ -17,7 +19,10 @@ func _process(_delta):
 			player.weaponCooldown = weaponCooldown
 			anim.play("attack")
 			weaponsNode.attacking = true
-			SpawnEffect(attackEffect)
+			if upgraded == false:
+				SpawnEffect(attackEffect)
+			else:
+				SpawnEffect(upgradedAttackEffect)
 
 func _on_anim_animation_finished(_attack):
 	anim.play("idle")
