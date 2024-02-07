@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpqxtxchik3cp"]
+[gd_scene load_steps=9 format=3 uid="uid://bdgav7nvatc6j"]
 
-[ext_resource type="Script" path="res://scripts/game/entities/player/weapons/bomb/projectile/bombProjectile.gd" id="1_2xard"]
-[ext_resource type="PackedScene" uid="uid://cyp7sgxikdb8v" path="res://scenes/game/entities/player/weapons/bomb/explosion/explosion.tscn" id="2_wqgbq"]
-[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="3_4tqcq"]
-[ext_resource type="Texture2D" uid="uid://bon664hw5tsvq" path="res://assets/images/game/player/weapons/bomb/projectile/bomb_projectile.png" id="3_75qid"]
+[ext_resource type="Script" path="res://scripts/game/entities/player/weapons/bomb/upgradedProjectile/upgradedBombProjectile.gd" id="1_c1tnh"]
+[ext_resource type="PackedScene" uid="uid://cyp7sgxikdb8v" path="res://scenes/game/entities/player/weapons/bomb/explosion/explosion.tscn" id="2_aobxb"]
+[ext_resource type="Texture2D" uid="uid://ctmlkbdqxuibi" path="res://assets/images/game/player/weapons/bomb/upgradedProjectile/upgradedBombProjectile.png" id="3_02g03"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="4_05tl5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dlpjd"]
 radius = 9.0
@@ -46,15 +46,15 @@ _data = {
 "rotate": SubResource("Animation_n5ct1")
 }
 
-[node name="bombProjectile" type="CharacterBody2D"]
+[node name="upgradedBombProjectile" type="CharacterBody2D"]
 texture_filter = 1
-script = ExtResource("1_2xard")
-speed = 150
-explosionScene = ExtResource("2_wqgbq")
+script = ExtResource("1_c1tnh")
+speed = 200
+explosionScene = ExtResource("2_aobxb")
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(2, 0)
-texture = ExtResource("3_75qid")
+texture = ExtResource("3_02g03")
 offset = Vector2(-1, 0)
 
 [node name="explodeTimer" type="Timer" parent="."]
@@ -63,10 +63,10 @@ autostart = true
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("3_4tqcq")
+script = ExtResource("4_05tl5")
 
 [node name="col" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(2, 0)
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_dlpjd")
 
 [node name="anim" type="AnimationPlayer" parent="."]

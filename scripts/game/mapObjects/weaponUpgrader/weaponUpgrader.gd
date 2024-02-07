@@ -29,5 +29,5 @@ func _on_hitbox_area_exited(_area):
 	priceText.visible = false
 
 func rerollUpgradePrice():
-	upgradePrice = randi_range(15, 20)
+	upgradePrice = randi_range(0, 1)
 	priceText.text = "+$" + str(upgradePrice)
