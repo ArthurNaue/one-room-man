@@ -8,7 +8,11 @@ class_name WeaponBuyer
 var sellPrice: int
 
 func _ready():
-	rerollSellPrice()
+	if player.currentWeapon != null:
+		rerollSellPrice()
+	else:
+		sellPrice = randi_range(1, 3)
+		priceText.text = "+$" + str(sellPrice)
 
 func _process(_delta):
 	if interactText.visible == true:
@@ -27,5 +31,8 @@ func _on_hitbox_area_exited(_area):
 	priceText.visible = false
 
 func rerollSellPrice():
-	sellPrice = randi_range(1, 3)
+	if player.currentWeapon.upgraded == false:
+		sellPrice = randi_range(1, 3)
+	else:
+		sellPrice = randi_range(4, 6)
 	priceText.text = "+$" + str(sellPrice)

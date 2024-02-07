@@ -146,10 +146,11 @@ position = Vector2(75, 21)
 game = NodePath("..")
 player = NodePath("../player")
 
-[node name="weaponUpgrader" parent="." node_paths=PackedStringArray("game", "player") instance=ExtResource("29_svd33")]
+[node name="weaponUpgrader" parent="." node_paths=PackedStringArray("game", "player", "weaponBuyer") instance=ExtResource("29_svd33")]
 position = Vector2(225, 21)
 game = NodePath("..")
 player = NodePath("../player")
+weaponBuyer = NodePath("../weaponBuyer")
 
 [node name="player" parent="." instance=ExtResource("2_0pf0n")]
 position = Vector2(154, 241)
