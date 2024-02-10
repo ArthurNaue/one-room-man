@@ -20,6 +20,7 @@ func _process(_delta):
 			if player.currentWeapon != null:
 				player.currentWeapon.queue_free()
 				game.coins += sellPrice
+				rerollSellPrice()
 
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("player"):

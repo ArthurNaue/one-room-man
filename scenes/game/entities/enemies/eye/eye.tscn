@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://ia5h2t4fo243"]
+[gd_scene load_steps=22 format=3 uid="uid://ia5h2t4fo243"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/eye/root/eye.gd" id="1_7xenj"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/eye/states/eyeWalk.gd" id="3_f45h4"]
 [ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="3_tui0w"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/eye/states/eyeFollow.gd" id="4_d70of"]
+[ext_resource type="Shader" uid="uid://jig5yuqtndky" path="res://assets/shaders/hitFlash/shader/hitFlash.tres" id="5_gwiy4"]
 [ext_resource type="Texture2D" uid="uid://bavxx2x7dahon" path="res://assets/images/game/enemies/eye/walking/eye_walking1.png" id="5_jas3x"]
 [ext_resource type="Texture2D" uid="uid://fuiwaifmeli2" path="res://assets/images/game/enemies/eye/walking/eye_walking2.png" id="8_wcbs6"]
 [ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="9_emhbs"]
@@ -26,6 +27,49 @@ _data = {
 "follow": SubResource("Animation_s0pek"),
 "run": SubResource("Animation_vgdmk")
 }
+
+[sub_resource type="Animation" id="Animation_hk4hr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:material:shader_parameter/ENABLED")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_o1xry"]
+resource_name = "hitAnim"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:material:shader_parameter/ENABLED")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qocf"]
+_data = {
+"RESET": SubResource("Animation_hk4hr"),
+"hitAnim": SubResource("Animation_o1xry")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c7uf7"]
+resource_local_to_scene = true
+shader = ExtResource("5_gwiy4")
+shader_parameter/ENABLED = false
+shader_parameter/tint = Color(0.941176, 0.964706, 0.941176, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mskwu"]
 animations = [{
@@ -76,8 +120,14 @@ libraries = {
 "": SubResource("AnimationLibrary_eor0e")
 }
 
+[node name="hitAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8qocf")
+}
+
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
+material = SubResource("ShaderMaterial_c7uf7")
 sprite_frames = SubResource("SpriteFrames_mskwu")
 animation = &"follow"
 
@@ -90,10 +140,11 @@ healthBar = NodePath("../healthBar")
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_c63na")
 
-[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health", "damageIndicator") groups=["enemy"]]
+[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitAnim", "health", "damageIndicator") groups=["enemy"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("10_v4xbu")
+hitAnim = NodePath("../hitAnim")
 health = NodePath("../health")
 damageIndicator = NodePath("../damageIndicatorComponent")
 

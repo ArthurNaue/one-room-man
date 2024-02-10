@@ -97,7 +97,6 @@ animations = [{
 [node name="Game" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_8ckrm")
-level = 1
 weaponPickupScene = ExtResource("7_8wu3q")
 coinScene = ExtResource("5_lpqej")
 
@@ -117,7 +116,7 @@ zoom = Vector2(2, 2)
 script = ExtResource("4_e3v2g")
 
 [node name="hudCoin" type="Sprite2D" parent="."]
-position = Vector2(39, 280)
+position = Vector2(39, 287)
 texture = ExtResource("7_p0fmq")
 
 [node name="hudRounds" type="AnimatedSprite2D" parent="."]
@@ -125,14 +124,12 @@ position = Vector2(240, 283)
 sprite_frames = SubResource("SpriteFrames_8xh7d")
 animation = &"rounds"
 autoplay = "rounds"
-frame = 16
-frame_progress = 0.724583
 
 [node name="coinsText" type="Label" parent="."]
 offset_left = 46.0
-offset_top = 274.0
+offset_top = 281.0
 offset_right = 56.0
-offset_bottom = 297.0
+offset_bottom = 304.0
 scale = Vector2(0.5, 0.5)
 text = "1"
 script = ExtResource("9_nbedm")

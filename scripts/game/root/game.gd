@@ -1,17 +1,16 @@
 extends Node2D
 class_name Game
 
-@export var level: int
 @export var weaponPickupScene: PackedScene
 @export var coinScene: PackedScene
+@export var rounds = 1
 @onready var hudRounds = $hudRounds
 var enemyPosition: Vector2
-var rounds = 1
 var coins = 0
 
 func _ready():
-	spawnEntitie(Enemies.eye, Vector2(150, 100))
-	spawnWeaponPickup(Weapons.dagger, Weapons.daggerImg, Vector2(150, 150))
+	spawnEntitie(Enemies.eye)
+	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 150))
 
 func _process(_delta):
 	#atualiza o frame do hud de rounds
@@ -21,9 +20,10 @@ func _process(_delta):
 		#fecha o jogo
 		get_tree().quit()
 
-func spawnEntitie(entitieScene: PackedScene, entitiePosition: Vector2):
+func spawnEntitie(entitieScene: PackedScene):
+	randomizeEnemyPosition()
 	var entitie = entitieScene.instantiate() as CharacterBody2D
-	entitie.global_position = entitiePosition
+	entitie.global_position = enemyPosition
 	add_child(entitie)
 
 func spawnWeaponPickup(choosenWeaponPickupScene: PackedScene, image: Texture, desiredPosition: Vector2):
@@ -49,9 +49,12 @@ func nextRound():
 	match rounds:
 		1, 2, 3, 4:
 			for x in rounds:
-				randomizeEnemyPosition()
-				spawnEntitie(Enemies.eye, enemyPosition)
+				spawnEntitie(Enemies.eye)
 		5:
-			spawnEntitie(Enemies.shadowcat, Vector2(150, 100))
+			spawnEntitie(Enemies.shadowcat)
+		6, 7, 8, 9:
+			for x in (rounds - 3):
+				spawnEntitie(Enemies.eye)
 		10:
-			spawnEntitie(Enemies.shadowcat, Vector2(150, 100))
+			spawnEntitie(Enemies.shadowcat)
+			spawnEntitie(Enemies.shadowcat)
