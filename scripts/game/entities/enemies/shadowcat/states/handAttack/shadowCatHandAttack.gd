@@ -4,6 +4,7 @@ class_name ShadowCatHandAttack
 #variaveis
 @export var handAttackScene: PackedScene
 @onready var enemy = get_parent().get_parent()
+@onready var game = get_parent().get_parent().get_parent()
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var attackTimer =  $attackTimer
 var attackPosition: Vector2
@@ -28,7 +29,7 @@ func Enter():
 func attack(desiredAttackPosition: Vector2):
 	#spawna o objeto do ataque
 	var handAttack = handAttackScene.instantiate() as StaticBody2D
-	enemy.add_child(handAttack)
+	game.add_child(handAttack)
 	handAttack.global_position = desiredAttackPosition
 	
 func _on_attack_timer_timeout():

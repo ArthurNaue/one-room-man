@@ -47,7 +47,7 @@ func randomizeEnemyPosition():
 func nextRound():
 	rounds += 1
 	match rounds:
-		1, 2, 3, 4:
+		2, 3, 4:
 			for x in rounds:
 				spawnEntitie(Enemies.eye)
 		5:
