@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://derftd0t3qlm4"
-path="res://.godot/imported/enemyDeathParticle.png-3ffdc9d66efab3112c9c711b8acd2a15.ctex"
+uid="uid://c44vrr14kvjp"
+path="res://.godot/imported/shadowCatDeathParticle.png-ef61d0fc0593a04e0b7eda7b87912d3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/game/enemies/particles/enemyDeathParticle.png"
-dest_files=["res://.godot/imported/enemyDeathParticle.png-3ffdc9d66efab3112c9c711b8acd2a15.ctex"]
+source_file="res://assets/images/game/enemies/particles/shadowcatDeathParticle/shadowCatDeathParticle.png"
+dest_files=["res://.godot/imported/shadowCatDeathParticle.png-ef61d0fc0593a04e0b7eda7b87912d3a.ctex"]
 
 [params]
 

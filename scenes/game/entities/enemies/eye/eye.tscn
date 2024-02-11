@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://fuiwaifmeli2" path="res://assets/images/game/enemies/eye/walking/eye_walking2.png" id="8_wcbs6"]
 [ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="9_emhbs"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="9_pamxm"]
-[ext_resource type="PackedScene" uid="uid://dfa4namf7euwk" path="res://scenes/game/entities/enemies/particles/enemyDeathParticle.tscn" id="9_u6t2m"]
+[ext_resource type="PackedScene" uid="uid://dfa4namf7euwk" path="res://scenes/game/entities/enemies/particles/enemyDeathParticle/enemyDeathParticle.tscn" id="9_u6t2m"]
 [ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="10_fx0jp"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="10_v4xbu"]
 

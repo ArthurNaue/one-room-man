@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="10_emljb"]
 [ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="11_vigev"]
 [ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="12_74b4s"]
-[ext_resource type="PackedScene" uid="uid://dfa4namf7euwk" path="res://scenes/game/entities/enemies/particles/enemyDeathParticle.tscn" id="15_0xtgd"]
+[ext_resource type="PackedScene" uid="uid://bjeomn7nw7vnr" path="res://scenes/game/entities/enemies/particles/shadowcatDeathParticle/shadowcatDeathParticle.tscn" id="15_kx1p8"]
 [ext_resource type="AudioStream" uid="uid://drc2njixypxbm" path="res://assets/audio/game/entities/enemies/shadowcat/handAttack/handAttackSound.wav" id="17_udhjm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6obfp"]
@@ -156,9 +156,9 @@ shape = SubResource("CapsuleShape2D_0bojf")
 
 [node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("9_1qwo3")
-maxHealth = 20
+maxHealth = 1
 healthBar = NodePath("../healthBar")
-deathParticleScene = ExtResource("15_0xtgd")
+deathParticleScene = ExtResource("15_kx1p8")
 
 [node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitAnim", "health", "damageIndicator") groups=["enemy"]]
 collision_layer = 4
