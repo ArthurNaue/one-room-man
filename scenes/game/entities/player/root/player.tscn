@@ -1,16 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://ccfqa7gl05jnd"]
+[gd_scene load_steps=25 format=3 uid="uid://ccfqa7gl05jnd"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/player/root/player.gd" id="1_twwux"]
 [ext_resource type="PackedScene" uid="uid://bva7lrsw2bkx3" path="res://scenes/game/weaponsPickup/weaponPickup.tscn" id="2_j7m8h"]
 [ext_resource type="Shader" uid="uid://jig5yuqtndky" path="res://assets/shaders/hitFlash/shader/hitFlash.tres" id="3_lmcxo"]
-[ext_resource type="Texture2D" uid="uid://bt05wdkf1y0to" path="res://assets/images/game/player/root/idle/player_idle1.png" id="3_nuq5t"]
-[ext_resource type="Texture2D" uid="uid://cfvy6phk117xq" path="res://assets/images/game/player/root/idle/player_idle2.png" id="4_8gjck"]
-[ext_resource type="Texture2D" uid="uid://bx56glhcp4k82" path="res://assets/images/game/player/root/walking/player_walking1.png" id="5_a6lsn"]
-[ext_resource type="Texture2D" uid="uid://m7iji4aplml6" path="res://assets/images/game/player/root/walking/player_walking2.png" id="6_weos0"]
-[ext_resource type="Texture2D" uid="uid://msxdwpm0uvfx" path="res://assets/images/game/player/root/walking/player_walking3.png" id="7_ah10f"]
+[ext_resource type="Texture2D" uid="uid://bt05wdkf1y0to" path="res://assets/images/game/entities/player/root/idle/player_idle1.png" id="4_jw0ts"]
+[ext_resource type="Texture2D" uid="uid://cfvy6phk117xq" path="res://assets/images/game/entities/player/root/idle/player_idle2.png" id="5_ll8wk"]
+[ext_resource type="Texture2D" uid="uid://bx56glhcp4k82" path="res://assets/images/game/entities/player/root/walking/player_walking1.png" id="6_8pd38"]
+[ext_resource type="Texture2D" uid="uid://m7iji4aplml6" path="res://assets/images/game/entities/player/root/walking/player_walking2.png" id="7_fpeb3"]
 [ext_resource type="Script" path="res://scripts/game/entities/player/weapons/root/weaponsNode.gd" id="7_h5lb5"]
-[ext_resource type="Texture2D" uid="uid://dhmj26jiskiso" path="res://assets/images/game/player/root/walking/player_walking4.png" id="8_20ay7"]
-[ext_resource type="Texture2D" uid="uid://uftcnmfsr1uo" path="res://assets/images/game/player/root/walking/player_walking5.png" id="9_qfp7o"]
+[ext_resource type="Texture2D" uid="uid://msxdwpm0uvfx" path="res://assets/images/game/entities/player/root/walking/player_walking3.png" id="8_56q4h"]
+[ext_resource type="Texture2D" uid="uid://dhmj26jiskiso" path="res://assets/images/game/entities/player/root/walking/player_walking4.png" id="9_dy5fl"]
+[ext_resource type="Texture2D" uid="uid://uftcnmfsr1uo" path="res://assets/images/game/entities/player/root/walking/player_walking5.png" id="10_wjyqk"]
+[ext_resource type="PackedScene" uid="uid://dfa4namf7euwk" path="res://scenes/game/entities/enemies/particles/enemyDeathParticle/enemyDeathParticle.tscn" id="13_br4f3"]
+[ext_resource type="PackedScene" uid="uid://bcvoy0mnp2lju" path="res://scenes/game/entities/player/damageSound/playerDamageSound.tscn" id="14_xe4sh"]
 [ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="18_4lf64"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="18_lp28r"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="19_2280a"]
@@ -29,10 +31,10 @@ shader_parameter/tint = Color(0.941176, 0.964706, 0.941176, 1)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_nuq5t")
+"texture": ExtResource("4_jw0ts")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_8gjck")
+"texture": ExtResource("5_ll8wk")
 }],
 "loop": true,
 "name": &"idle",
@@ -40,19 +42,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_a6lsn")
+"texture": ExtResource("6_8pd38")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_weos0")
+"texture": ExtResource("7_fpeb3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_ah10f")
+"texture": ExtResource("8_56q4h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_20ay7")
+"texture": ExtResource("9_dy5fl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_qfp7o")
+"texture": ExtResource("10_wjyqk")
 }],
 "loop": true,
 "name": &"walk",
@@ -137,6 +139,8 @@ shape = SubResource("RectangleShape2D_b8p6h")
 script = ExtResource("19_2280a")
 maxHealth = 3
 healthBar = NodePath("../healthBar")
+deathParticleScene = ExtResource("13_br4f3")
+damageSoundScene = ExtResource("14_xe4sh")
 
 [node name="damageIndicatorComponent" parent="." instance=ExtResource("19_es2wa")]
 position = Vector2(0, -23)

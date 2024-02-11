@@ -5,6 +5,7 @@ class_name HealthComponent
 @export var maxHealth: int
 @export var healthBar: HealthBar
 @export var deathParticleScene: PackedScene
+@export var damageSoundScene: PackedScene
 @onready var game = get_parent().get_parent()
 var health: int
 
@@ -14,6 +15,8 @@ func _ready():
 
 #funcao de tomar dano
 func Damage(attack: Attack):
+	#executa a funcao de tocar o som de dano
+	playDamageSound(damageSoundScene)
 	#diminui a vida com base no dano sofrido
 	health -= attack.attackDamage
 	#diminui a barra de vida
@@ -40,3 +43,10 @@ func spawnDeathParticle(location: Vector2):
 	deathParticle.global_position = location
 	#emite a particula de morte
 	deathParticle.emitting = true
+
+#funcao de tocar o som de dano
+func playDamageSound(soundScene: PackedScene):
+	#faz o objeto de som de dano
+	var damageSound = soundScene.instantiate() as AudioStreamPlayer2D
+	#spawna o objeto de som de dano
+	game.add_child(damageSound)

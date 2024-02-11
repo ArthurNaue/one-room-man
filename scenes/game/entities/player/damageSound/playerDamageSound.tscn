@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcvoy0mnp2lju"]
+
+[ext_resource type="AudioStream" uid="uid://bnr0fotrnmps2" path="res://assets/audio/game/entities/player/damage/playerDamageSound.wav" id="1_s6i7g"]
+[ext_resource type="Script" path="res://scripts/game/entities/damageSound/damageSound.gd" id="2_2jpfx"]
+
+[node name="playerDamageSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_s6i7g")
+autoplay = true
+script = ExtResource("2_2jpfx")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://df2lkjyblaxja"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/player/weapons/bomb/root/bomb.gd" id="1_34rs1"]
-[ext_resource type="Texture2D" uid="uid://eme1ehju77su" path="res://assets/images/game/player/weapons/bomb/root/bomb.png" id="1_mfyt2"]
+[ext_resource type="Texture2D" uid="uid://eme1ehju77su" path="res://assets/images/game/entities/player/weapons/bomb/root/bomb.png" id="1_mfyt2"]
 [ext_resource type="PackedScene" uid="uid://bpqxtxchik3cp" path="res://scenes/game/entities/player/weapons/bomb/projectile/bombProjectile.tscn" id="2_8b6th"]
 [ext_resource type="PackedScene" uid="uid://bdgav7nvatc6j" path="res://scenes/game/entities/player/weapons/bomb/upgradedProjectile/upgradedProjectile.tscn" id="3_grskn"]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjeomn7nw7vnr"]
+[gd_scene load_steps=3 format=3 uid="uid://bjeomn7nw7vnr"]
 
-[ext_resource type="Texture2D" uid="uid://c44vrr14kvjp" path="res://assets/images/game/enemies/particles/shadowcatDeathParticle/shadowCatDeathParticle.png" id="1_5f54c"]
+[ext_resource type="Texture2D" uid="uid://c44vrr14kvjp" path="res://assets/images/game/entities/enemies/particles/shadowcatDeathParticle/shadowCatDeathParticle.png" id="1_xves1"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/deathParticle/enemyDeathParticle.gd" id="2_asjmw"]
 
 [node name="shadowcatDeathParticle" type="CPUParticles2D"]
 texture_filter = 1
@@ -11,8 +12,11 @@ lifetime = 10.0
 one_shot = true
 speed_scale = 10.0
 explosiveness = 1.0
-texture = ExtResource("1_5f54c")
+texture = ExtResource("1_xves1")
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 1.0
+script = ExtResource("2_asjmw")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

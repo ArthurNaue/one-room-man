@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmhitfcvekb3l"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/player/weapons/pistol/bullet/pistolBullet.gd" id="1_pb1sk"]
-[ext_resource type="Texture2D" uid="uid://bq3na4cy3j3jp" path="res://assets/images/game/player/weapons/pistol/bullet/bullet.png" id="2_pq761"]
+[ext_resource type="Texture2D" uid="uid://bq3na4cy3j3jp" path="res://assets/images/game/entities/player/weapons/pistol/bullet/bullet.png" id="2_pq761"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="3_cx8ae"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mj4l"]

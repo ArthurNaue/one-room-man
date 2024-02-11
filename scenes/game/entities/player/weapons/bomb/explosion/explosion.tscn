@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://cyp7sgxikdb8v"]
 
-[ext_resource type="Texture2D" uid="uid://uttsgp4hrv5l" path="res://assets/images/game/player/weapons/bomb/explosion/bombExplosion2.png" id="1_otysb"]
+[ext_resource type="Texture2D" uid="uid://uttsgp4hrv5l" path="res://assets/images/game/entities/player/weapons/bomb/explosion/bombExplosion2.png" id="1_otysb"]
 [ext_resource type="Script" path="res://scripts/game/entities/player/weapons/bomb/explosion/explosion.gd" id="1_ylho5"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="3_w5caf"]
-[ext_resource type="AudioStream" uid="uid://dwux3ksajdsmd" path="res://assets/audio/game/player/weapons/bomb/explosion/explosion.wav" id="4_a75ri"]
+[ext_resource type="AudioStream" uid="uid://dwux3ksajdsmd" path="res://assets/audio/game/entities/player/weapons/bomb/explosion/explosion.wav" id="4_a75ri"]
 
 [sub_resource type="Animation" id="Animation_naifx"]
 length = 0.001

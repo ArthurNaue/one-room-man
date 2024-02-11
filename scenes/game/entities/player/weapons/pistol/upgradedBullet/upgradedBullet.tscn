@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://y4rjlddo8vlh"]
 
 [ext_resource type="Script" path="res://scenes/game/entities/player/weapons/pistol/upgradedBullet/upgradedBullet.gd" id="1_xwaag"]
-[ext_resource type="Texture2D" uid="uid://fq8bk56oqau3" path="res://assets/images/game/player/weapons/pistol/upgradedBullet/upgradedBullet.png" id="2_qaui4"]
+[ext_resource type="Texture2D" uid="uid://fq8bk56oqau3" path="res://assets/images/game/entities/player/weapons/pistol/upgradedBullet/upgradedBullet.png" id="2_qaui4"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="3_8e47h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mj4l"]

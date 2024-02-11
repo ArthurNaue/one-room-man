@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/game/entities/player/weapons/bomb/projectile/bombProjectile.gd" id="1_2xard"]
 [ext_resource type="PackedScene" uid="uid://cyp7sgxikdb8v" path="res://scenes/game/entities/player/weapons/bomb/explosion/explosion.tscn" id="2_wqgbq"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="3_4tqcq"]
-[ext_resource type="Texture2D" uid="uid://bon664hw5tsvq" path="res://assets/images/game/player/weapons/bomb/projectile/bomb_projectile.png" id="3_75qid"]
+[ext_resource type="Texture2D" uid="uid://bon664hw5tsvq" path="res://assets/images/game/entities/player/weapons/bomb/projectile/bomb_projectile.png" id="3_75qid"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dlpjd"]
 radius = 9.0

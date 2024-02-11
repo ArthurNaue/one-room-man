@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2iyywv1qgbw3"]
+
+[ext_resource type="AudioStream" uid="uid://5vgbnk8ef67g" path="res://assets/audio/game/entities/enemies/damageSound/enemyDamageSound.wav" id="1_426t0"]
+[ext_resource type="Script" path="res://scripts/game/entities/damageSound/damageSound.gd" id="2_w1cl3"]
+
+[node name="enemyDamageSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_426t0")
+autoplay = true
+script = ExtResource("2_w1cl3")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

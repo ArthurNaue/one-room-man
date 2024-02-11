@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/shadowcat/handAttack/shadowCatHandAttack.gd" id="1_jkx13"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="2_0ntc3"]
-[ext_resource type="Texture2D" uid="uid://bjk7rexxce2yc" path="res://assets/images/game/enemies/shadowcat/handAttack/root/shadowCat_handAttack1.png" id="3_orbth"]
-[ext_resource type="Texture2D" uid="uid://u48h44n5l0g6" path="res://assets/images/game/enemies/shadowcat/handAttack/root/shadowCat_handAttack2.png" id="4_fjfen"]
-[ext_resource type="Texture2D" uid="uid://d2t5ibdaxqbsn" path="res://assets/images/game/enemies/shadowcat/handAttack/root/shadowCat_handAttack3.png" id="5_4xmm3"]
+[ext_resource type="Texture2D" uid="uid://bjk7rexxce2yc" path="res://assets/images/game/entities/enemies/shadowcat/handAttack/root/shadowCat_handAttack1.png" id="3_orbth"]
+[ext_resource type="Texture2D" uid="uid://u48h44n5l0g6" path="res://assets/images/game/entities/enemies/shadowcat/handAttack/root/shadowCat_handAttack2.png" id="4_fjfen"]
+[ext_resource type="Texture2D" uid="uid://d2t5ibdaxqbsn" path="res://assets/images/game/entities/enemies/shadowcat/handAttack/root/shadowCat_handAttack3.png" id="5_4xmm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2r87"]
 size = Vector2(11, 14)

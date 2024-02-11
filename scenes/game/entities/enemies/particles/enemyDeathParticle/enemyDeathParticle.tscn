@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfa4namf7euwk"]
+[gd_scene load_steps=3 format=3 uid="uid://dfa4namf7euwk"]
 
-[ext_resource type="Texture2D" uid="uid://derftd0t3qlm4" path="res://assets/images/game/enemies/particles/enemyDeathParticle/enemyDeathParticle.png" id="1_csigg"]
+[ext_resource type="Texture2D" uid="uid://derftd0t3qlm4" path="res://assets/images/game/entities/enemies/particles/enemyDeathParticle/enemyDeathParticle.png" id="1_5fltt"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/deathParticle/enemyDeathParticle.gd" id="2_efj5s"]
 
 [node name="enemyDeathParticle" type="CPUParticles2D"]
 texture_filter = 1
@@ -10,9 +11,12 @@ amount = 20
 lifetime = 0.3
 one_shot = true
 explosiveness = 1.0
-texture = ExtResource("1_csigg")
+texture = ExtResource("1_5fltt")
 direction = Vector2(0, 0)
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 30.0
 initial_velocity_max = 30.0
+script = ExtResource("2_efj5s")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dr4cvmf5iqwtx"]
 
-[ext_resource type="Texture2D" uid="uid://cg8vovrrq3k5w" path="res://assets/images/game/player/weapons/dagger/effect/daggerEffect1.png" id="1_jiv68"]
+[ext_resource type="Texture2D" uid="uid://cg8vovrrq3k5w" path="res://assets/images/game/entities/player/weapons/dagger/effect/daggerEffect1.png" id="1_jiv68"]
 [ext_resource type="Script" path="res://scripts/game/entities/player/weapons/dagger/effect/daggerEffect.gd" id="2_6vkq4"]
-[ext_resource type="Texture2D" uid="uid://06m88d03xr5p" path="res://assets/images/game/player/weapons/dagger/effect/daggerEffect2.png" id="2_v3is8"]
-[ext_resource type="Texture2D" uid="uid://bnivhletc0xgc" path="res://assets/images/game/player/weapons/dagger/effect/daggerEffect3.png" id="3_ghkug"]
+[ext_resource type="Texture2D" uid="uid://06m88d03xr5p" path="res://assets/images/game/entities/player/weapons/dagger/effect/daggerEffect2.png" id="2_v3is8"]
+[ext_resource type="Texture2D" uid="uid://bnivhletc0xgc" path="res://assets/images/game/entities/player/weapons/dagger/effect/daggerEffect3.png" id="3_ghkug"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="5_0iwho"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h45ps"]
