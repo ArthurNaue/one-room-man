@@ -13,6 +13,7 @@ func Damage(attack: Attack):
 	#faz aparecer o popup de dano
 	damageIndicator.popup(attack.attackDamage)
 	damageIndicator.get_node("anim").play("popup")
+	#espera 0.2 segundos
 	await get_tree().create_timer(0.2).timeout
 	#aplica o dano na vida
 	health.Damage(attack)

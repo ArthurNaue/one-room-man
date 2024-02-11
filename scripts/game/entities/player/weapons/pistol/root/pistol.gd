@@ -1,6 +1,7 @@
 extends Node2D
 class_name Pistol
 
+#variaveis
 @export var weaponCooldown: float
 @export var bulletScene: PackedScene
 @export var upgradedBulletScene: PackedScene
@@ -10,21 +11,31 @@ class_name Pistol
 var upgraded: bool
 
 func _ready():
+	#tira o upgrade da arma
 	upgraded = false
+	#reseta o cooldown da arma
 	player.weaponCooldown = weaponCooldown
+	#toca a animacao da arma parada
 	anim.play("idle")
 
 func _process(_delta):
+	#verifica se o player clicou com o botao esquerdo do mouse
 	if Input.is_action_pressed("mouse_left"):
+		#verifica se o cooldown acabou
 		if player.weaponCooldown <= 0:
+			#toca a animacao de ataque
+			anim.play("attack")
+			#verifica se a arma ta melhorada
 			if upgraded == false:
-				anim.play("attack")
+				#atira
 				Fire()
 			else:
-				anim.play("attack")
+				#atira o tiro melhorado
 				upgradedFire()
 
+#funcao que ativa quando a animacao de ataque termina
 func _on_anim_animation_finished(_attack):
+	#toca a animacao da arma parada
 	anim.play("idle")
 
 #funcao que faz o player atirar

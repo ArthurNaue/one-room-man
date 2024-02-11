@@ -127,7 +127,7 @@ initialState = NodePath("follow")
 
 [node name="follow" type="Node" parent="stateMachine"]
 script = ExtResource("3_43gr0")
-moveSpeed = 60
+moveSpeed = 85
 
 [node name="handAttack" type="Node" parent="stateMachine"]
 script = ExtResource("4_c4h6e")

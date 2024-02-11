@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Eye
 
+#variaveis
 @onready var sprite = $sprite
 
 func _physics_process(_delta):

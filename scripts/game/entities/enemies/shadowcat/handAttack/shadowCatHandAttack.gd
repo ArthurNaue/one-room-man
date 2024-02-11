@@ -13,6 +13,8 @@ func _on_hitbox_area_entered(area):
 			#aplica o dano 
 			area.Damage(attack)
 
+#funcao que executa quando o timer de despawn acaba
 func _on_despawn_timer_timeout():
+	#destroi o objeto
 	queue_free()
 

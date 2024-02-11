@@ -21,13 +21,22 @@ func Damage(attack: Attack):
 
 	#verifica se a vida chegou a 0
 	if health <= 0:
-		spawnDeathParticle(global_position)
+		#verifica se e um inimigo que morreu
 		if get_parent().is_in_group("enemy"):
+			#spawna a particula de morte
+			spawnDeathParticle(global_position)
+			#destroi o objeto do inimigo
 			get_parent().queue_free()
+			#spawna uma moeda na posicao do inimigo
 			game.spawnCoin(global_position)
 
+#funcao de spawnar a particula de morte
 func spawnDeathParticle(location: Vector2):
+	#faz o objeto da particula de morte
 	var deathParticle = deathParticleScene.instantiate() as CPUParticles2D
+	#spawna o objeto da particula de morte
 	game.add_child(deathParticle)
+	#muda a posicao do objeto da particula de morte
 	deathParticle.global_position = location
+	#emite a particula de morte
 	deathParticle.emitting = true
