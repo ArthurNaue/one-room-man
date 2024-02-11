@@ -6,9 +6,8 @@
 texture_filter = 1
 emitting = false
 amount = 20
-lifetime = 0.5
+lifetime = 0.3
 one_shot = true
-speed_scale = 2.0
 explosiveness = 1.0
 texture = ExtResource("1_o6far")
 direction = Vector2(0, 0)
