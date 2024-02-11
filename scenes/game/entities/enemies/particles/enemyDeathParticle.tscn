@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfa4namf7euwk"]
+
+[ext_resource type="Texture2D" uid="uid://derftd0t3qlm4" path="res://assets/images/game/enemies/particles/enemyDeathParticle.png" id="1_o6far"]
+
+[node name="enemyDeathParticle" type="CPUParticles2D"]
+texture_filter = 1
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+texture = ExtResource("1_o6far")
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
