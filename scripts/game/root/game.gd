@@ -10,7 +10,7 @@ var coins = 0
 
 func _ready():
 	#spawna o primeiro inimigo
-	spawnEntitie(Enemies.eye)
+	spawnEntitie(Enemies.shadowcat)
 	#spawna a primeira arma
 	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 150))
 

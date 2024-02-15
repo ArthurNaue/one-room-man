@@ -24,12 +24,12 @@ func Damage(attack: Attack):
 
 	#verifica se a vida chegou a 0
 	if health <= 0:
+		#spawna a particula de morte
+		spawnDeathParticle(global_position)
+		#destroi o objeto
+		get_parent().queue_free()
 		#verifica se e um inimigo que morreu
 		if get_parent().is_in_group("enemy"):
-			#spawna a particula de morte
-			spawnDeathParticle(global_position)
-			#destroi o objeto do inimigo
-			get_parent().queue_free()
 			#spawna uma moeda na posicao do inimigo
 			game.spawnCoin(global_position)
 

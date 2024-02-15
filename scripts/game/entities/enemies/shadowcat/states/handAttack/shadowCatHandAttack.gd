@@ -3,8 +3,9 @@ class_name ShadowCatHandAttack
 
 #variaveis
 @export var handAttackScene: PackedScene
+@export var stateTimer: Timer
 @onready var enemy = get_parent().get_parent()
-@onready var game = get_parent().get_parent().get_parent()
+@onready var game = get_tree().get_first_node_in_group("game")
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var attackTimer =  $attackTimer
 var attackPosition: Vector2

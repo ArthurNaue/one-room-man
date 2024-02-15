@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bql38jl280n2v"]
+[gd_scene load_steps=31 format=3 uid="uid://bql38jl280n2v"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/shadowcat/root/shadowcat.gd" id="1_4gs5q"]
 [ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="2_jv3w5"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cv8j2g4teb7jd" path="res://assets/images/game/entities/enemies/shadowcat/follow/shadowcat1.png" id="7_8qu0x"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/shadowcat/slashAttack/direction.gd" id="7_rm1cr"]
 [ext_resource type="PackedScene" uid="uid://d0xq8uv8usabh" path="res://scenes/game/entities/enemies/shadowcat/slashAttack/shadowCatSlashAttack.tscn" id="7_sx2ph"]
-[ext_resource type="PackedScene" uid="uid://dux0jt7344boy" path="res://scenes/game/entities/enemies/bullet/enemyBullet.tscn" id="8_0wx6q"]
 [ext_resource type="Texture2D" uid="uid://6avhyremw5m8" path="res://assets/images/game/entities/enemies/shadowcat/follow/shadowcat2.png" id="8_va8s7"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="9_1qwo3"]
 [ext_resource type="Texture2D" uid="uid://dxrat15nskt1q" path="res://assets/images/game/entities/enemies/shadowcat/follow/shadowcat3.png" id="9_htcue"]
@@ -156,7 +155,6 @@ wait_time = 0.5
 script = ExtResource("6_ir7ye")
 direction = NodePath("../../direction")
 slashAttackScene = ExtResource("7_sx2ph")
-enemyBulletScene = ExtResource("8_0wx6q")
 
 [node name="stateTimer" type="Timer" parent="stateMachine"]
 wait_time = 5.0

@@ -3,18 +3,18 @@ class_name ShadowCatFollow
 
 #variaveis
 @export var moveSpeed := 40
+@export var stateTimer: Timer
 @onready var enemy = get_parent().get_parent()
 @onready var player = get_tree().get_first_node_in_group("player")
+var newState: int
 
 func Enter():
+	#comeca o timer de mudar de estado
+	stateTimer.start()
 	#muda a animacao para a de seguir
 	enemy.get_node("sprite").animation = "follow"
 	#toca a animacao de seguir
 	enemy.get_node("sprite").play()
-	#espera 5 segundos
-	await get_tree().create_timer(5).timeout
-	#troca de estado
-	Transitioned.emit(self, "handAttack")
 
 func Physics_Update(_delta):
 	#define a direcao como a diferenca entre a posicao do player e do inimigo
@@ -22,3 +22,12 @@ func Physics_Update(_delta):
 
 	#faz o inimigo andar na direcao
 	enemy.velocity = direction.normalized() * moveSpeed
+
+func _on_state_timer_timeout():
+	#escolhe o proximo estado
+	newState = randi_range(1, 2)
+	match newState:
+		1:
+			Transitioned.emit(self, "handAttack")
+		2:
+			Transitioned.emit(self, "slashAttack")

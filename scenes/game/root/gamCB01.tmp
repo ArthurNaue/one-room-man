@@ -94,7 +94,7 @@ animations = [{
 "speed": 0.0
 }]
 
-[node name="Game" type="Node2D" groups=["game"]]
+[node name="Game" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_8ckrm")
 weaponPickupScene = ExtResource("7_8wu3q")

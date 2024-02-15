@@ -106,7 +106,6 @@ texture_filter = 1
 collision_layer = 2
 script = ExtResource("1_twwux")
 speed = 100.0
-weaponCooldown = null
 weaponPickupScene = ExtResource("2_j7m8h")
 
 [node name="col" type="CollisionShape2D" parent="."]
