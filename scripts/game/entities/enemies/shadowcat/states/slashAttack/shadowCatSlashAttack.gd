@@ -19,7 +19,8 @@ func Enter():
 	#ataca
 	attack()
 	#espera 0.2 segundos
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(0.2).timeout
+	#muda o estado para o de seguir
 	Transitioned.emit(self, "follow")
 
 #funcao de ataque

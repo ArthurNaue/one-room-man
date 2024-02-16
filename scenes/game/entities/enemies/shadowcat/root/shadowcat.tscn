@@ -135,6 +135,9 @@ collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_4gs5q")
 
+[node name="direction" type="Node2D" parent="."]
+script = ExtResource("7_rm1cr")
+
 [node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
 script = ExtResource("2_jv3w5")
 initialState = NodePath("follow")
@@ -209,9 +212,6 @@ position = Vector2(1, -24)
 
 [node name="handAttackSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_udhjm")
-
-[node name="direction" type="Node2D" parent="."]
-script = ExtResource("7_rm1cr")
 
 [connection signal="timeout" from="stateMachine/handAttack/attackTimer" to="stateMachine/handAttack" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="stateMachine/stateTimer" to="stateMachine/follow" method="_on_state_timer_timeout"]
