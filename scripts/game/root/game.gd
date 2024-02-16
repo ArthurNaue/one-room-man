@@ -6,7 +6,7 @@ class_name Game
 @export var coinScene: PackedScene
 @export var rounds = 1
 @onready var hudRounds = $hudRounds
-var coins = 0
+var coins = 20
 
 func _ready():
 	#spawna o primeiro inimigo

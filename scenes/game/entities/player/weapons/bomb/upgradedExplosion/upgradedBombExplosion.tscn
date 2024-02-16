@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkxgp0r6eq2hu"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/player/weapons/bomb/upgradedExplosion/upgradedBombExplosion.gd" id="1_qvwt1"]
+[ext_resource type="Texture2D" uid="uid://cqsi61r0st7ds" path="res://assets/images/game/entities/player/weapons/bomb/upgradedExplosion/upgradedBombExplosion.png" id="2_yui0y"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="3_1hbid"]
+[ext_resource type="AudioStream" uid="uid://dwux3ksajdsmd" path="res://assets/audio/game/entities/player/weapons/bomb/explosion/explosion.wav" id="4_hlmeg"]
+
+[sub_resource type="Animation" id="Animation_naifx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_x10c5"]
+resource_name = "explosion"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3usy"]
+_data = {
+"RESET": SubResource("Animation_naifx"),
+"explosion": SubResource("Animation_x10c5")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l1b24"]
+radius = 16.0312
+
+[node name="upgradedBombExplosion" type="StaticBody2D"]
+texture_filter = 1
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_qvwt1")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_yui0y")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y3usy")
+}
+autoplay = "explosion"
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_1hbid")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_l1b24")
+
+[node name="explosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hlmeg")
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
