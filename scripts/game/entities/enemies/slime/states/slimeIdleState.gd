@@ -11,6 +11,8 @@ func Enter():
 	#reseta a animacao
 	animation.frame = 0
 	animation.stop()
+	#randomiza o tempo de espera para trocar de estado
+	idleTimer.wait_time = randi_range(1, 3)
 	#comeca o timer pra mudar de estado
 	idleTimer.start()
 
