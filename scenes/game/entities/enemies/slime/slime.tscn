@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://bersffu6sd8mk"]
+[gd_scene load_steps=27 format=3 uid="uid://bersffu6sd8mk"]
 
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/slime/root/slime.gd" id="1_cfiwa"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_fe6xg"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="2_2iuyk"]
 [ext_resource type="PackedScene" uid="uid://dfa4namf7euwk" path="res://scenes/game/entities/enemies/particles/enemyDeathParticle/enemyDeathParticle.tscn" id="3_1pht5"]
@@ -16,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://x8o73i3vdfcd" path="res://assets/images/game/entities/enemies/slime/walk/slime_walk7.png" id="14_gnot5"]
 [ext_resource type="Texture2D" uid="uid://b7cnd3bhgnftg" path="res://assets/images/game/entities/enemies/slime/walk/slime_walk8.png" id="15_uqja6"]
 [ext_resource type="Texture2D" uid="uid://yicmywvon2yw" path="res://assets/images/game/entities/enemies/slime/walk/slime_walk9.png" id="16_4j2q6"]
+[ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="17_jhm7y"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/slime/states/slimeIdleState.gd" id="18_tkxp8"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/slime/states/slimeJumpState.gd" id="19_mob7m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3hwyj"]
 resource_local_to_scene = true
@@ -100,6 +104,7 @@ _data = {
 
 [node name="slime" type="CharacterBody2D" groups=["enemy"]]
 texture_filter = 1
+script = ExtResource("1_cfiwa")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_3hwyj")
@@ -140,3 +145,24 @@ position = Vector2(0, -11)
 libraries = {
 "": SubResource("AnimationLibrary_8qocf")
 }
+
+[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
+script = ExtResource("17_jhm7y")
+initialState = NodePath("idle")
+
+[node name="idle" type="Node" parent="stateMachine" node_paths=PackedStringArray("animation", "enemy")]
+script = ExtResource("18_tkxp8")
+animation = NodePath("../../sprite")
+enemy = NodePath("../..")
+
+[node name="idleTimer" type="Timer" parent="stateMachine/idle"]
+wait_time = 2.0
+one_shot = true
+
+[node name="jump" type="Node" parent="stateMachine" node_paths=PackedStringArray("enemy", "animation")]
+script = ExtResource("19_mob7m")
+speed = 200
+enemy = NodePath("../..")
+animation = NodePath("../../sprite")
+
+[connection signal="timeout" from="stateMachine/idle/idleTimer" to="stateMachine/idle" method="_on_idle_timer_timeout"]
