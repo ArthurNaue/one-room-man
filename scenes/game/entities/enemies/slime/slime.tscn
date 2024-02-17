@@ -1,0 +1,142 @@
+[gd_scene load_steps=23 format=3 uid="uid://bersffu6sd8mk"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_fe6xg"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="2_2iuyk"]
+[ext_resource type="PackedScene" uid="uid://dfa4namf7euwk" path="res://scenes/game/entities/enemies/particles/enemyDeathParticle/enemyDeathParticle.tscn" id="3_1pht5"]
+[ext_resource type="PackedScene" uid="uid://d2iyywv1qgbw3" path="res://scenes/game/entities/enemies/damageSound/enemyDamageSound.tscn" id="4_abue6"]
+[ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="5_628kn"]
+[ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="6_ujsl8"]
+[ext_resource type="Shader" uid="uid://jig5yuqtndky" path="res://assets/shaders/hitFlash/shader/hitFlash.tres" id="7_qlrou"]
+[ext_resource type="Texture2D" uid="uid://dfww0krorqv53" path="res://assets/images/game/entities/enemies/slime/walk/slime_walk1.png" id="8_vhxp2"]
+[ext_resource type="Texture2D" uid="uid://bkonjxvuwkkrd" path="res://assets/images/game/entities/enemies/slime/walk/slime_walk2.png" id="9_hsaig"]
+[ext_resource type="Texture2D" uid="uid://pd5u61gqh7sx" path="res://assets/images/game/entities/enemies/slime/walk/slime_walk3.png" id="10_6rfrm"]
+[ext_resource type="Texture2D" uid="uid://dl8ixfnf0q2o2" path="res://assets/images/game/entities/enemies/slime/walk/slime_walk4.png" id="11_5ymwa"]
+[ext_resource type="Texture2D" uid="uid://c4yye572v8gu2" path="res://assets/images/game/entities/enemies/slime/walk/slime_walk5.png" id="12_c8tha"]
+[ext_resource type="Texture2D" uid="uid://cga45x182hgh" path="res://assets/images/game/entities/enemies/slime/walk/slime_walk6.png" id="13_dqqw0"]
+[ext_resource type="Texture2D" uid="uid://x8o73i3vdfcd" path="res://assets/images/game/entities/enemies/slime/walk/slime_walk7.png" id="14_gnot5"]
+[ext_resource type="Texture2D" uid="uid://b7cnd3bhgnftg" path="res://assets/images/game/entities/enemies/slime/walk/slime_walk8.png" id="15_uqja6"]
+[ext_resource type="Texture2D" uid="uid://yicmywvon2yw" path="res://assets/images/game/entities/enemies/slime/walk/slime_walk9.png" id="16_4j2q6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hwyj"]
+resource_local_to_scene = true
+shader = ExtResource("7_qlrou")
+shader_parameter/ENABLED = false
+shader_parameter/tint = Color(0.941176, 0.964706, 0.941176, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ihmib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_vhxp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hsaig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6rfrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5ymwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_c8tha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dqqw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gnot5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_uqja6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_4j2q6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pwpga"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_hk4hr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:material:shader_parameter/ENABLED")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_o1xry"]
+resource_name = "hitAnim"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:material:shader_parameter/ENABLED")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qocf"]
+_data = {
+"RESET": SubResource("Animation_hk4hr"),
+"hitAnim": SubResource("Animation_o1xry")
+}
+
+[node name="slime" type="CharacterBody2D" groups=["enemy"]]
+texture_filter = 1
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_3hwyj")
+sprite_frames = SubResource("SpriteFrames_ihmib")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitAnim", "health", "damageIndicator") groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_fe6xg")
+hitAnim = NodePath("../hitAnim")
+health = NodePath("../health")
+damageIndicator = NodePath("../damageIndicatorComponent")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_pwpga")
+
+[node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
+script = ExtResource("2_2iuyk")
+maxHealth = 5
+healthBar = NodePath("../healthBar")
+deathParticleScene = ExtResource("3_1pht5")
+damageSoundScene = ExtResource("4_abue6")
+
+[node name="healthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("5_628kn")]
+offset_left = -7.0
+offset_top = 10.0
+offset_right = 7.0
+offset_bottom = 13.0
+health = NodePath("../health")
+
+[node name="damageIndicatorComponent" parent="." instance=ExtResource("6_ujsl8")]
+position = Vector2(0, -11)
+
+[node name="hitAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8qocf")
+}

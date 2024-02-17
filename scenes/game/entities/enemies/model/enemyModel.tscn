@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://c17t8vv7sos5m"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_p0s1s"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="2_rkww7"]
+[ext_resource type="PackedScene" uid="uid://dfa4namf7euwk" path="res://scenes/game/entities/enemies/particles/enemyDeathParticle/enemyDeathParticle.tscn" id="3_34tg8"]
+[ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="3_fyyq4"]
+[ext_resource type="PackedScene" uid="uid://d2iyywv1qgbw3" path="res://scenes/game/entities/enemies/damageSound/enemyDamageSound.tscn" id="4_f8ghu"]
+[ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="6_lj6lt"]
+
+[sub_resource type="Animation" id="Animation_hk4hr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:material:shader_parameter/ENABLED")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_o1xry"]
+resource_name = "hitAnim"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:material:shader_parameter/ENABLED")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qocf"]
+_data = {
+"RESET": SubResource("Animation_hk4hr"),
+"hitAnim": SubResource("Animation_o1xry")
+}
+
+[node name="enemyModel" type="CharacterBody2D"]
+
+[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitAnim", "health", "damageIndicator")]
+script = ExtResource("1_p0s1s")
+hitAnim = NodePath("../hitAnim")
+health = NodePath("../health")
+damageIndicator = NodePath("../damageIndicatorComponent")
+
+[node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
+script = ExtResource("2_rkww7")
+healthBar = NodePath("../healthBar")
+deathParticleScene = ExtResource("3_34tg8")
+damageSoundScene = ExtResource("4_f8ghu")
+
+[node name="healthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_fyyq4")]
+offset_left = -7.0
+offset_right = 7.0
+offset_bottom = 3.0
+health = NodePath("../health")
+
+[node name="damageIndicatorComponent" parent="." instance=ExtResource("6_lj6lt")]
+position = Vector2(0, -11)
+
+[node name="hitAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8qocf")
+}
