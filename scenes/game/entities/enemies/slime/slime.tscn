@@ -107,6 +107,7 @@ collision_mask = 0
 script = ExtResource("1_cfiwa")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
 material = SubResource("ShaderMaterial_3hwyj")
 sprite_frames = SubResource("SpriteFrames_ihmib")
 animation = &"jumpCharge"

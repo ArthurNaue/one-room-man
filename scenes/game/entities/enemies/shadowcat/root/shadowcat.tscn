@@ -182,7 +182,7 @@ shape = SubResource("CapsuleShape2D_0bojf")
 
 [node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("9_1qwo3")
-maxHealth = 20
+maxHealth = 30
 healthBar = NodePath("../healthBar")
 deathParticleScene = ExtResource("15_kx1p8")
 damageSoundScene = ExtResource("16_7o0tf")
