@@ -8,13 +8,20 @@ class_name SlimeIdleState
 func Enter():
 	#zera a velocidade do inimigo
 	enemy.velocity = Vector2.ZERO
-	#reseta a animacao
-	animation.frame = 0
-	animation.stop()
+	#muda a animacao para a de tocar no chao
+	animation.animation = "jumpGround"
+	#toca a animacao
+	animation.play()
 	#randomiza o tempo de espera para trocar de estado
 	idleTimer.wait_time = randi_range(1, 3)
 	#comeca o timer pra mudar de estado
 	idleTimer.start()
+
+func Exit():
+	#muda a animacao para a de carregar o pulo
+	animation.animation = "jumpGround"
+	#toca a animacao
+	animation.play()
 
 func _on_idle_timer_timeout():
 	#muda para o estado de pulo

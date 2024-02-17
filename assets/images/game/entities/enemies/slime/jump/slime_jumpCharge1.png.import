@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfww0krorqv53"
-path="res://.godot/imported/slime_walk1.png-b6fbfaed501b0437ae0f9156f7077936.ctex"
+uid="uid://dwtb6xi88i8w0"
+path="res://.godot/imported/slime_jumpCharge1.png-3689434bc8b31b9af60e1644a4b613e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/game/entities/enemies/slime/walk/slime_walk1.png"
-dest_files=["res://.godot/imported/slime_walk1.png-b6fbfaed501b0437ae0f9156f7077936.ctex"]
+source_file="res://assets/images/game/entities/enemies/slime/jump/slime_jumpCharge1.png"
+dest_files=["res://.godot/imported/slime_jumpCharge1.png-3689434bc8b31b9af60e1644a4b613e0.ctex"]
 
 [params]
 

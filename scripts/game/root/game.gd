@@ -10,7 +10,7 @@ var coins = 0
 
 func _ready():
 	#spawna o primeiro inimigo
-	spawnEntitie(Enemies.eye)
+	spawnEntitie(Enemies.slime)
 	#spawna a primeira arma
 	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 150))
 
@@ -70,7 +70,7 @@ func nextRound():
 		2, 3, 4:
 			#spawna os inimigos de acordo com o round
 			for x in rounds:
-				spawnEntitie(Enemies.eye)
+				spawnEntitie(Enemies.slime)
 		5:
 			#spawna os inimigos de acordo com o round
 			spawnEntitie(Enemies.shadowcat)

@@ -11,12 +11,14 @@ var enemyPosition: Vector2
 func Enter():
 	#seta a posicao do player
 	playerPosition = player.global_position
-	#toca a animacao
-	animation.play()
 	#define a direcao como a diferenca entre a posicao do player e do inimigo
 	var moveDirection = playerPosition - enemy.global_position
 	#faz o inimigo andar na direcao
 	enemy.velocity = moveDirection.normalized() * speed
+	#muda a animacao para a de pulo
+	animation.animation = "jumping"
+	#toca a animacao
+	animation.play()
 
 func Physics_Update(_delta):
 	enemyPosition = enemy.global_position
