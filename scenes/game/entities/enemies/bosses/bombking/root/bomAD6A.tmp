@@ -1,0 +1,175 @@
+[gd_scene load_steps=26 format=3 uid="uid://bguc2vlbjg3jv"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_5bueh"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/root/bombKing.gd" id="1_rpe8d"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="2_s3gyn"]
+[ext_resource type="PackedScene" uid="uid://bjeomn7nw7vnr" path="res://scenes/game/entities/enemies/particles/shadowcatDeathParticle/shadowcatDeathParticle.tscn" id="3_bpb1s"]
+[ext_resource type="PackedScene" uid="uid://d2iyywv1qgbw3" path="res://scenes/game/entities/enemies/damageSound/enemyDamageSound.tscn" id="4_gn5qk"]
+[ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="5_85uqg"]
+[ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="6_lqi27"]
+[ext_resource type="Texture2D" uid="uid://dvhari7kmtpo1" path="res://assets/images/game/entities/enemies/bosses/bombking/idle/bombKingIdle.png" id="7_5j4br"]
+[ext_resource type="Shader" uid="uid://jig5yuqtndky" path="res://assets/shaders/hitFlash/shader/hitFlash.tres" id="7_8norf"]
+[ext_resource type="Texture2D" uid="uid://dmdxfcj6m7vf8" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk1.png" id="8_hip3e"]
+[ext_resource type="Texture2D" uid="uid://4o5hr5035j5e" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk2.png" id="9_82t01"]
+[ext_resource type="Texture2D" uid="uid://cshtl0kpk5yrt" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk3.png" id="10_cw4a6"]
+[ext_resource type="Texture2D" uid="uid://darxwyx3ecjuv" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk4.png" id="11_mnilf"]
+[ext_resource type="Texture2D" uid="uid://caxh8pl78hplj" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk5.png" id="12_7y1nw"]
+[ext_resource type="Texture2D" uid="uid://ccoboror0offw" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk6.png" id="13_8ytod"]
+[ext_resource type="Texture2D" uid="uid://b761n88dqxjq6" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk7.png" id="14_jlapy"]
+[ext_resource type="Texture2D" uid="uid://dvk2m3um8s6qy" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk8.png" id="15_5risa"]
+[ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="17_7mcog"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/states/follow/bombKingFollowState.gd" id="19_q8unu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gf42k"]
+radius = 9.0
+
+[sub_resource type="Animation" id="Animation_hk4hr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:material:shader_parameter/ENABLED")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_o1xry"]
+resource_name = "hitAnim"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:material:shader_parameter/ENABLED")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qocf"]
+_data = {
+"RESET": SubResource("Animation_hk4hr"),
+"hitAnim": SubResource("Animation_o1xry")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xago"]
+resource_local_to_scene = true
+shader = ExtResource("7_8norf")
+shader_parameter/ENABLED = false
+shader_parameter/tint = Color(0.941176, 0.964706, 0.941176, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7m7jr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5j4br")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_hip3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_82t01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cw4a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mnilf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7y1nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8ytod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_jlapy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5risa")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[node name="bombKing" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_rpe8d")
+
+[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitAnim", "health", "damageIndicator") groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_5bueh")
+hitAnim = NodePath("../hitAnim")
+health = NodePath("../health")
+damageIndicator = NodePath("../damageIndicatorComponent")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_gf42k")
+
+[node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
+script = ExtResource("2_s3gyn")
+maxHealth = 50
+healthBar = NodePath("../healthBar")
+deathParticleScene = ExtResource("3_bpb1s")
+damageSoundScene = ExtResource("4_gn5qk")
+enemyType = 10
+
+[node name="healthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("5_85uqg")]
+offset_left = -25.0
+offset_top = 17.0
+offset_right = 24.0
+offset_bottom = 20.0
+health = NodePath("../health")
+
+[node name="damageIndicatorComponent" parent="." instance=ExtResource("6_lqi27")]
+position = Vector2(0, -22)
+
+[node name="hitAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8qocf")
+}
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_2xago")
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_7m7jr")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.83339
+
+[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
+script = ExtResource("17_7mcog")
+initialState = NodePath("follow")
+
+[node name="follow" type="Node" parent="stateMachine" node_paths=PackedStringArray("stateTimer")]
+script = ExtResource("19_q8unu")
+moveSpeed = 40
+stateTimer = NodePath("../stateTimer")
+
+[node name="stateTimer" type="Timer" parent="stateMachine"]
+wait_time = 5.0
+one_shot = true
+
+[node name="col" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_gf42k")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
