@@ -3,6 +3,7 @@ class_name Game
 
 #variaveis
 @export var weaponPickupScene: PackedScene
+@export var potionPickupScene: PackedScene
 @export var coinScene: PackedScene
 @export var rounds = 1
 @onready var hudRounds = $hudRounds
@@ -42,19 +43,30 @@ func spawnWeaponPickup(choosenWeaponPickupScene: PackedScene, image: Texture, de
 	#spawna o objeto da arma
 	add_child(weaponPickup)
 
+#funcao de spawnar uma pocao no chao
+func spawnPotionPickup(desiredPosition: Vector2):
+	#faz o objeto da pocao
+	var potionPickup = potionPickupScene.instantiate() as StaticBody2D
+	#define a posicao do objeto da pocao
+	potionPickup.global_position = desiredPosition
+	#spawna o objeto da pocao
+	add_child(potionPickup)
+
 #funcao de spawnar uma moeda
-func spawnCoin(desiredPosition: Vector2):
+func spawnCoin(desiredPosition: Vector2, coinType: int):
 	#faz o obejto da moeda
 	var coin = coinScene.instantiate() as StaticBody2D
+	#define o tipo da moeda
+	coin.coinType = coinType
 	#define a posicao do objeto da moeda
 	coin.global_position = desiredPosition
 	#spawna o objeto da moeda
 	add_child(coin)
 
 #funcao de adicionar uma moeda
-func addCoin():
+func addCoin(amount: int):
 	#adiciona um as moedas
-	coins += 1
+	coins += amount
 
 #funcao de randomizar a posicao de spawn do inimigo
 func randomizeEnemyPosition():
@@ -75,7 +87,7 @@ func nextRound():
 				spawnEntitie(Enemies.eye)
 			spawnEntitie(Enemies.slime)
 		4:
-			for i in 3:
+			for i in 1:
 				spawnEntitie(Enemies.eye)
 			for i in 2:
 				spawnEntitie(Enemies.slime)
@@ -83,22 +95,24 @@ func nextRound():
 			#spawna os inimigos de acordo com o round
 			spawnEntitie(Enemies.shadowcat)
 		6:
-			for i in 4:
+			for i in 3:
 				spawnEntitie(Enemies.eye)
-			for i in 2:
+			for i in 1:
 				spawnEntitie(Enemies.slime)
 		7:
-			for i in 2:
-				spawnEntitie(Enemies.eye)
-			for i in 4:
+			spawnEntitie(Enemies.mage)
+			for i in 3:
 				spawnEntitie(Enemies.slime)
 		8:
-			spawnEntitie(Enemies.eye)
-			for i in 5:
+			spawnEntitie(Enemies.mage)
+			for i in 3:
+				spawnEntitie(Enemies.eye)
+			for i in 2:
 				spawnEntitie(Enemies.slime)
 		9:
-			for i in 6:
-				spawnEntitie(Enemies.slime)
+			spawnEntitie(Enemies.slime)
+			for i in 2:
+				spawnEntitie(Enemies.mage)
 		10:
 			#spawna os inimigos de acordo com o round
 			spawnEntitie(Enemies.shadowcat)

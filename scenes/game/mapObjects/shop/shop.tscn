@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://1fvj2efha2hp"]
+[gd_scene load_steps=7 format=3 uid="uid://1fvj2efha2hp"]
 
 [ext_resource type="Texture2D" uid="uid://dy65me3cbrjdj" path="res://assets/images/game/mapOjects/shop/shop.png" id="1_5p61t"]
 [ext_resource type="Script" path="res://scripts/game/mapObjects/shop/shop.gd" id="1_dadve"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="3_3xpkk"]
+[ext_resource type="AudioStream" uid="uid://hevj8o5cns3j" path="res://assets/audio/game/shop/buy.wav" id="4_0lhgy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2hv7f"]
 animations = [{
@@ -51,6 +52,9 @@ script = ExtResource("3_3xpkk")
 [node name="col" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(0, 14.25)
 shape = SubResource("RectangleShape2D_2xeoj")
+
+[node name="buyAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0lhgy")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]

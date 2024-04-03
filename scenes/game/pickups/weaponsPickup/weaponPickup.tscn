@@ -42,7 +42,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x53mp"]
 size = Vector2(8, 15)
 
-[node name="daggerPickup" type="StaticBody2D"]
+[node name="weaponPickup" type="StaticBody2D"]
 texture_filter = 1
 script = ExtResource("1_137pu")
 
@@ -71,4 +71,5 @@ offset_bottom = 1.0
 scale = Vector2(0.647332, 0.493623)
 text = "E"
 
+[connection signal="area_entered" from="areaCol" to="." method="_on_area_col_area_entered"]
 [connection signal="area_exited" from="areaCol" to="." method="_on_area_col_area_exited"]

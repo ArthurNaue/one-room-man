@@ -186,6 +186,7 @@ maxHealth = 30
 healthBar = NodePath("../healthBar")
 deathParticleScene = ExtResource("15_kx1p8")
 damageSoundScene = ExtResource("16_7o0tf")
+enemyType = 10
 
 [node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitAnim", "health", "damageIndicator") groups=["enemy"]]
 collision_layer = 4

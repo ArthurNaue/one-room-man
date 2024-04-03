@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dt8376daymkvb"]
+[gd_scene load_steps=10 format=3 uid="uid://dt8376daymkvb"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/player/weapons/root/weapons.gd" id="1_d0do4"]
 [ext_resource type="PackedScene" uid="uid://b8vqo0ivljrlv" path="res://scenes/game/entities/player/weapons/dagger/root/dagger.tscn" id="2_8sg6c"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://blkmnouobf75c" path="res://assets/images/game/entities/player/weapons/pistol/root/pistol.png" id="5_xl1wn"]
 [ext_resource type="Texture2D" uid="uid://eme1ehju77su" path="res://assets/images/game/entities/player/weapons/bomb/root/bomb.png" id="6_64rdk"]
 [ext_resource type="PackedScene" uid="uid://df2lkjyblaxja" path="res://scenes/game/entities/player/weapons/bomb/root/bomb.tscn" id="6_eoe0s"]
+[ext_resource type="PackedScene" uid="uid://b5lnaln1mgroj" path="res://scenes/game/entities/player/weapons/bow/root/bow.tscn" id="8_cnjeg"]
+[ext_resource type="Texture2D" uid="uid://oqflditrw53l" path="res://assets/images/game/entities/player/weapons/bow/root/bow.png" id="9_ojc3f"]
 
 [node name="weapons" type="Node2D"]
 script = ExtResource("1_d0do4")
@@ -16,3 +18,5 @@ pistol = ExtResource("4_k8uk3")
 pistolImg = ExtResource("5_xl1wn")
 bomb = ExtResource("6_eoe0s")
 bombImg = ExtResource("6_64rdk")
+bow = ExtResource("8_cnjeg")
+bowImg = ExtResource("9_ojc3f")

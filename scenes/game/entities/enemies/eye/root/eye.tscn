@@ -139,6 +139,7 @@ maxHealth = 2
 healthBar = NodePath("../healthBar")
 deathParticleScene = ExtResource("9_uj4oi")
 damageSoundScene = ExtResource("10_yc06j")
+enemyType = 1
 
 [node name="col" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

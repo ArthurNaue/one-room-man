@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5lnaln1mgroj"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/player/weapons/bow/root/bow.gd" id="1_2cd2b"]
+[ext_resource type="Texture2D" uid="uid://dodfjnjff3r1y" path="res://assets/images/game/entities/player/weapons/bow/charge/bow1.png" id="1_ys4c4"]
+[ext_resource type="Texture2D" uid="uid://co8bv62e250s" path="res://assets/images/game/entities/player/weapons/bow/charge/bow2.png" id="2_n4xnq"]
+[ext_resource type="PackedScene" uid="uid://cws4fylpoye17" path="res://scenes/game/entities/player/weapons/bow/arrow/arrow.tscn" id="2_p0flc"]
+[ext_resource type="Texture2D" uid="uid://dv0tocs2tu7bj" path="res://assets/images/game/entities/player/weapons/bow/charge/bow3.png" id="3_fqsaw"]
+[ext_resource type="PackedScene" uid="uid://bvehf38x4txsm" path="res://scenes/game/entities/player/weapons/bow/upgradedArrow/upgradedArrow.tscn" id="3_qovq2"]
+[ext_resource type="Texture2D" uid="uid://oqflditrw53l" path="res://assets/images/game/entities/player/weapons/bow/root/bow.png" id="5_hi5ob"]
+[ext_resource type="AudioStream" uid="uid://lgf6xla0k7ib" path="res://assets/audio/game/entities/player/weapons/bow/bow.wav" id="8_uieyg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pqyr2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ys4c4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n4xnq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fqsaw")
+}],
+"loop": false,
+"name": &"charge",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hi5ob")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 0.0
+}]
+
+[node name="bow" type="Node2D"]
+texture_filter = 1
+position = Vector2(23, 0)
+rotation = 1.5708
+script = ExtResource("1_2cd2b")
+bowCooldown = 1.0
+arrowScene = ExtResource("2_p0flc")
+upgradedArrowScene = ExtResource("3_qovq2")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pqyr2")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="bowAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_uieyg")

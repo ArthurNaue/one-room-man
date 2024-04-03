@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://grvfschmesxo"]
+[gd_scene load_steps=6 format=3 uid="uid://grvfschmesxo"]
 
 [ext_resource type="Script" path="res://scripts/game/mapObjects/weaponUpgrader/weaponUpgrader.gd" id="1_35s3a"]
 [ext_resource type="Texture2D" uid="uid://x3a1xd33x4t2" path="res://assets/images/game/mapOjects/weaponUpgrader/weaponUpgrader.png" id="1_owha1"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="2_fxyfj"]
+[ext_resource type="AudioStream" uid="uid://d1o301nw25wgf" path="res://assets/audio/game/weaponUpgrader/upgrade.wav" id="4_e4sr3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ko0sg"]
 size = Vector2(32, 4.5)
@@ -39,6 +40,9 @@ script = ExtResource("2_fxyfj")
 [node name="col" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(0, 14.25)
 shape = SubResource("RectangleShape2D_ko0sg")
+
+[node name="upgradeAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_e4sr3")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]

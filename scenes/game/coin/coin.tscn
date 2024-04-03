@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjwjwtjallm3k"]
+[gd_scene load_steps=11 format=3 uid="uid://cjwjwtjallm3k"]
 
 [ext_resource type="Script" path="res://scripts/game/coin/root/coin.gd" id="1_6lt2j"]
-[ext_resource type="Texture2D" uid="uid://bp5icjdar2j8e" path="res://assets/images/game/coin/coin.png" id="1_88ijm"]
+[ext_resource type="Texture2D" uid="uid://bp5icjdar2j8e" path="res://assets/images/game/coins/coin.png" id="1_88ijm"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="2_t0mhy"]
+[ext_resource type="Texture2D" uid="uid://c5gt7wqf182qf" path="res://assets/images/game/coins/coin2.png" id="3_lvdnr"]
+[ext_resource type="Texture2D" uid="uid://5glu3pmfudlr" path="res://assets/images/game/coins/coin3.png" id="4_d23nq"]
+[ext_resource type="Texture2D" uid="uid://cglpn4qmy1bxb" path="res://assets/images/game/coins/coin4.png" id="5_5k6m0"]
 
 [sub_resource type="Animation" id="Animation_hdke0"]
 length = 0.001
@@ -72,9 +75,12 @@ size = Vector2(8, 12)
 texture_filter = 1
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_6lt2j")
+coinSprite1 = ExtResource("1_88ijm")
+coinSprite2 = ExtResource("3_lvdnr")
+coinSprite3 = ExtResource("4_d23nq")
+coinSprite4 = ExtResource("5_5k6m0")
 
 [node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_88ijm")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {

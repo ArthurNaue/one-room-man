@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp5icjdar2j8e"
-path="res://.godot/imported/coin.png-27dbd6b7b8b88bbf4c5e464ea26ee04e.ctex"
+uid="uid://b1pnofes0ssuo"
+path="res://.godot/imported/mage_idle.png-71133fe008646c251ebd73f173ef1637.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/game/coin/coin.png"
-dest_files=["res://.godot/imported/coin.png-27dbd6b7b8b88bbf4c5e464ea26ee04e.ctex"]
+source_file="res://assets/images/game/entities/enemies/mage/idle/mage_idle.png"
+dest_files=["res://.godot/imported/mage_idle.png-71133fe008646c251ebd73f173ef1637.ctex"]
 
 [params]
 

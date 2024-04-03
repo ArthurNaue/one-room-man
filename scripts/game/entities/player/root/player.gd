@@ -71,9 +71,3 @@ func spawnWeaponPickup():
 	weaponPickup.global_position = global_position
 	#spawna o objeto de pickup
 	get_parent().add_child(weaponPickup)
-
-#verifica se o player colidiu
-func _on_hitbox_area_entered(area):
-	#verifica se e um objeto de pickup de arma
-	if area.is_in_group("weaponPickup"):
-		area.get_parent().pickupText(true)

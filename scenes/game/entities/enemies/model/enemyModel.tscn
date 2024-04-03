@@ -44,9 +44,9 @@ _data = {
 "hitAnim": SubResource("Animation_o1xry")
 }
 
-[node name="enemyModel" type="CharacterBody2D"]
+[node name="enemyModel" type="CharacterBody2D" groups=["enemy"]]
 
-[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitAnim", "health", "damageIndicator")]
+[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitAnim", "health", "damageIndicator") groups=["enemy"]]
 script = ExtResource("1_p0s1s")
 hitAnim = NodePath("../hitAnim")
 health = NodePath("../health")

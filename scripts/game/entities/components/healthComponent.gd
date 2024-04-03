@@ -6,12 +6,20 @@ class_name HealthComponent
 @export var healthBar: HealthBar
 @export var deathParticleScene: PackedScene
 @export var damageSoundScene: PackedScene
+@export var enemyType: int
 @onready var game = get_parent().get_parent()
 var health: int
 
 func _ready():
 	#muda a vida para o maximo de vida
 	health = maxHealth
+
+#funcao de regenerar vida
+func Heal(amount: int):
+	#aumenta a vida no valor desejado
+	health += amount
+	#atualiza a barra de vida
+	healthBar.value = health
 
 #funcao de tomar dano
 func Damage(attack: Attack):
@@ -31,7 +39,7 @@ func Damage(attack: Attack):
 		#verifica se e um inimigo que morreu
 		if get_parent().is_in_group("enemy"):
 			#spawna uma moeda na posicao do inimigo
-			game.spawnCoin(global_position)
+			game.spawnCoin(global_position, enemyType)
 
 #funcao de spawnar a particula de morte
 func spawnDeathParticle(location: Vector2):

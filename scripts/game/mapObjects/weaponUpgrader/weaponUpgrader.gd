@@ -6,6 +6,7 @@ class_name WeaponUpgrader
 @export var weaponBuyer: StaticBody2D
 @onready var interactText = $interactText
 @onready var priceText = $priceText
+@onready var upgradeAudio = $upgradeAudio
 var upgradePrice: int
 
 func _ready():
@@ -18,6 +19,7 @@ func _process(_delta):
 				if player.currentWeapon != null:
 					if player.currentWeapon.upgraded == false:
 						game.coins -= upgradePrice
+						upgradeAudio.play()
 						player.currentWeapon.upgraded = true
 						rerollUpgradePrice()
 						weaponBuyer.rerollSellPrice()

@@ -5,6 +5,7 @@ class_name WeaponBuyer
 @export var player: CharacterBody2D
 @onready var interactText = $interactText
 @onready var priceText = $priceText
+@onready var sellAudio = $sellAudio
 var sellPrice: int
 
 func _ready():
@@ -19,6 +20,8 @@ func _process(_delta):
 		if Input.is_action_just_pressed("E"):
 			if player.currentWeapon != null:
 				player.currentWeapon.queue_free()
+				#toca o som de vender a arma
+				sellAudio.play()
 				game.coins += sellPrice
 				rerollSellPrice()
 
