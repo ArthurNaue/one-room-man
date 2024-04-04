@@ -5,8 +5,12 @@ class_name bombKingFollow
 @export var moveSpeed: int
 @onready var enemy = get_parent().get_parent()
 @onready var player = get_tree().get_first_node_in_group("player")
+@export var stateTimer: Timer
+var newState: int
 
 func Enter():
+	#comeca o timer pra trocar de estado
+	stateTimer.start()
 	#muda a animacao para a de seguir
 	enemy.get_node("sprite").animation = "walk"
 	#toca a animacao de seguir
@@ -18,3 +22,10 @@ func Physics_Update(_delta):
 
 	#faz o inimigo andar na direcao
 	enemy.velocity = direction.normalized() * moveSpeed
+
+func _on_state_timer_timeout():
+	#escolhe o proximo estado
+	newState = randi_range(1, 1)
+	match newState:
+		1:
+			Transitioned.emit(self, "bombAttack")

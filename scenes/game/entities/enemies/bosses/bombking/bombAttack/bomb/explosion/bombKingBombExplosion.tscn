@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://b80gtbdlmehhm"]
+
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/states/bombAttack/bomb/explosion/bombKingBombExplosion.gd" id="1_7dj3a"]
+[ext_resource type="Texture2D" uid="uid://cqsi61r0st7ds" path="res://assets/images/game/entities/player/weapons/bomb/upgradedExplosion/upgradedBombExplosion.png" id="1_q41sb"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="3_dyvs0"]
+
+[sub_resource type="Animation" id="Animation_ao6ht"]
+resource_name = "explode"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitbox/col:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(10, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_77h18"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitbox/col:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ylrb6"]
+_data = {
+"RESET": SubResource("Animation_77h18"),
+"explode": SubResource("Animation_ao6ht")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbioq"]
+size = Vector2(6, 6)
+
+[node name="bombKingBombExplosion" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_7dj3a")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_q41sb")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ylrb6")
+}
+autoplay = "explode"
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_dyvs0")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_xbioq")
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

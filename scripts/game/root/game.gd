@@ -5,13 +5,11 @@ class_name Game
 @export var weaponPickupScene: PackedScene
 @export var potionPickupScene: PackedScene
 @export var coinScene: PackedScene
-@export var rounds = 1
+@export var rounds: int
 @onready var hudRounds = $hudRounds
 var coins = 0
 
 func _ready():
-	#spawna o primeiro inimigo
-	spawnEntitie(Enemies.eye)
 	#spawna a primeira arma
 	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 150))
 
@@ -79,6 +77,8 @@ func nextRound():
 	rounds += 1
 	#verifica qual o round atual
 	match rounds:
+		1:
+			spawnEntitie(Enemies.eye)
 		2:
 			for i in rounds:
 				spawnEntitie(Enemies.eye)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://bguc2vlbjg3jv"]
+[gd_scene load_steps=30 format=3 uid="uid://bguc2vlbjg3jv"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_5bueh"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/root/bombKing.gd" id="1_rpe8d"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="2_s3gyn"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/shadowcat/slashAttack/direction.gd" id="2_swht6"]
 [ext_resource type="PackedScene" uid="uid://bjeomn7nw7vnr" path="res://scenes/game/entities/enemies/particles/shadowcatDeathParticle/shadowcatDeathParticle.tscn" id="3_bpb1s"]
 [ext_resource type="PackedScene" uid="uid://d2iyywv1qgbw3" path="res://scenes/game/entities/enemies/damageSound/enemyDamageSound.tscn" id="4_gn5qk"]
 [ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="5_85uqg"]
@@ -19,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://dvk2m3um8s6qy" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk8.png" id="15_5risa"]
 [ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="17_7mcog"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/states/follow/bombKingFollowState.gd" id="19_q8unu"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/states/bombAttack/bombKingBombAttackState.gd" id="20_jxuum"]
+[ext_resource type="PackedScene" uid="uid://b3p5q505udq00" path="res://scenes/game/entities/enemies/bosses/bombking/bombAttack/root/bombKingBombAttack.tscn" id="22_vcs1b"]
+[ext_resource type="PackedScene" uid="uid://blkyxc4kquubw" path="res://scenes/game/entities/enemies/bosses/bombking/bombAttack/bomb/bombKingBomb.tscn" id="23_n1uyq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gf42k"]
 radius = 9.0
@@ -111,6 +115,9 @@ collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_rpe8d")
 
+[node name="direction" type="Node2D" parent="."]
+script = ExtResource("2_swht6")
+
 [node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitAnim", "health", "damageIndicator") groups=["enemy"]]
 collision_layer = 4
 collision_mask = 2
@@ -147,6 +154,7 @@ libraries = {
 }
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_2xago")
 position = Vector2(0, -1)
@@ -158,12 +166,24 @@ autoplay = "walk"
 script = ExtResource("17_7mcog")
 initialState = NodePath("follow")
 
-[node name="follow" type="Node" parent="stateMachine"]
+[node name="follow" type="Node" parent="stateMachine" node_paths=PackedStringArray("stateTimer")]
 script = ExtResource("19_q8unu")
 moveSpeed = 40
+stateTimer = NodePath("../stateTimer")
+
+[node name="stateTimer" type="Timer" parent="stateMachine"]
+wait_time = 5.0
+one_shot = true
+
+[node name="bombAttack" type="Node" parent="stateMachine" node_paths=PackedStringArray("direction")]
+script = ExtResource("20_jxuum")
+bombAttackScene = ExtResource("22_vcs1b")
+bombScene = ExtResource("23_n1uyq")
+direction = NodePath("../../direction")
 
 [node name="col" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_gf42k")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="stateMachine/stateTimer" to="stateMachine/follow" method="_on_state_timer_timeout"]

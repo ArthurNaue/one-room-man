@@ -1,5 +1,5 @@
 extends Node2D
-class_name ShadowCatDirection
+class_name enemyDirection
 
 @onready var game = get_tree().get_first_node_in_group("game")
 

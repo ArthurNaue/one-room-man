@@ -2,7 +2,7 @@ extends State
 class_name ShadowCatSlashAttack
 
 #variaveis
-@export var direction: ShadowCatDirection
+@export var direction: enemyDirection
 @export var slashAttackScene: PackedScene
 @export var enemyBulletScene: PackedScene
 @onready var enemy = get_parent().get_parent()
@@ -31,7 +31,7 @@ func attack():
 	var enemyBullet = enemyBulletScene.instantiate() as CharacterBody2D
 	#spawna o objeto de ataque
 	enemy.get_node("direction").add_child(slashAttack)
-	#muda a posicao da balaaaaaa
+	#muda a posicao da bala
 	enemyBullet.global_position = enemy.global_position
 	#spawna o objeto da bala
 	game.add_child(enemyBullet)
