@@ -4,7 +4,6 @@ class_name ShadowCatSlashAttack
 #variaveis
 @export var direction: enemyDirection
 @export var slashAttackScene: PackedScene
-@export var enemyBulletScene: PackedScene
 @onready var enemy = get_parent().get_parent()
 @onready var game = get_tree().get_first_node_in_group("game")
 
@@ -27,11 +26,7 @@ func Enter():
 func attack():
 	#define o objeto de ataque
 	var slashAttack = slashAttackScene.instantiate() as Area2D
-	#define o objeto da bala
-	var enemyBullet = enemyBulletScene.instantiate() as CharacterBody2D
 	#spawna o objeto de ataque
 	enemy.get_node("direction").add_child(slashAttack)
-	#muda a posicao da bala
-	enemyBullet.global_position = enemy.global_position
-	#spawna o objeto da bala
-	game.add_child(enemyBullet)
+	#atira uma bala no inimigo
+	Enemies.shoot(enemy.global_position, Enemies.player.global_position, "bullet", 200)

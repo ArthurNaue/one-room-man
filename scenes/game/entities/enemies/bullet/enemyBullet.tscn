@@ -10,7 +10,6 @@ radius = 8.0
 [node name="enemyBullet" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_bp54q")
-speed = 200
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_2jfbp")

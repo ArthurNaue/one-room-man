@@ -92,7 +92,6 @@ func nextRound():
 			for i in 2:
 				spawnEntitie(Enemies.slime)
 		5:
-			#spawna os inimigos de acordo com o round
 			spawnEntitie(Enemies.shadowcat)
 		6:
 			for i in 3:
@@ -114,6 +113,4 @@ func nextRound():
 			for i in 2:
 				spawnEntitie(Enemies.mage)
 		10:
-			#spawna os inimigos de acordo com o round
-			spawnEntitie(Enemies.shadowcat)
-			spawnEntitie(Enemies.shadowcat)
+			spawnEntitie(Enemies.bombking)

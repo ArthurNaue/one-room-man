@@ -2,16 +2,20 @@ extends CharacterBody2D
 class_name EnemyBullet
 
 #variaveis
-@export var speed: int
-@onready var direction = (get_tree().get_first_node_in_group("player").global_position - position).normalized()
+var speed
+var desiredLocation
+var direction
 
 func _ready():
-	#muda o angulo para a direcao do mouse
-	look_at(get_tree().get_first_node_in_group("player").global_position)
+	#muda a direcao da bala
+	direction = (desiredLocation - position).normalized()
+	#muda o angulo para o destino
+	look_at(desiredLocation)
 
 func _physics_process(_delta):
 	#aplica movimento na bala
 	velocity = direction * speed
+	
 	move_and_slide()
 
 #funcao que verifica se o objeto colidiu

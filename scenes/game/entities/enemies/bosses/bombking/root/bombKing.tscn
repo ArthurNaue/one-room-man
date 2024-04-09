@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bguc2vlbjg3jv"]
+[gd_scene load_steps=29 format=3 uid="uid://bguc2vlbjg3jv"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_5bueh"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/root/bombKing.gd" id="1_rpe8d"]
@@ -22,7 +22,6 @@
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/states/follow/bombKingFollowState.gd" id="19_q8unu"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/states/bombAttack/bombKingBombAttackState.gd" id="20_jxuum"]
 [ext_resource type="PackedScene" uid="uid://b3p5q505udq00" path="res://scenes/game/entities/enemies/bosses/bombking/bombAttack/root/bombKingBombAttack.tscn" id="22_vcs1b"]
-[ext_resource type="PackedScene" uid="uid://blkyxc4kquubw" path="res://scenes/game/entities/enemies/bosses/bombking/bombAttack/bomb/bombKingBomb.tscn" id="23_n1uyq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gf42k"]
 radius = 9.0
@@ -178,7 +177,6 @@ one_shot = true
 [node name="bombAttack" type="Node" parent="stateMachine" node_paths=PackedStringArray("direction")]
 script = ExtResource("20_jxuum")
 bombAttackScene = ExtResource("22_vcs1b")
-bombScene = ExtResource("23_n1uyq")
 direction = NodePath("../../direction")
 
 [node name="col" type="CollisionShape2D" parent="."]

@@ -32,7 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://cs2hi2iqdvqum" path="res://assets/audio/game/coin/coinPickupSound.wav" id="29_nqrkw"]
 [ext_resource type="PackedScene" uid="uid://grvfschmesxo" path="res://scenes/game/mapObjects/weaponUpgrader/weaponUpgrader.tscn" id="29_svd33"]
 [ext_resource type="PackedScene" uid="uid://d2an3dnjeur2i" path="res://scenes/game/pickups/potionPickup/potionPickup.tscn" id="32_ns3lh"]
-[ext_resource type="PackedScene" uid="uid://bguc2vlbjg3jv" path="res://scenes/game/entities/enemies/bosses/bombking/root/bombKing.tscn" id="33_btdth"]
+[ext_resource type="PackedScene" uid="uid://bql38jl280n2v" path="res://scenes/game/entities/enemies/bosses/shadowcat/root/shadowcat.tscn" id="33_7c01q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xh7d"]
 animations = [{
@@ -157,5 +157,5 @@ position = Vector2(154, 241)
 [node name="coinPickupSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("29_nqrkw")
 
-[node name="bombKing" parent="." instance=ExtResource("33_btdth")]
-position = Vector2(157, 99)
+[node name="shadowcat" parent="." instance=ExtResource("33_7c01q")]
+position = Vector2(98, 71)

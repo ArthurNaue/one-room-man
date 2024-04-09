@@ -2,25 +2,27 @@ extends CharacterBody2D
 class_name bombKingBomb
 
 #variaveis
-@export var speed: int
 @export var explosionScene: PackedScene
-@onready var player = get_tree().get_first_node_in_group("player")
 @onready var game = get_tree().get_first_node_in_group("game")
-@onready var explodePlace = player.global_position
-@onready var direction = (explodePlace - position).normalized()
 @onready var explodeTimer = $explodeTimer
+var speed
+var desiredLocation
+var direction
 
 func _ready():
+	#muda a direcao da bomba
+	direction = (desiredLocation - position).normalized()
+	#muda o angulo para a direcao desejada
+	look_at(desiredLocation)
 	#randomiza o tempo de explosao
 	explodeTimer.wait_time = randf_range(0.5, 1)
 	#comeca o timer de explosao
 	explodeTimer.start()
-	#muda o angulo para a direcao do playea
-	look_at(explodePlace)
 
 func _physics_process(_delta):
 	#aplica movimento na bomba
 	velocity = direction * speed
+
 	move_and_slide()
 
 #funcao que verifica se o objeto colidiu

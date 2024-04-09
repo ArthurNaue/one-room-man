@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://0yj50uwiio7u"]
+[gd_scene load_steps=9 format=3 uid="uid://0yj50uwiio7u"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/root/enemies.gd" id="1_ax23a"]
 [ext_resource type="PackedScene" uid="uid://ia5h2t4fo243" path="res://scenes/game/entities/enemies/normal/eye/root/eye.tscn" id="2_db7uh"]
 [ext_resource type="PackedScene" uid="uid://bql38jl280n2v" path="res://scenes/game/entities/enemies/bosses/shadowcat/root/shadowcat.tscn" id="3_8y2t3"]
 [ext_resource type="PackedScene" uid="uid://bersffu6sd8mk" path="res://scenes/game/entities/enemies/normal/slime/slime.tscn" id="3_f5g4e"]
 [ext_resource type="PackedScene" uid="uid://yd75o3dv3oel" path="res://scenes/game/entities/enemies/normal/mage/root/mage.tscn" id="5_2en2f"]
+[ext_resource type="PackedScene" uid="uid://bguc2vlbjg3jv" path="res://scenes/game/entities/enemies/bosses/bombking/root/bombKing.tscn" id="6_5a68f"]
+[ext_resource type="PackedScene" uid="uid://blkyxc4kquubw" path="res://scenes/game/entities/enemies/bosses/bombking/bombAttack/bomb/bombKingBomb.tscn" id="7_x3my6"]
+[ext_resource type="PackedScene" uid="uid://dux0jt7344boy" path="res://scenes/game/entities/enemies/bullet/enemyBullet.tscn" id="8_e6jj4"]
 
 [node name="enemies" type="Node2D"]
 script = ExtResource("1_ax23a")
@@ -12,3 +15,6 @@ eye = ExtResource("2_db7uh")
 slime = ExtResource("3_f5g4e")
 shadowcat = ExtResource("3_8y2t3")
 mage = ExtResource("5_2en2f")
+bombking = ExtResource("6_5a68f")
+bombScene = ExtResource("7_x3my6")
+bulletScene = ExtResource("8_e6jj4")
