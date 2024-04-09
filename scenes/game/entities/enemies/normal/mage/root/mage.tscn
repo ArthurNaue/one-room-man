@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://yd75o3dv3oel"]
+[gd_scene load_steps=18 format=3 uid="uid://yd75o3dv3oel"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/normal/mage/root/mage.gd" id="1_5w5iv"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_wwimk"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="2_hhsis"]
-[ext_resource type="PackedScene" uid="uid://dux0jt7344boy" path="res://scenes/game/entities/enemies/bullet/enemyBullet.tscn" id="2_kgrcl"]
 [ext_resource type="PackedScene" uid="uid://dfa4namf7euwk" path="res://scenes/game/entities/enemies/particles/enemyDeathParticle/enemyDeathParticle.tscn" id="3_yy8qe"]
 [ext_resource type="PackedScene" uid="uid://d2iyywv1qgbw3" path="res://scenes/game/entities/enemies/damageSound/enemyDamageSound.tscn" id="4_6g3pu"]
 [ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="5_t2yyv"]
@@ -77,7 +76,6 @@ collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_5w5iv")
 speed = 40
-bulletScene = ExtResource("2_kgrcl")
 
 [node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitAnim", "health", "damageIndicator") groups=["enemy"]]
 collision_layer = 4

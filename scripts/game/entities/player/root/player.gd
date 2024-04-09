@@ -60,7 +60,6 @@ func spawnWeapon(weaponScene: PackedScene, weaponImage: Texture):
 	currentWeaponScene = weaponScene
 	currentWeaponImage = weaponImage
 	weaponsNode.add_child(weapon)
-
 #funcao de spawnar o objeto de pickup da arma
 func spawnWeaponPickup():
 	#faz o objeto de pickup 
