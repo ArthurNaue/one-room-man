@@ -1,6 +1,13 @@
 extends Area2D
 class_name bombKingBombExplosion
 
+#variaveis
+@onready var explosionSound = $explosionSound
+
+func _ready():
+	#toca o som de explosao
+	explosionSound.play()
+
 #verifica se animacao de explosao acabou
 func _on_anim_animation_finished(_explode):
 	#deleta a explosao

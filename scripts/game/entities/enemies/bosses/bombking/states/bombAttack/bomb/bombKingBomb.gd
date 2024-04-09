@@ -15,7 +15,7 @@ func _ready():
 func _physics_process(_delta):
 	#muda a direcao da bomba
 	direction = desiredLocation - position
-	if direction.length() < 1:
+	if direction.length() < 2:
 		#explode a bomba
 		explode()
 	else:

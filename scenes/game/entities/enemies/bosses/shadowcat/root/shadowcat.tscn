@@ -23,7 +23,7 @@
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="22_x3jjq"]
 [ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="23_oyeuf"]
 [ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="24_kk3m7"]
-[ext_resource type="AudioStream" uid="uid://drc2njixypxbm" path="res://assets/audio/game/entities/enemies/shadowcat/handAttack/handAttackSound.wav" id="25_d87hq"]
+[ext_resource type="AudioStream" uid="uid://drc2njixypxbm" path="res://assets/audio/game/entities/enemies/bosses/shadowcat/handAttack/handAttackSound.wav" id="25_d87hq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6obfp"]
 resource_local_to_scene = true

@@ -25,9 +25,9 @@ func Physics_Update(_delta):
 
 func _on_state_timer_timeout():
 	#escolhe o proximo estado
-	newState = randi_range(1, 2)
+	newState = randi_range(1, 4)
 	match newState:
-		1:
+		1, 2, 3:
 			Transitioned.emit(self, "bombAttack")
-		2:
+		4:
 			Transitioned.emit(self, "midBombAttack")

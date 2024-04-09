@@ -158,4 +158,4 @@ position = Vector2(154, 241)
 stream = ExtResource("29_nqrkw")
 
 [node name="bombKing" parent="." instance=ExtResource("33_btdth")]
-position = Vector2(152, 81)
+position = Vector2(152, 60)

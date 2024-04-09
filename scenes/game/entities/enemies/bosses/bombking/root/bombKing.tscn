@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bguc2vlbjg3jv"]
+[gd_scene load_steps=40 format=3 uid="uid://bguc2vlbjg3jv"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_5bueh"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/root/bombKing.gd" id="1_rpe8d"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/states/bombAttack/bombKingBombAttackState.gd" id="20_jxuum"]
 [ext_resource type="PackedScene" uid="uid://b3p5q505udq00" path="res://scenes/game/entities/enemies/bosses/bombking/bombAttack/root/bombKingBombAttack.tscn" id="22_vcs1b"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/states/midBombAttack/midBombAttack.gd" id="23_jd5tx"]
+[ext_resource type="AudioStream" uid="uid://i3jn01m74g8n" path="res://assets/audio/game/entities/enemies/bosses/bombking/midBombAttack/midBombAttack.wav" id="33_uhi88"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gf42k"]
 radius = 9.0
@@ -207,7 +208,7 @@ frame_progress = 1.0
 
 [node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
 script = ExtResource("17_7mcog")
-initialState = NodePath("midBombAttack")
+initialState = NodePath("follow")
 
 [node name="follow" type="Node" parent="stateMachine" node_paths=PackedStringArray("stateTimer")]
 script = ExtResource("19_q8unu")
@@ -226,6 +227,9 @@ direction = NodePath("../../direction")
 [node name="midBombAttack" type="Node" parent="stateMachine"]
 script = ExtResource("23_jd5tx")
 moveSpeed = 100
+
+[node name="midBombAttackSound" type="AudioStreamPlayer2D" parent="stateMachine/midBombAttack"]
+stream = ExtResource("33_uhi88")
 
 [node name="col" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
