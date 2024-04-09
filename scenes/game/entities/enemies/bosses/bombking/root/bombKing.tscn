@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bguc2vlbjg3jv"]
+[gd_scene load_steps=39 format=3 uid="uid://bguc2vlbjg3jv"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_5bueh"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/root/bombKing.gd" id="1_rpe8d"]
@@ -14,14 +14,24 @@
 [ext_resource type="Texture2D" uid="uid://4o5hr5035j5e" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk2.png" id="9_82t01"]
 [ext_resource type="Texture2D" uid="uid://cshtl0kpk5yrt" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk3.png" id="10_cw4a6"]
 [ext_resource type="Texture2D" uid="uid://darxwyx3ecjuv" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk4.png" id="11_mnilf"]
+[ext_resource type="Texture2D" uid="uid://cwudug8jy6vud" path="res://assets/images/game/entities/enemies/bosses/bombking/midBombAttack/bombKingMidBombAttack1.png" id="11_tnss3"]
 [ext_resource type="Texture2D" uid="uid://caxh8pl78hplj" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk5.png" id="12_7y1nw"]
+[ext_resource type="Texture2D" uid="uid://vhs508cjmcap" path="res://assets/images/game/entities/enemies/bosses/bombking/midBombAttack/bombKingMidBombAttack2.png" id="12_vwq1a"]
 [ext_resource type="Texture2D" uid="uid://ccoboror0offw" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk6.png" id="13_8ytod"]
+[ext_resource type="Texture2D" uid="uid://cvvjlh0d6jg1v" path="res://assets/images/game/entities/enemies/bosses/bombking/midBombAttack/bombKingMidBombAttack3.png" id="13_ojit0"]
 [ext_resource type="Texture2D" uid="uid://b761n88dqxjq6" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk7.png" id="14_jlapy"]
+[ext_resource type="Texture2D" uid="uid://cjkb3ighifc0o" path="res://assets/images/game/entities/enemies/bosses/bombking/midBombAttack/bombKingMidBombAttack4.png" id="14_yskql"]
 [ext_resource type="Texture2D" uid="uid://dvk2m3um8s6qy" path="res://assets/images/game/entities/enemies/bosses/bombking/walk/bombKingWalk8.png" id="15_5risa"]
+[ext_resource type="Texture2D" uid="uid://dq25bdb654vc4" path="res://assets/images/game/entities/enemies/bosses/bombking/midBombAttack/bombKingMidBombAttack5.png" id="15_pxkfv"]
+[ext_resource type="Texture2D" uid="uid://d2qintfns0tf6" path="res://assets/images/game/entities/enemies/bosses/bombking/midBombAttack/bombKingMidBombAttack6.png" id="16_hgxvo"]
 [ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="17_7mcog"]
+[ext_resource type="Texture2D" uid="uid://w84ws41skyhl" path="res://assets/images/game/entities/enemies/bosses/bombking/midBombAttack/bombKingMidBombAttack7.png" id="17_vno5d"]
+[ext_resource type="Texture2D" uid="uid://cosgahoeg83th" path="res://assets/images/game/entities/enemies/bosses/bombking/midBombAttack/bombKingMidBombAttack8.png" id="18_bwubv"]
+[ext_resource type="Texture2D" uid="uid://b4guyilrh41p1" path="res://assets/images/game/entities/enemies/bosses/bombking/midBombAttack/bombKingMidBombAttack9.png" id="19_8hcgt"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/states/follow/bombKingFollowState.gd" id="19_q8unu"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/states/bombAttack/bombKingBombAttackState.gd" id="20_jxuum"]
 [ext_resource type="PackedScene" uid="uid://b3p5q505udq00" path="res://scenes/game/entities/enemies/bosses/bombking/bombAttack/root/bombKingBombAttack.tscn" id="22_vcs1b"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/states/midBombAttack/midBombAttack.gd" id="23_jd5tx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gf42k"]
 radius = 9.0
@@ -78,6 +88,38 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_tnss3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vwq1a")
+}, {
+"duration": 3.0,
+"texture": ExtResource("13_ojit0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_yskql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pxkfv")
+}, {
+"duration": 3.0,
+"texture": ExtResource("16_hgxvo")
+}, {
+"duration": 0.5,
+"texture": ExtResource("17_vno5d")
+}, {
+"duration": 0.5,
+"texture": ExtResource("18_bwubv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8hcgt")
+}],
+"loop": false,
+"name": &"midBombAttack",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -158,12 +200,14 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_2xago")
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_7m7jr")
-animation = &"idle"
+animation = &"midBombAttack"
 autoplay = "walk"
+frame = 8
+frame_progress = 1.0
 
 [node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
 script = ExtResource("17_7mcog")
-initialState = NodePath("follow")
+initialState = NodePath("midBombAttack")
 
 [node name="follow" type="Node" parent="stateMachine" node_paths=PackedStringArray("stateTimer")]
 script = ExtResource("19_q8unu")
@@ -179,9 +223,14 @@ script = ExtResource("20_jxuum")
 bombAttackScene = ExtResource("22_vcs1b")
 direction = NodePath("../../direction")
 
+[node name="midBombAttack" type="Node" parent="stateMachine"]
+script = ExtResource("23_jd5tx")
+moveSpeed = 100
+
 [node name="col" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_gf42k")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="animation_finished" from="sprite" to="stateMachine/midBombAttack" method="_on_sprite_animation_finished"]
 [connection signal="timeout" from="stateMachine/stateTimer" to="stateMachine/follow" method="_on_state_timer_timeout"]
