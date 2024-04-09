@@ -5,6 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://b80gtbdlmehhm" path="res://scenes/game/entities/enemies/bosses/bombking/bombAttack/bomb/explosion/bombKingBombExplosion.tscn" id="2_sssix"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="4_soeqb"]
 
+[sub_resource type="Animation" id="Animation_tgq5n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_we1lm"]
 resource_name = "spinnning"
 length = 0.8
@@ -22,21 +37,6 @@ tracks/0/keys = {
 "values": [0.0, 1.5708, 3.14159, 4.71239, 6.28319]
 }
 
-[sub_resource type="Animation" id="Animation_tgq5n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xak24"]
 _data = {
 "RESET": SubResource("Animation_tgq5n"),
@@ -51,7 +51,6 @@ texture_filter = 1
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_kh1eq")
-speed = 200
 explosionScene = ExtResource("2_sssix")
 
 [node name="sprite" type="Sprite2D" parent="."]
@@ -63,9 +62,6 @@ libraries = {
 }
 autoplay = "spinning"
 
-[node name="explodeTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
@@ -75,5 +71,4 @@ script = ExtResource("4_soeqb")
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_ss6xg")
 
-[connection signal="timeout" from="explodeTimer" to="." method="_on_explode_timer_timeout"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

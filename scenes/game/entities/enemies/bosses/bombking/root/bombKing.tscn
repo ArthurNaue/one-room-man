@@ -215,7 +215,7 @@ moveSpeed = 40
 stateTimer = NodePath("../stateTimer")
 
 [node name="stateTimer" type="Timer" parent="stateMachine"]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="bombAttack" type="Node" parent="stateMachine" node_paths=PackedStringArray("direction")]
