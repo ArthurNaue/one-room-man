@@ -181,6 +181,7 @@ damageSoundScene = ExtResource("4_gn5qk")
 enemyType = 10
 
 [node name="healthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("5_85uqg")]
+z_index = -1
 offset_left = -25.0
 offset_top = 17.0
 offset_right = 24.0
