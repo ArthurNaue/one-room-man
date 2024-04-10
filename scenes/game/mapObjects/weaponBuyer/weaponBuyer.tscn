@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4b54i"]
 size = Vector2(32, 4.5)
 
-[node name="weaponBuyer" type="StaticBody2D"]
+[node name="weaponBuyer" type="StaticBody2D" groups=["weaponBuyer"]]
 texture_filter = 1
 script = ExtResource("1_u1dta")
 

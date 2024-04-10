@@ -8,6 +8,7 @@ class_name Player
 @onready var weaponsNode = $weapons
 @onready var hands = $weapons/hands
 @onready var handsCol = $weapons/hands/handsHitbox/col
+@onready var weaponBuyer = get_tree().get_first_node_in_group("weaponBuyer")
 @onready var currentWeapon: Node2D
 @onready var currentWeaponScene: PackedScene
 @onready var currentWeaponImage: Texture
@@ -92,6 +93,8 @@ func spawnWeapon(weaponScene: PackedScene, weaponImage: Texture, upgraded: bool)
 	currentWeaponImage = weaponImage
 	weaponsNode.add_child(weapon)
 	currentWeapon.upgraded = upgraded
+	#ajusta o preco da loja de compra de armas
+	weaponBuyer.rerollSellPrice()
 
 #funcao de spawnar o objeto de pickup da arma
 func spawnWeaponPickup():

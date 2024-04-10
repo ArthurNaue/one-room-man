@@ -5,9 +5,9 @@ class_name Game
 @export var weaponPickupScene: PackedScene
 @export var potionPickupScene: PackedScene
 @export var coinScene: PackedScene
+@export var coins: int
 @onready var hudRounds = $hudRounds
 var rounds: int
-@export var coins: int
 var entitiesAlive: int
 
 func _ready():
