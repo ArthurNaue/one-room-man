@@ -4,9 +4,25 @@ class_name RoundButton
 var oncooldown: bool
 @onready var interactText = $interactText
 @onready var sprite = $sprite
-@onready var cooldownTimer = $cooldownTimer
+@onready var game = get_parent()
+
+func _ready():
+	#toca a animacao
+	sprite.play()
 
 func _process(_delta):
+	#verifica se tem alguma entidade viva
+	if game.entitiesAlive <= 0:
+		#ativa o botao
+		oncooldown = false
+		#troca a animacao do botao 
+		sprite.animation = "unpressed"
+	else:
+		#desativa o botao
+		oncooldown = true
+		#troca a animacao do botao 
+		sprite.animation = "pressed"
+
 	if interactText.visible == true:
 		if Input.is_action_just_pressed("E"):
 			buttonPressed()
@@ -25,14 +41,7 @@ func buttonPressed():
 		interactText.visible = false
 		oncooldown = true
 		sprite.play()
-		cooldownTimer.start()
 		get_parent().nextRound()
 
-func _on_cooldown_timer_timeout():
-	oncooldown = false
-	sprite.animation = "unpressed"
+func _on_sprite_animation_changed():
 	sprite.play()
-
-func _on_sprite_animation_finished():
-	if sprite.animation == "unpressed":
-		sprite.animation = "pressed"

@@ -40,6 +40,8 @@ func Damage(attack: Attack):
 		if get_parent().is_in_group("enemy"):
 			#spawna uma moeda na posicao do inimigo
 			game.spawnCoin(global_position, enemyType)
+			#retira 1 da quantidade de entidades vivas
+			game.entitiesAlive -= 1
 
 #funcao de spawnar a particula de morte
 func spawnDeathParticle(location: Vector2):

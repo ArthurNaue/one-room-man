@@ -37,7 +37,7 @@ func _on_hitbox_area_exited(_area):
 
 func rerollPrice():
 	price = randi_range(5, 10)
-	weaponNumber = randi_range(1, 4)
+	weaponNumber = randi_range(1, 5)
 	match weaponNumber:
 		1:
 			weaponScene = Weapons.dagger

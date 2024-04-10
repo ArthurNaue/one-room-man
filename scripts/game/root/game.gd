@@ -5,9 +5,10 @@ class_name Game
 @export var weaponPickupScene: PackedScene
 @export var potionPickupScene: PackedScene
 @export var coinScene: PackedScene
-@export var rounds: int
 @onready var hudRounds = $hudRounds
-var coins = 0
+var rounds: int
+var coins: int
+var entitiesAlive: int
 
 func _ready():
 	#spawna a primeira arma
@@ -29,6 +30,8 @@ func spawnEntitie(entitieScene: PackedScene):
 	entitie.global_position = randomizeEnemyPosition()
 	#spawna o objeto da entidade
 	add_child(entitie)
+	#adiciona 1 no numero de entidades vivas
+	entitiesAlive += 1
 
 #funcao de spawnar uma arma no chao
 func spawnWeaponPickup(choosenWeaponPickupScene: PackedScene, image: Texture, desiredPosition: Vector2):

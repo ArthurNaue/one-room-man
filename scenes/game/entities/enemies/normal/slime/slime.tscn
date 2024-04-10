@@ -126,7 +126,7 @@ shape = SubResource("CircleShape2D_pwpga")
 
 [node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("2_2iuyk")
-maxHealth = 3
+maxHealth = 2
 healthBar = NodePath("../healthBar")
 deathParticleScene = ExtResource("3_1pht5")
 damageSoundScene = ExtResource("4_abue6")
