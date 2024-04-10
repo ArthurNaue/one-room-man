@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm2nxauq0gp1m"
-path="res://.godot/imported/round16.png-32947107cd8b6229864105ca9789fd00.ctex"
+uid="uid://bd38e8peuoiif"
+path="res://.godot/imported/rounds15.png-c2d38077cf6117764d6a5d7810916c8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/game/hud/rounds/round16.png"
-dest_files=["res://.godot/imported/round16.png-32947107cd8b6229864105ca9789fd00.ctex"]
+source_file="res://assets/images/game/hud/rounds/rounds15.png"
+dest_files=["res://.godot/imported/rounds15.png-c2d38077cf6117764d6a5d7810916c8c.ctex"]
 
 [params]
 

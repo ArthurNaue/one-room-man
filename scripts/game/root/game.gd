@@ -15,7 +15,7 @@ func _ready():
 
 func _process(_delta):
 	#atualiza o frame do hud de rounds
-	hudRounds.frame = (rounds - 1)
+	hudRounds.frame = rounds
 	#verifica se o player clicou ESQ
 	if Input.is_action_just_pressed("esq"):
 		#fecha o jogo
