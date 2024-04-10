@@ -135,7 +135,7 @@ animation = &"follow"
 
 [node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("8_mq1v7")
-maxHealth = 2
+maxHealth = 1
 healthBar = NodePath("../healthBar")
 deathParticleScene = ExtResource("9_uj4oi")
 damageSoundScene = ExtResource("10_yc06j")

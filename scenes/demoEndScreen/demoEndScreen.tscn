@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwih2x8h4bg7l"]
+
+[ext_resource type="Script" path="res://scripts/demoEndScreen/demoEndScreen.gd" id="1_qkk3w"]
+
+[node name="demoEndScreen" type="Node2D"]
+script = ExtResource("1_qkk3w")
+
+[node name="winText" type="Label" parent="."]
+offset_left = 25.0
+offset_top = 300.0
+offset_right = 571.0
+offset_bottom = 323.0
+theme_override_colors/font_color = Color(0.941176, 0.964706, 0.941176, 1)
+text = "CONGRATULATIONS YOU FINISHED THE WEB DEMOSTRATION VERSION"
+
+[node name="winText2" type="Label" parent="."]
+offset_left = 130.0
+offset_top = 340.0
+offset_right = 485.0
+offset_bottom = 363.0
+pivot_offset = Vector2(183, 12)
+theme_override_colors/font_color = Color(0.941176, 0.964706, 0.941176, 1)
+text = "DOWNLOAD THE GAME FOR FULL EXPERIENCE"
+
+[node name="replayButton" type="Button" parent="."]
+offset_left = 278.0
+offset_top = 380.0
+offset_right = 356.0
+offset_bottom = 423.0
+pivot_offset = Vector2(33, 15)
+theme_override_colors/font_color = Color(0.941176, 0.964706, 0.941176, 1)
+text = "REPLAY"
+flat = true
+
+[connection signal="pressed" from="replayButton" to="." method="_on_replay_button_pressed"]

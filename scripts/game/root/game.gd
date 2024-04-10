@@ -118,3 +118,5 @@ func nextRound():
 				spawnEntitie(Enemies.mage)
 		10:
 			spawnEntitie(Enemies.bombking)
+		11:
+			get_tree().change_scene_to_file("res://scenes/demoEndScreen/demoEndScreen.tscn")
