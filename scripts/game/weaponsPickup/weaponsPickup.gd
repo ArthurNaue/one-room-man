@@ -8,6 +8,7 @@ class_name WeaponPickup
 @onready var anim = $anim
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var pickupScene = self
+var upgraded: bool
 
 func _ready():
 	sprite.texture = image
@@ -35,7 +36,7 @@ func _on_area_col_area_exited(area):
 
 func pickup():
 	#spawna a arma
-	player.spawnWeapon(weaponScene, image)
+	player.spawnWeapon(weaponScene, image, upgraded)
 	#deleta o pickup
 	queue_free()
 

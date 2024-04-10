@@ -15,6 +15,8 @@ class_name Player
 var inputVector = Vector2.ZERO
 #faz a variavel que controla o lado da mao
 var leftHand = true
+#faz a variavel que verifica se a arma ta com o upgrade ativo
+var weaponUpgraded: bool
 
 func _process(delta: float):
 	weaponCooldown -= delta
@@ -43,6 +45,10 @@ func _process(delta: float):
 	else:
 		#faz as maos ficarem invisiveis
 		hands.visible = false
+		#verifica se a arma do player esta upgradeada
+		weaponUpgraded = currentWeapon.upgraded
+
+	#toca a animacao
 	sprite.play()
 
 func _physics_process(_delta):
@@ -73,10 +79,9 @@ func _physics_process(_delta):
 	move_and_slide()
 
 #funcao de spawnar a arma
-func spawnWeapon(weaponScene: PackedScene, weaponImage: Texture):
+func spawnWeapon(weaponScene: PackedScene, weaponImage: Texture, upgraded: bool):
 	#verifica se o player ja tem uma arma
 	if currentWeapon != null:
-		#spawna o pickup da arma
 		spawnWeaponPickup()
 		#deleta a arma
 		currentWeapon.queue_free()
@@ -86,6 +91,8 @@ func spawnWeapon(weaponScene: PackedScene, weaponImage: Texture):
 	currentWeaponScene = weaponScene
 	currentWeaponImage = weaponImage
 	weaponsNode.add_child(weapon)
+	currentWeapon.upgraded = upgraded
+
 #funcao de spawnar o objeto de pickup da arma
 func spawnWeaponPickup():
 	#faz o objeto de pickup 
@@ -94,9 +101,9 @@ func spawnWeaponPickup():
 	weaponPickup.weaponScene = currentWeaponScene
 	weaponPickup.image = currentWeaponImage
 	weaponPickup.global_position = global_position
+	weaponPickup.upgraded = weaponUpgraded
 	#spawna o objeto de pickup
 	get_parent().add_child(weaponPickup)
-
 
 func _on_hands_animation_finished():
 	#reseta o cooldown

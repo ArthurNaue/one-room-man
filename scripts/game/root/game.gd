@@ -7,12 +7,12 @@ class_name Game
 @export var coinScene: PackedScene
 @onready var hudRounds = $hudRounds
 var rounds: int
-var coins: int
+@export var coins: int
 var entitiesAlive: int
 
 func _ready():
 	#spawna a primeira arma
-	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 150))
+	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 150), false)
 
 func _process(_delta):
 	#atualiza o frame do hud de rounds
@@ -34,13 +34,14 @@ func spawnEntitie(entitieScene: PackedScene):
 	entitiesAlive += 1
 
 #funcao de spawnar uma arma no chao
-func spawnWeaponPickup(choosenWeaponPickupScene: PackedScene, image: Texture, desiredPosition: Vector2):
+func spawnWeaponPickup(choosenWeaponPickupScene: PackedScene, image: Texture, desiredPosition: Vector2, upgraded: bool):
 	#faz o objeto da arma
 	var weaponPickup = weaponPickupScene.instantiate() as StaticBody2D
 	#define os parametros do objeto da arma
 	weaponPickup.weaponScene = choosenWeaponPickupScene
 	weaponPickup.image = image
 	weaponPickup.global_position = desiredPosition
+	weaponPickup.upgraded = upgraded
 	#spawna o objeto da arma
 	add_child(weaponPickup)
 

@@ -21,7 +21,7 @@ func _process(_delta):
 				buyAudio.play()
 				match weaponNumber:
 					1,2,3,4:
-						game.spawnWeaponPickup(weaponScene, weaponImg, Vector2(150, 50))
+						game.spawnWeaponPickup(weaponScene, weaponImg, Vector2(150, 50), false)
 					5:
 						game.spawnPotionPickup(Vector2(150, 50))
 				rerollPrice()

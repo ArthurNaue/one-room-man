@@ -105,6 +105,7 @@ script = ExtResource("1_8ckrm")
 weaponPickupScene = ExtResource("7_8wu3q")
 potionPickupScene = ExtResource("32_ns3lh")
 coinScene = ExtResource("5_lpqej")
+coins = 50
 
 [node name="tilemap" type="TileMap" parent="."]
 z_index = -2
