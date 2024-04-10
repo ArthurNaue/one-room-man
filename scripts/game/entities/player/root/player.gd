@@ -6,17 +6,43 @@ class_name Player
 @export var weaponPickupScene: PackedScene
 @onready var sprite = $sprite
 @onready var weaponsNode = $weapons
+@onready var hands = $weapons/hands
+@onready var handsCol = $weapons/hands/handsHitbox/col
 @onready var currentWeapon: Node2D
 @onready var currentWeaponScene: PackedScene
 @onready var currentWeaponImage: Texture
 #faz um Vector2 zerado
 var inputVector = Vector2.ZERO
+#faz a variavel que controla o lado da mao
+var leftHand = true
 
 func _process(delta: float):
 	weaponCooldown -= delta
 	if weaponCooldown < 0:
 		weaponCooldown = 0
 	
+	#verifica se o player ta sem arma
+	if currentWeapon == null:
+		#faz as maos ficarem visiveis
+		hands.visible = true
+		#verifica se foi clicado o botao esquerdo do mouse
+		if Input.is_action_just_pressed("mouse_left"):
+			#verifica se o cooldown acabou
+			if weaponCooldown <= 0:
+				#ativa a colisao
+				handsCol.disabled = false
+				#verifica qual a mao do ataque
+				if leftHand == true:
+					#muda a animacao para a de ataque
+					hands.animation = "leftHandAttack"
+					hands.play()
+				else:
+					#muda a animacao para a de ataque
+					hands.animation = "rightHandAttack"
+					hands.play()
+	else:
+		#faz as maos ficarem invisiveis
+		hands.visible = false
 	sprite.play()
 
 func _physics_process(_delta):
@@ -70,3 +96,27 @@ func spawnWeaponPickup():
 	weaponPickup.global_position = global_position
 	#spawna o objeto de pickup
 	get_parent().add_child(weaponPickup)
+
+
+func _on_hands_animation_finished():
+	#reseta o cooldown
+	weaponCooldown = 2
+	#desabilita a colisao
+	handsCol.disabled = true
+	#troca de mao
+	if leftHand == true:
+		leftHand = false
+	else: 
+		leftHand = true
+
+#funcao de verificar se houve uma colisao
+func _on_hands_hitbox_area_entered(area):
+	#verifica se o objeto colidido e um player
+	if area.is_in_group("enemy"):
+		#verifica se pode sofrer dano
+		if area.has_method("Damage"):
+			#define os parametros do ataque
+			var attack = Attack.new()
+			attack.attackDamage = 1
+			#aplica 1 de dano
+			area.Damage(attack)

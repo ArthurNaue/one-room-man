@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ccfqa7gl05jnd"]
+[gd_scene load_steps=39 format=3 uid="uid://ccfqa7gl05jnd"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/player/root/player.gd" id="1_twwux"]
 [ext_resource type="PackedScene" uid="uid://bva7lrsw2bkx3" path="res://scenes/game/pickups/weaponsPickup/weaponPickup.tscn" id="2_j7m8h"]
@@ -17,6 +17,18 @@
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="18_lp28r"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="19_2280a"]
 [ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="19_es2wa"]
+[ext_resource type="Texture2D" uid="uid://coju8ki4h4xdg" path="res://assets/images/game/entities/player/weapons/hands/leftHandAttack/leftHandAttack1.png" id="19_j30w6"]
+[ext_resource type="Texture2D" uid="uid://8jy8s42si2gv" path="res://assets/images/game/entities/player/weapons/hands/leftHandAttack/leftHandAttack2.png" id="20_imnr5"]
+[ext_resource type="Texture2D" uid="uid://cv0jk8fjecoe6" path="res://assets/images/game/entities/player/weapons/hands/leftHandAttack/leftHandAttack3.png" id="21_7rigf"]
+[ext_resource type="Texture2D" uid="uid://c4bodewc7w7u3" path="res://assets/images/game/entities/player/weapons/hands/leftHandAttack/leftHandAttack4.png" id="22_mrdff"]
+[ext_resource type="Texture2D" uid="uid://bmgm5solmcrj5" path="res://assets/images/game/entities/player/weapons/hands/leftHandAttack/leftHandAttack5.png" id="23_ckdw5"]
+[ext_resource type="Texture2D" uid="uid://qi02q13w8bsk" path="res://assets/images/game/entities/player/weapons/hands/leftHandAttack/leftHandAttack6.png" id="24_8if32"]
+[ext_resource type="Texture2D" uid="uid://dpk61wd7tgeq1" path="res://assets/images/game/entities/player/weapons/hands/rightHandAttack/rightHandAttack1.png" id="25_j3bh1"]
+[ext_resource type="Texture2D" uid="uid://dvpxoyoikfuwu" path="res://assets/images/game/entities/player/weapons/hands/rightHandAttack/rightHandAttack2.png" id="26_0vmca"]
+[ext_resource type="Texture2D" uid="uid://b5bws3glsgihs" path="res://assets/images/game/entities/player/weapons/hands/rightHandAttack/rightHandAttack3.png" id="27_12lxa"]
+[ext_resource type="Texture2D" uid="uid://bhin4uxg6qb0f" path="res://assets/images/game/entities/player/weapons/hands/rightHandAttack/rightHandAttack4.png" id="28_3bla5"]
+[ext_resource type="Texture2D" uid="uid://b63cd6ge0teu3" path="res://assets/images/game/entities/player/weapons/hands/rightHandAttack/rightHandAttack5.png" id="29_v4osl"]
+[ext_resource type="Texture2D" uid="uid://nlemlqh5v4ql" path="res://assets/images/game/entities/player/weapons/hands/rightHandAttack/rightHandAttack6.png" id="30_2kwc5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkxgk"]
 size = Vector2(6, 15)
@@ -101,11 +113,70 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8p6h"]
 size = Vector2(8, 13)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_quari"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_8if32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_j30w6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_imnr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_7rigf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_mrdff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ckdw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_8if32")
+}],
+"loop": false,
+"name": &"leftHandAttack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_2kwc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_j3bh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_0vmca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_12lxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_3bla5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_v4osl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_2kwc5")
+}],
+"loop": false,
+"name": &"rightHandAttack",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq4mh"]
+size = Vector2(14, 13)
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 texture_filter = 1
 collision_layer = 2
 script = ExtResource("1_twwux")
 speed = 100.0
+weaponCooldown = 2.0
 weaponPickupScene = ExtResource("2_j7m8h")
 
 [node name="col" type="CollisionShape2D" parent="."]
@@ -158,4 +229,21 @@ health = NodePath("../health")
 z_index = 2
 script = ExtResource("7_h5lb5")
 
+[node name="hands" type="AnimatedSprite2D" parent="weapons"]
+position = Vector2(20, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_quari")
+animation = &"rightHandAttack"
+
+[node name="handsHitbox" type="Area2D" parent="weapons/hands"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="col" type="CollisionShape2D" parent="weapons/hands/handsHitbox"]
+position = Vector2(9.93094e-09, -1.5)
+shape = SubResource("RectangleShape2D_mq4mh")
+disabled = true
+
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="animation_finished" from="weapons/hands" to="." method="_on_hands_animation_finished"]
+[connection signal="area_entered" from="weapons/hands/handsHitbox" to="." method="_on_hands_hitbox_area_entered"]
