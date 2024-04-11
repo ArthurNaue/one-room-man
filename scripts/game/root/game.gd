@@ -82,7 +82,7 @@ func nextRound():
 	#verifica qual o round atual
 	match rounds:
 		1:
-			spawnEntitie(Enemies.crystal)
+			spawnEntitie(Enemies.eye)
 		2:
 			for i in rounds:
 				spawnEntitie(Enemies.eye)
@@ -98,22 +98,20 @@ func nextRound():
 		5:
 			spawnEntitie(Enemies.shadowcat)
 		6:
-			for i in 3:
-				spawnEntitie(Enemies.eye)
-			for i in 1:
-				spawnEntitie(Enemies.slime)
+			spawnEntitie(Enemies.mage)
+			spawnEntitie(Enemies.slime)
 		7:
-			spawnEntitie(Enemies.mage)
-			for i in 3:
-				spawnEntitie(Enemies.slime)
-		8:
-			spawnEntitie(Enemies.mage)
-			for i in 3:
-				spawnEntitie(Enemies.eye)
+			for i in 2:
+				spawnEntitie(Enemies.mage)
 			for i in 2:
 				spawnEntitie(Enemies.slime)
+		8:
+			spawnEntitie(Enemies.crystal)
+			for i in 2:
+				spawnEntitie(Enemies.mage)
 		9:
-			spawnEntitie(Enemies.slime)
+			for i in 2:
+				spawnEntitie(Enemies.crystal)
 			for i in 2:
 				spawnEntitie(Enemies.mage)
 		10:
