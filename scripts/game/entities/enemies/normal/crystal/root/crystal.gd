@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Crystal
 
 #variaveis
+@onready var spinningAnim = $spinningAnim
+@onready var shootTimer = $shootTimer
 var x: float
 var y: float
 
@@ -10,6 +12,10 @@ func _physics_process(_delta):
 	y = global_position.y
 
 func _on_shoot_timer_timeout():
+	#ativa a animacao de giro
+	spinningAnim.play("spinning")
+
+func _on_spinning_anim_animation_finished(_spinning):
 	#atira os cristais
 	shoot_crystal(Vector2((x + 1), y))
 	shoot_crystal(Vector2((x - 1), y))
@@ -19,6 +25,12 @@ func _on_shoot_timer_timeout():
 	shoot_crystal(Vector2((x - 1), (y - 1)))
 	shoot_crystal(Vector2((x + 1), (y - 1)))
 	shoot_crystal(Vector2((x - 1), (y + 1)))
+	#reseta o timer
+	shootTimer.start()
+
+#funcao de atirar crystal
+func shoot_crystal(destination: Vector2):
+	Enemies.shoot(global_position, destination, "crystalBullet", 100)
 
 #funcao de verificar se houve uma colisao
 func _on_hitbox_area_entered(area):
@@ -31,7 +43,3 @@ func _on_hitbox_area_entered(area):
 			attack.attackDamage = 1
 			#aplica 1 de dano
 			area.Damage(attack)
-
-#funcao de atirar crystal
-func shoot_crystal(destination: Vector2):
-	Enemies.shoot(global_position, destination, "crystalBullet", 100)

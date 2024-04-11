@@ -103,8 +103,6 @@ func nextRound():
 		7:
 			for i in 2:
 				spawnEntitie(Enemies.mage)
-			for i in 2:
-				spawnEntitie(Enemies.slime)
 		8:
 			spawnEntitie(Enemies.crystal)
 			for i in 2:

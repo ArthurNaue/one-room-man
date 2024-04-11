@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvhhn2je4h6vj"]
+[gd_scene load_steps=21 format=3 uid="uid://cvhhn2je4h6vj"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_t6uhv"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/normal/crystal/root/crystal.gd" id="1_yacd3"]
@@ -54,6 +54,43 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_hk4hr"),
 "hitAnim": SubResource("Animation_o1xry")
+}
+
+[sub_resource type="Animation" id="Animation_gtp41"]
+resource_name = "spinning"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.5708, -3.14159, -6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_qux63"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hh8qm"]
+_data = {
+"RESET": SubResource("Animation_qux63"),
+"spinning": SubResource("Animation_gtp41")
 }
 
 [sub_resource type="Animation" id="Animation_dfpwo"]
@@ -121,7 +158,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.5, -1), Vector2(0.5, -4), Vector2(0.5, -1)]
+"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -133,7 +170,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.5, -1), Vector2(0.5, -4), Vector2(0.5, -1)]
+"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_21yc2"]
@@ -179,10 +216,16 @@ position = Vector2(0, -11)
 [node name="sprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_7nue6")
 texture = ExtResource("7_h5x8u")
+offset = Vector2(-0.5, 0.5)
 
 [node name="hitAnim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_8qocf")
+}
+
+[node name="spinningAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hh8qm")
 }
 
 [node name="anim" type="AnimationPlayer" parent="."]
@@ -196,8 +239,10 @@ position = Vector2(0.5, -1.91795)
 shape = SubResource("RectangleShape2D_l6m4u")
 
 [node name="shootTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
+one_shot = true
 autostart = true
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="animation_finished" from="spinningAnim" to="." method="_on_spinning_anim_animation_finished"]
 [connection signal="timeout" from="shootTimer" to="." method="_on_shoot_timer_timeout"]
