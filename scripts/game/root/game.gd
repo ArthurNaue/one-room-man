@@ -4,7 +4,7 @@ class_name Game
 #variaveis
 @export var weaponPickupScene: PackedScene
 @export var coinScene: PackedScene
-@export var coins=50
+@export var coins: int
 
 @onready var hudRounds = $hudRounds
 
