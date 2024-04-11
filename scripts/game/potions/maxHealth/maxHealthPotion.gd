@@ -17,9 +17,7 @@ func _process(_delta):
 func pickup():
 	if playerHealth.health < 3:
 		#faz o player ficar full vida
-		playerHealth.health = playerHealth.maxHealth
-		#atualiza a barra de vida
-		playerHealth.updateHealthBar()
+		playerHealth.healMax()
 		#deleta o pickup
 		queue_free()
 

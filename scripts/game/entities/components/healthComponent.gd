@@ -8,6 +8,7 @@ class_name HealthComponent
 @export var damageSoundScene: PackedScene
 @export var enemyType: int
 @onready var game = get_parent().get_parent()
+
 var health: int
 
 func _ready():
@@ -18,6 +19,13 @@ func _ready():
 func Heal(amount: int):
 	#aumenta a vida no valor desejado
 	health += amount
+	#atualiza a barra de vida
+	updateHealthBar()
+
+#funcao de regenerar toda a vida
+func healMax():
+	#regenera toda a vida
+	health = maxHealth
 	#atualiza a barra de vida
 	updateHealthBar()
 
