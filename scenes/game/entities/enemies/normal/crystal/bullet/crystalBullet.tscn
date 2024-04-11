@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://0l586trvmm8a"]
+
+[ext_resource type="Texture2D" uid="uid://c4sxput1dkt4u" path="res://assets/images/game/entities/enemies/normal/crystal/bullet/crystalBullet.png" id="1_5b5ev"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/normal/crystal/bullet/crystalBullet.gd" id="1_rwtb7"]
+[ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="2_yuxgh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1l5ip"]
+size = Vector2(8, 7)
+
+[node name="crystalBullet" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_rwtb7")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_5b5ev")
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_yuxgh")
+
+[node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_1l5ip")
+
+[node name="despawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="despawnTimer" to="." method="_on_despawn_timer_timeout"]

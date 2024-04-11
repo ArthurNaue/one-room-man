@@ -82,7 +82,7 @@ func nextRound():
 	#verifica qual o round atual
 	match rounds:
 		1:
-			spawnEntitie(Enemies.eye)
+			spawnEntitie(Enemies.crystal)
 		2:
 			for i in rounds:
 				spawnEntitie(Enemies.eye)
