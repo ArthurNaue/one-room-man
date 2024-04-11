@@ -121,9 +121,6 @@ position = Vector2(16, 1)
 texture = ExtResource("10_afy0f")
 script = ExtResource("11_h456c")
 
-[node name="moveTimer" type="Timer" parent="."]
-autostart = true
-
 [node name="shootTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
@@ -132,5 +129,4 @@ autostart = true
 shape = SubResource("CapsuleShape2D_uqq86")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="timeout" from="moveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="shootTimer" to="." method="_on_shoot_timer_timeout"]
