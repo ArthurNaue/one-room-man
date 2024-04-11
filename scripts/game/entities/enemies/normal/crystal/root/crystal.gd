@@ -14,8 +14,8 @@ func _physics_process(_delta):
 func _on_shoot_timer_timeout():
 	#ativa a animacao de giro
 	spinningAnim.play("spinning")
-
-func _on_spinning_anim_animation_finished(_spinning):
+	#espera 0.4 segundos
+	await get_tree().create_timer(0.4).timeout
 	#atira os cristais
 	shoot_crystal(Vector2((x + 1), y))
 	shoot_crystal(Vector2((x - 1), y))
@@ -25,6 +25,8 @@ func _on_spinning_anim_animation_finished(_spinning):
 	shoot_crystal(Vector2((x - 1), (y - 1)))
 	shoot_crystal(Vector2((x + 1), (y - 1)))
 	shoot_crystal(Vector2((x - 1), (y + 1)))
+
+func _on_spinning_anim_animation_finished(_spinning):
 	#reseta o timer
 	shootTimer.start()
 

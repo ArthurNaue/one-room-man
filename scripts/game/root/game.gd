@@ -7,7 +7,7 @@ class_name Game
 @export var coinScene: PackedScene
 @export var coins: int
 @onready var hudRounds = $hudRounds
-var rounds: int
+var rounds= 7
 var entitiesAlive: int
 
 func _ready():
@@ -15,7 +15,7 @@ func _ready():
 	spawnWeaponPickup(Weapons.pistol, Weapons.pistolImg, Vector2(150, 150), false)
 
 func _process(_delta):
-	#atualiza o frame do hud de rounds
+	#atualiza o frame do hud de rounds 
 	hudRounds.frame = rounds
 	#verifica se o player clicou ESQ
 	if Input.is_action_just_pressed("esq"):

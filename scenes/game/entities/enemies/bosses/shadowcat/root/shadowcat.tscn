@@ -143,7 +143,7 @@ initialState = NodePath("follow")
 
 [node name="follow" type="Node" parent="stateMachine" node_paths=PackedStringArray("stateTimer")]
 script = ExtResource("4_hfyi8")
-moveSpeed = 85
+moveSpeed = 70
 stateTimer = NodePath("../stateTimer")
 
 [node name="handAttack" type="Node" parent="stateMachine" node_paths=PackedStringArray("stateTimer")]
