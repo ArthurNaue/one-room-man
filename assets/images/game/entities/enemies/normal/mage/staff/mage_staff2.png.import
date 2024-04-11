@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvsg5achbh3x7"
-path="res://.godot/imported/mage_staff.png-0a45069a5e5ba72afb7ab3f6a472bfba.ctex"
+uid="uid://cm2il2da5i4fp"
+path="res://.godot/imported/mage_staff2.png-f27b341606f53ec59e4b5d244ea4e62d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/game/entities/enemies/normal/mage/staff/mage_staff.png"
-dest_files=["res://.godot/imported/mage_staff.png-0a45069a5e5ba72afb7ab3f6a472bfba.ctex"]
+source_file="res://assets/images/game/entities/enemies/normal/mage/staff/mage_staff2.png"
+dest_files=["res://.godot/imported/mage_staff2.png-f27b341606f53ec59e4b5d244ea4e62d.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://yd75o3dv3oel"]
+[gd_scene load_steps=19 format=3 uid="uid://yd75o3dv3oel"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/normal/mage/root/mage.gd" id="1_5w5iv"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_wwimk"]
@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="6_0rncu"]
 [ext_resource type="Texture2D" uid="uid://b1pnofes0ssuo" path="res://assets/images/game/entities/enemies/normal/mage/idle/mage_idle.png" id="7_ptwfv"]
 [ext_resource type="Shader" uid="uid://jig5yuqtndky" path="res://assets/shaders/hitFlash/shader/hitFlash.tres" id="8_6i507"]
-[ext_resource type="Texture2D" uid="uid://cvsg5achbh3x7" path="res://assets/images/game/entities/enemies/normal/mage/staff/mage_staff.png" id="10_afy0f"]
-[ext_resource type="Script" path="res://scripts/game/entities/enemies/normal/mage/staff/mage_staff.gd" id="11_h456c"]
+[ext_resource type="Texture2D" uid="uid://cm2il2da5i4fp" path="res://assets/images/game/entities/enemies/normal/mage/staff/mage_staff2.png" id="10_qklgg"]
+[ext_resource type="Texture2D" uid="uid://cs81x5hqdcjn" path="res://assets/images/game/entities/enemies/normal/mage/staff/mage_staff1.png" id="11_lgqws"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqq86"]
 radius = 8.0
@@ -70,6 +70,23 @@ _data = {
 "hitAnim": SubResource("Animation_o1xry")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_2p8q1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_lgqws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qklgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lgqws")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
 [node name="mage" type="CharacterBody2D" groups=["enemy"]]
 texture_filter = 1
 collision_layer = 4
@@ -116,10 +133,10 @@ libraries = {
 "": SubResource("AnimationLibrary_8qocf")
 }
 
-[node name="staff" type="Sprite2D" parent="."]
+[node name="staff" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, 1)
-texture = ExtResource("10_afy0f")
-script = ExtResource("11_h456c")
+sprite_frames = SubResource("SpriteFrames_2p8q1")
+animation = &"shoot"
 
 [node name="shootTimer" type="Timer" parent="."]
 wait_time = 3.0
