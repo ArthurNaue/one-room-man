@@ -19,7 +19,7 @@ func Heal(amount: int):
 	#aumenta a vida no valor desejado
 	health += amount
 	#atualiza a barra de vida
-	healthBar.value = health
+	updateHealthBar()
 
 #funcao de tomar dano
 func Damage(attack: Attack):
@@ -27,8 +27,8 @@ func Damage(attack: Attack):
 	playDamageSound(damageSoundScene)
 	#diminui a vida com base no dano sofrido
 	health -= attack.attackDamage
-	#diminui a barra de vida
-	healthBar.value = health
+	#atualiza a barra de vida
+	updateHealthBar()
 
 	#verifica se a vida chegou a 0
 	if health <= 0:
@@ -60,3 +60,8 @@ func playDamageSound(soundScene: PackedScene):
 	var damageSound = soundScene.instantiate() as AudioStreamPlayer2D
 	#spawna o objeto de som de dano
 	game.add_child(damageSound)
+
+#funcao de atualizar a barra de vida
+func updateHealthBar():
+	#atualiza a barra de vida
+	healthBar.value = health
