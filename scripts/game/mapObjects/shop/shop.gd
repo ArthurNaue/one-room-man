@@ -11,6 +11,7 @@ var price: int
 var weaponNumber: int
 var weaponScene : PackedScene
 var weaponImg : Texture
+var pickupPos = Vector2(150, 50)
 
 func _ready():
 	rerollPrice()
@@ -23,11 +24,11 @@ func _process(_delta):
 				buyAudio.play()
 				match weaponNumber:
 					1,2,3,4:
-						game.spawnWeaponPickup(weaponScene, weaponImg, Vector2(150, 50), false)
+						game.spawnWeaponPickup(weaponScene, weaponImg, pickupPos, false)
 					5:
-						game.spawnPotionPickup(Vector2(150, 50), "health")
+						game.spawnPotionPickup(pickupPos, "health")
 					6:
-						game.spawnPotionPickup(Vector2(150, 50), "maxHealth")
+						game.spawnPotionPickup(pickupPos, "maxHealth")
 				rerollPrice()
 
 func _on_hitbox_area_entered(area):

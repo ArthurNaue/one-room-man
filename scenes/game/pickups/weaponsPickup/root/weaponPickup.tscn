@@ -62,13 +62,12 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_x53mp")
 
 [node name="pickupText" type="Label" parent="."]
-visible = false
 texture_filter = 1
 offset_left = -3.0
 offset_top = -22.0
 offset_right = 37.0
 offset_bottom = 1.0
-scale = Vector2(0.647332, 0.493623)
+scale = Vector2(0.5, 0.5)
 text = "E"
 
 [connection signal="area_entered" from="areaCol" to="." method="_on_area_col_area_entered"]

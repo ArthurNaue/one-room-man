@@ -45,10 +45,10 @@ size = Vector2(12, 15)
 
 [node name="healthPotion" type="StaticBody2D"]
 texture_filter = 1
-scale = Vector2(0.8, 0.8)
 script = ExtResource("1_17oaf")
 
 [node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_fq8nq")
 
 [node name="anim" type="AnimationPlayer" parent="."]
@@ -65,13 +65,12 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_x53mp")
 
 [node name="pickupText" type="Label" parent="."]
-visible = false
 texture_filter = 1
-offset_left = -3.0
-offset_top = -22.0
-offset_right = 37.0
-offset_bottom = 1.0
-scale = Vector2(0.647332, 0.493623)
+offset_left = -2.0
+offset_top = -20.0
+offset_right = 38.0
+offset_bottom = 3.0
+scale = Vector2(0.5, 0.5)
 text = "E"
 
 [connection signal="area_entered" from="areaCol" to="." method="_on_area_col_area_entered"]
