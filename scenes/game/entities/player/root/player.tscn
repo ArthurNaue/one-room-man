@@ -219,9 +219,9 @@ position = Vector2(0, -23)
 [node name="healthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("18_4lf64")]
 z_index = -2
 offset_left = -16.0
-offset_top = 15.0
+offset_top = 12.0
 offset_right = 16.0
-offset_bottom = 18.0
+offset_bottom = 15.0
 value = 0.0
 health = NodePath("../health")
 

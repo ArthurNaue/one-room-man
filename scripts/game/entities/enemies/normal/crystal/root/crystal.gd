@@ -4,6 +4,7 @@ class_name Crystal
 #variaveis
 @onready var spinningAnim = $spinningAnim
 @onready var shootTimer = $shootTimer
+
 var x: float
 var y: float
 

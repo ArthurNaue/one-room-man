@@ -3,6 +3,7 @@ class_name Mage
 
 #variaveis
 @export var speed: int
+
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var staff = $staff
 
