@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://ccfqa7gl05jnd"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/player/root/player.gd" id="1_twwux"]
-[ext_resource type="PackedScene" uid="uid://bva7lrsw2bkx3" path="res://scenes/game/pickups/weaponsPickup/weaponPickup.tscn" id="2_j7m8h"]
+[ext_resource type="PackedScene" uid="uid://bva7lrsw2bkx3" path="res://scenes/game/pickups/weaponsPickup/root/weaponPickup.tscn" id="2_j7m8h"]
 [ext_resource type="Shader" uid="uid://jig5yuqtndky" path="res://assets/shaders/hitFlash/shader/hitFlash.tres" id="3_lmcxo"]
 [ext_resource type="Texture2D" uid="uid://bt05wdkf1y0to" path="res://assets/images/game/entities/player/root/idle/player_idle1.png" id="4_jw0ts"]
 [ext_resource type="Texture2D" uid="uid://cfvy6phk117xq" path="res://assets/images/game/entities/player/root/idle/player_idle2.png" id="5_ll8wk"]

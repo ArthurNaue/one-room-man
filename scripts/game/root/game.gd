@@ -3,9 +3,8 @@ class_name Game
 
 #variaveis
 @export var weaponPickupScene: PackedScene
-@export var potionPickupScene: PackedScene
 @export var coinScene: PackedScene
-@export var coins: int
+@export var coins=50
 
 @onready var hudRounds = $hudRounds
 
@@ -48,9 +47,16 @@ func spawnWeaponPickup(choosenWeaponPickupScene: PackedScene, image: Texture, de
 	add_child(weaponPickup)
 
 #funcao de spawnar uma pocao no chao
-func spawnPotionPickup(desiredPosition: Vector2):
-	#faz o objeto da pocao
-	var potionPickup = potionPickupScene.instantiate() as StaticBody2D
+func spawnPotionPickup(desiredPosition: Vector2, type: String):
+	#cria o objeto de pocao
+	var potionPickup
+	#verifica o tipo da pocao
+	if type == "health":
+		#muda o tipo do objeto de pocao
+		potionPickup = Potions.healthPotion.instantiate() as StaticBody2D
+	elif type == "maxHealth":
+		#muda o tipo do objeto de pocao
+		potionPickup = Potions.maxHealthPotion.instantiate() as StaticBody2D
 	#define a posicao do objeto da pocao
 	potionPickup.global_position = desiredPosition
 	#spawna o objeto da pocao

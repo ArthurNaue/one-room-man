@@ -1,10 +1,12 @@
 extends StaticBody2D
 class_name Shop
 
+#variaveis
 @onready var interactText = $interactText
 @onready var priceText = $priceText
 @onready var game = get_tree().get_first_node_in_group("game")
 @onready var buyAudio = $buyAudio
+
 var price: int
 var weaponNumber: int
 var weaponScene : PackedScene
@@ -23,7 +25,9 @@ func _process(_delta):
 					1,2,3,4:
 						game.spawnWeaponPickup(weaponScene, weaponImg, Vector2(150, 50), false)
 					5:
-						game.spawnPotionPickup(Vector2(150, 50))
+						game.spawnPotionPickup(Vector2(150, 50), "health")
+					6:
+						game.spawnPotionPickup(Vector2(150, 50), "maxHealth")
 				rerollPrice()
 
 func _on_hitbox_area_entered(area):
@@ -37,7 +41,7 @@ func _on_hitbox_area_exited(_area):
 
 func rerollPrice():
 	price = randi_range(5, 10)
-	weaponNumber = randi_range(1, 5)
+	weaponNumber = randi_range(1, 6)
 	match weaponNumber:
 		1:
 			weaponScene = Weapons.dagger

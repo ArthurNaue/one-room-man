@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d2an3dnjeur2i"]
 
-[ext_resource type="Script" path="res://scripts/game/pickups/potionPickup/potionPickup.gd" id="1_nh0aq"]
-[ext_resource type="Texture2D" uid="uid://bm5lcmi4dua7h" path="res://assets/images/game/potions/potion1.png" id="2_ysfsn"]
+[ext_resource type="Script" path="res://scripts/game/potions/health/healthPotion.gd" id="1_17oaf"]
+[ext_resource type="Texture2D" uid="uid://bm5lcmi4dua7h" path="res://assets/images/game/potions/health/healthPotion.png" id="2_fq8nq"]
 
 [sub_resource type="Animation" id="Animation_dsj67"]
 length = 0.001
@@ -43,13 +43,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x53mp"]
 size = Vector2(12, 15)
 
-[node name="potionPickup" type="StaticBody2D"]
+[node name="healthPotion" type="StaticBody2D"]
 texture_filter = 1
 scale = Vector2(0.8, 0.8)
-script = ExtResource("1_nh0aq")
+script = ExtResource("1_17oaf")
 
 [node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_ysfsn")
+texture = ExtResource("2_fq8nq")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {

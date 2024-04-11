@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqda1omimpbxv"]
+
+[ext_resource type="Script" path="res://scripts/game/potions/maxHealth/maxHealthPotion.gd" id="1_a56hl"]
+[ext_resource type="Texture2D" uid="uid://cqodd3dqwyqbb" path="res://assets/images/game/potions/maxHealth/maxHealthPotion.png" id="2_dqbqm"]
+
+[sub_resource type="Animation" id="Animation_dsj67"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sv7mq"]
+resource_name = "pickup"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pg0nb"]
+_data = {
+"RESET": SubResource("Animation_dsj67"),
+"pickup": SubResource("Animation_sv7mq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x53mp"]
+size = Vector2(12, 15)
+
+[node name="maxHealthPotion" type="StaticBody2D"]
+texture_filter = 1
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_a56hl")
+
+[node name="sprite" type="Sprite2D" parent="."]
+rotation = 0.000688132
+texture = ExtResource("2_dqbqm")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pg0nb")
+}
+
+[node name="areaCol" type="Area2D" parent="." groups=["potionPikcup"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="col" type="CollisionShape2D" parent="areaCol"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_x53mp")
+
+[node name="pickupText" type="Label" parent="."]
+visible = false
+texture_filter = 1
+offset_left = -3.0
+offset_top = -22.0
+offset_right = 37.0
+offset_bottom = 1.0
+scale = Vector2(0.647332, 0.493623)
+text = "E"
+
+[connection signal="area_entered" from="areaCol" to="." method="_on_area_col_area_entered"]
+[connection signal="area_exited" from="areaCol" to="." method="_on_area_col_area_exited"]

@@ -1,6 +1,7 @@
 extends StaticBody2D
-class_name PotionPickup
+class_name HealthPotion
 
+#variaveis
 @onready var playerHealth = get_tree().get_first_node_in_group("player").get_node("health")
 @onready var pickupTextNode = $pickupText
 @onready var anim = $anim

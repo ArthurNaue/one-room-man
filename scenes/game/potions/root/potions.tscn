@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cujwhibmopmfs"]
+
+[ext_resource type="Script" path="res://scripts/game/potions/root/potions.gd" id="1_mchr0"]
+[ext_resource type="PackedScene" uid="uid://d2an3dnjeur2i" path="res://scenes/game/potions/health/healthPotion.tscn" id="2_1y6ly"]
+[ext_resource type="PackedScene" uid="uid://dqda1omimpbxv" path="res://scenes/game/potions/maxHealth/maxHealthPotion.tscn" id="3_4368x"]
+
+[node name="potions" type="Node2D"]
+script = ExtResource("1_mchr0")
+healthPotion = ExtResource("2_1y6ly")
+maxHealthPotion = ExtResource("3_4368x")

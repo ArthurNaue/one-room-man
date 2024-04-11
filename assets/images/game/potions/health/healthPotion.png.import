@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bm5lcmi4dua7h"
-path="res://.godot/imported/potion1.png-0c1ac176dcc154f0b4ab5ac8b9596cc0.ctex"
+path="res://.godot/imported/healthPotion.png-1bc05cac08dccfda7b77de3a0bad69f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/game/potions/potion1.png"
-dest_files=["res://.godot/imported/potion1.png-0c1ac176dcc154f0b4ab5ac8b9596cc0.ctex"]
+source_file="res://assets/images/game/potions/health/healthPotion.png"
+dest_files=["res://.godot/imported/healthPotion.png-1bc05cac08dccfda7b77de3a0bad69f2.ctex"]
 
 [params]
 
