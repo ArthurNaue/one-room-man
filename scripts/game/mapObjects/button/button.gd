@@ -36,10 +36,8 @@ func _process(_delta):
 func _on_hitbox_area_entered(area):
 	#verfica se a colisao ocorreu com um player
 	if area.is_in_group("player"):
-		#verifica se o cooldown acabou
-		if oncooldown == false:
-			#faz o texto de interagir ficar com a visibilidade ativa
-			interactText.visible = true
+		#faz o texto de interagir ficar com a visibilidade ativa
+		interactText.visible = true
 
 #verifica se alguma area saiu da hitbox
 func _on_hitbox_area_exited(area):
@@ -52,8 +50,6 @@ func _on_hitbox_area_exited(area):
 func buttonPressed():
 	#verifica se o cooldown acabou
 	if oncooldown == false:
-		#desabilita a visibilidade do texto de interagir
-		interactText.visible = false
 		#ativa o cooldown do botao
 		oncooldown = true
 		#toca a animacao do botao
