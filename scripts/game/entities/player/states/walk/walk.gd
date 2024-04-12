@@ -2,13 +2,14 @@ extends State
 class_name PlayerWalkState
 
 #variaveis
-@export var speed: float
-
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var sprite = get_tree().get_first_node_in_group("player").get_node("sprite")
+@onready var speed =  player.speed
+@onready var sprite = player.get_node("sprite")
+@onready var inputVector = player.inputVector
 
-#faz um Vector2 zerado
-var inputVector = Vector2.ZERO
+func Enter():
+	#ajusta a velocidade do player
+	speed = 100
 
 func Physics_Update(_delta):
 	#adiciona a direcao do player ao Vector2
@@ -34,3 +35,10 @@ func Physics_Update(_delta):
 		sprite.flip_h = false
 	elif Input.is_action_just_pressed("A"):
 		sprite.flip_h = true
+	
+	#verifica se o player clicou espaco
+	if Input.is_action_just_pressed("space"):
+		#define a direcao do roll
+		player.rollDirection = inputVector
+		#muda o estado para o de roll
+		Transitioned.emit(self, "roll")

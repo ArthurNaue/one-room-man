@@ -12,6 +12,10 @@ class_name Player
 @onready var currentWeaponImage: Texture
 @onready var game = get_tree().get_first_node_in_group("game")
 
+#faz a variavel de velocidade do player
+var speed: float
+#faz um Vector2 zerado
+var inputVector = Vector2.ZERO
 #faz a variavel que decide a arma do pickup
 var weaponPickupScene: PackedScene
 #faz a variavel de cooldown da arma
@@ -20,6 +24,8 @@ var weaponCooldown: float
 var leftHand = true
 #faz a variavel que verifica se a arma ta com o upgrade ativo
 var weaponUpgraded: bool
+#faz a variavel que controla a direcao do roll
+var rollDirection: Vector2
 
 func _process(delta: float):
 	weaponCooldown -= delta

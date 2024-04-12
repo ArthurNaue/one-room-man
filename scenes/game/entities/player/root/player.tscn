@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ccfqa7gl05jnd"]
+[gd_scene load_steps=41 format=3 uid="uid://ccfqa7gl05jnd"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/player/root/player.gd" id="1_twwux"]
 [ext_resource type="Shader" uid="uid://jig5yuqtndky" path="res://assets/shaders/hitFlash/shader/hitFlash.tres" id="3_lmcxo"]
@@ -29,7 +29,8 @@
 [ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="29_7tv17"]
 [ext_resource type="Texture2D" uid="uid://b63cd6ge0teu3" path="res://assets/images/game/entities/player/weapons/hands/rightHandAttack/rightHandAttack5.png" id="29_v4osl"]
 [ext_resource type="Texture2D" uid="uid://nlemlqh5v4ql" path="res://assets/images/game/entities/player/weapons/hands/rightHandAttack/rightHandAttack6.png" id="30_2kwc5"]
-[ext_resource type="Script" path="res://assets/images/game/entities/player/states/walk/walk.gd" id="30_7pgqx"]
+[ext_resource type="Script" path="res://scripts/game/entities/player/states/walk/walk.gd" id="30_4ufts"]
+[ext_resource type="Script" path="res://scripts/game/entities/player/states/roll/roll.gd" id="31_44nid"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkxgk"]
 size = Vector2(6, 15)
@@ -247,9 +248,15 @@ script = ExtResource("29_7tv17")
 initialState = NodePath("walk")
 
 [node name="walk" type="Node" parent="stateMachine"]
-script = ExtResource("30_7pgqx")
-speed = 100.0
+script = ExtResource("30_4ufts")
+
+[node name="roll" type="Node" parent="stateMachine"]
+script = ExtResource("31_44nid")
+
+[node name="rollTimer" type="Timer" parent="stateMachine/roll"]
+wait_time = 0.1
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="animation_finished" from="weapons/hands" to="." method="_on_hands_animation_finished"]
 [connection signal="area_entered" from="weapons/hands/handsHitbox" to="." method="_on_hands_hitbox_area_entered"]
+[connection signal="timeout" from="stateMachine/roll/rollTimer" to="stateMachine/roll" method="_on_roll_timer_timeout"]
