@@ -6,12 +6,28 @@ class_name PlayerWalkState
 @onready var speed =  player.speed
 @onready var sprite = player.get_node("sprite")
 @onready var inputVector = player.inputVector
+@onready var rollCooldown = 2
+@onready var rollCooldownBar = player.get_node("rollCooldownBar")
 
 func Enter():
+	#ajusta o cooldown
+	rollCooldown = 2
+	#faz a barra de cooldown do roll ficar visivel
+	rollCooldownBar.visible = true
 	#ajusta a velocidade do player
 	speed = 100
 
 func Physics_Update(_delta):
+	#ajusta a barra de cooldown do roll
+	rollCooldownBar.value = rollCooldown
+	#diminui o cooldown do roll
+	rollCooldown -= _delta
+	
+	#verifica se o cooldown do roll acabou
+	if rollCooldown <= 0:
+		#faz a barra de cooldown do roll ficar invisivel
+		rollCooldownBar.visible = false
+
 	#adiciona a direcao do player ao Vector2
 	inputVector.x = Input.get_action_strength("D") - Input.get_action_strength("A")
 	inputVector.y = Input.get_action_strength("S") - Input.get_action_strength("W")
@@ -38,7 +54,9 @@ func Physics_Update(_delta):
 	
 	#verifica se o player clicou espaco
 	if Input.is_action_just_pressed("space"):
-		#define a direcao do roll
-		player.rollDirection = inputVector
-		#muda o estado para o de roll
-		Transitioned.emit(self, "roll")
+		#verifica se o cooldown do roll acabou
+		if rollCooldown <= 0:
+			#define a direcao do roll
+			player.rollDirection = inputVector
+			#muda o estado para o de roll
+			Transitioned.emit(self, "roll")
