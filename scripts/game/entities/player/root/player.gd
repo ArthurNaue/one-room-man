@@ -2,10 +2,6 @@ extends CharacterBody2D
 class_name Player
 
 #variaveis
-@export var speed: float
-@export var weaponCooldown: float
-@export var weaponPickupScene: PackedScene
-
 @onready var sprite = $sprite
 @onready var weaponsNode = $weapons
 @onready var hands = $weapons/hands
@@ -16,8 +12,10 @@ class_name Player
 @onready var currentWeaponImage: Texture
 @onready var game = get_tree().get_first_node_in_group("game")
 
-#faz um Vector2 zerado
-var inputVector = Vector2.ZERO
+#faz a variavel que decide a arma do pickup
+var weaponPickupScene: PackedScene
+#faz a variavel de cooldown da arma
+var weaponCooldown: float
 #faz a variavel que controla o lado da mao
 var leftHand = true
 #faz a variavel que verifica se a arma ta com o upgrade ativo
@@ -66,30 +64,6 @@ func _process(delta: float):
 	sprite.play()
 
 func _physics_process(_delta):
-	#adiciona a direcao do player ao Vector2
-	inputVector.x = Input.get_action_strength("D") - Input.get_action_strength("A")
-	inputVector.y = Input.get_action_strength("S") - Input.get_action_strength("W")
-	#estabiliza os numeros do Vector2
-	inputVector = inputVector.normalized()
-	
-	#verifica se tem alguma direcao para ir
-	if inputVector:
-		#altera a velocidade do player baseado na direcao 
-		velocity = inputVector * speed
-		#muda a animacao para a de andar
-		sprite.animation = "walk"
-	else:
-		#faz o player parar de andar
-		velocity = Vector2.ZERO
-		#muda a animacao para a de parado
-		sprite.animation = "idle"
-
-	#muda a direcao da sprite com base na direcao do player
-	if Input.is_action_just_pressed("D"):
-		sprite.flip_h = false
-	elif Input.is_action_just_pressed("A"):
-		sprite.flip_h = true
-	
 	move_and_slide()
 
 #funcao de spawnar a arma
