@@ -12,6 +12,7 @@ func _ready():
 func _physics_process(_delta):
 	#aplica movimento na bala
 	velocity = direction * speed
+	
 	move_and_slide()
 
 #funcao que verifica se o objeto colidiu

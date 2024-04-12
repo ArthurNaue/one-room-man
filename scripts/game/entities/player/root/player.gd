@@ -1,9 +1,11 @@
 extends CharacterBody2D
 class_name Player
 
+#variaveis
 @export var speed: float
 @export var weaponCooldown: float
 @export var weaponPickupScene: PackedScene
+
 @onready var sprite = $sprite
 @onready var weaponsNode = $weapons
 @onready var hands = $weapons/hands
@@ -12,6 +14,8 @@ class_name Player
 @onready var currentWeapon: Node2D
 @onready var currentWeaponScene: PackedScene
 @onready var currentWeaponImage: Texture
+@onready var game = get_tree().get_first_node_in_group("game")
+
 #faz um Vector2 zerado
 var inputVector = Vector2.ZERO
 #faz a variavel que controla o lado da mao
@@ -23,6 +27,15 @@ func _process(delta: float):
 	weaponCooldown -= delta
 	if weaponCooldown < 0:
 		weaponCooldown = 0
+	
+	#verifica se o player clicou Q
+	if Input.is_action_just_pressed("Q"):
+		#verifica se o player tem alguma arma
+		if currentWeapon != null:
+			#spawna o objeto de pickup da arma
+			game.spawnWeaponPickup(currentWeaponScene, currentWeaponImage, global_position, weaponUpgraded)
+			#deleta a arma da mao do player
+			currentWeapon.queue_free()
 	
 	#verifica se o player ta sem arma
 	if currentWeapon == null:
@@ -83,7 +96,8 @@ func _physics_process(_delta):
 func spawnWeapon(weaponScene: PackedScene, weaponImage: Texture, upgraded: bool):
 	#verifica se o player ja tem uma arma
 	if currentWeapon != null:
-		spawnWeaponPickup()
+		#spawna o objeto de pickup da arma
+		game.spawnWeaponPickup(currentWeaponScene, currentWeaponImage, global_position, weaponUpgraded)
 		#deleta a arma
 		currentWeapon.queue_free()
 	#spawna a arma
@@ -95,18 +109,6 @@ func spawnWeapon(weaponScene: PackedScene, weaponImage: Texture, upgraded: bool)
 	currentWeapon.upgraded = upgraded
 	#ajusta o preco da loja de compra de armas
 	weaponBuyer.rerollSellPrice()
-
-#funcao de spawnar o objeto de pickup da arma
-func spawnWeaponPickup():
-	#faz o objeto de pickup 
-	var weaponPickup = weaponPickupScene.instantiate() as StaticBody2D
-	#define os parametros do objeto de pickup
-	weaponPickup.weaponScene = currentWeaponScene
-	weaponPickup.image = currentWeaponImage
-	weaponPickup.global_position = global_position
-	weaponPickup.upgraded = weaponUpgraded
-	#spawna o objeto de pickup
-	get_parent().add_child(weaponPickup)
 
 func _on_hands_animation_finished():
 	#reseta o cooldown
