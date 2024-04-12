@@ -26,8 +26,10 @@ func _process(_delta):
 	if interactText.visible == true:
 		#verifica se o jogador clicou E
 		if Input.is_action_just_pressed("E"):
-			#toca a animacao de escolha do shop
-			anim.play("optionsStart")
+			#veririca se as moedas sao maior que o preco
+			if game.coins >= price:
+				#toca a animacao de escolha do shop
+				anim.play("optionsStart")
 
 	#verifica se o texto de interacao da arma esta visivel
 	if weaponInteractText.visible == true:
