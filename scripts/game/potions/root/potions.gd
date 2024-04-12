@@ -2,5 +2,5 @@ extends Node2D
 class_name PotionsNode
 
 #pocoes
-@export var healthPotion: PackedScene
-@export var maxHealthPotion: PackedScene
+@export var health: PackedScene
+@export var maxHealth: PackedScene

@@ -1,31 +1,363 @@
-[gd_scene load_steps=7 format=3 uid="uid://1fvj2efha2hp"]
+[gd_scene load_steps=14 format=3 uid="uid://1fvj2efha2hp"]
 
 [ext_resource type="Texture2D" uid="uid://dy65me3cbrjdj" path="res://assets/images/game/mapOjects/shop/shop.png" id="1_5p61t"]
 [ext_resource type="Script" path="res://scripts/game/mapObjects/shop/shop.gd" id="1_dadve"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="3_3xpkk"]
 [ext_resource type="AudioStream" uid="uid://hevj8o5cns3j" path="res://assets/audio/game/shop/buy.wav" id="4_0lhgy"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2hv7f"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_5p61t")
-}],
-"loop": true,
-"name": &"shop",
-"speed": 5.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xeoj"]
 size = Vector2(32, 4.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qejn4"]
+size = Vector2(89, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qgs1"]
+size = Vector2(72.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e47ju"]
+size = Vector2(65, 17.5)
+
+[sub_resource type="Animation" id="Animation_nxawq"]
+resource_name = "optionsEnd"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weaponText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-62, 12), Vector2(-34, -13)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("potionText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-6, 12), Vector2(-32, -13)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("potionText:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weaponText:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weaponText/weaponArea/col:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("potionText/potionArea/col:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("choicesHitbox/col:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_t6075"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weaponText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-30, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("potionText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("potionText:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weaponText:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weaponText/weaponArea/col:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("potionText/potionArea/col:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("choicesHitbox/col:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1nrgu"]
+resource_name = "optionsStart"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("potionText:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weaponText:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weaponText:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-34, -13), Vector2(-62, 12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("potionText:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-32, -13), Vector2(-6, 12)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("potionText/potionArea/col:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weaponText/weaponArea/col:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("choicesHitbox/col:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8sfwd"]
+resource_name = "options"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("potionText:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weaponText:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weaponText/weaponArea/col:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("potionText/potionArea/col:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("choicesHitbox/col:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pshsw"]
+_data = {
+"RESET": SubResource("Animation_t6075"),
+"options": SubResource("Animation_8sfwd"),
+"optionsEnd": SubResource("Animation_nxawq"),
+"optionsStart": SubResource("Animation_1nrgu")
+}
 
 [node name="shop" type="StaticBody2D"]
 texture_filter = 1
 script = ExtResource("1_dadve")
 
-[node name="sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_2hv7f")
-animation = &"shop"
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_5p61t")
 
 [node name="interactText" type="Label" parent="."]
 visible = false
@@ -45,6 +377,24 @@ offset_bottom = 17.0
 scale = Vector2(0.5, 0.5)
 text = "$10"
 
+[node name="weaponInteractText" type="Label" parent="."]
+visible = false
+offset_left = -30.0
+offset_top = 32.0
+offset_right = -21.0
+offset_bottom = 55.0
+scale = Vector2(0.4, 0.4)
+text = "E"
+
+[node name="potionInteractText" type="Label" parent="."]
+visible = false
+offset_left = 26.0
+offset_top = 32.0
+offset_right = 35.0
+offset_bottom = 55.0
+scale = Vector2(0.4, 0.4)
+text = "E"
+
 [node name="hitbox" type="Area2D" parent="."]
 collision_mask = 2
 script = ExtResource("3_3xpkk")
@@ -53,8 +403,61 @@ script = ExtResource("3_3xpkk")
 position = Vector2(0, 14.25)
 shape = SubResource("RectangleShape2D_2xeoj")
 
+[node name="choicesHitbox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="col" type="CollisionShape2D" parent="choicesHitbox"]
+position = Vector2(-1.5, 30.5)
+shape = SubResource("RectangleShape2D_qejn4")
+
 [node name="buyAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_0lhgy")
 
+[node name="weaponText" type="Label" parent="."]
+texture_filter = 1
+offset_left = -30.0
+offset_top = 20.0
+offset_right = 40.0
+offset_bottom = 43.0
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(35, 12.5)
+text = "WEAPON"
+
+[node name="weaponArea" type="Area2D" parent="weaponText"]
+collision_mask = 2
+
+[node name="col" type="CollisionShape2D" parent="weaponText/weaponArea"]
+position = Vector2(33.75, 11.25)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_7qgs1")
+
+[node name="potionText" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 78.0
+offset_bottom = 43.0
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(32.5, 12.8125)
+text = "POTION"
+
+[node name="potionArea" type="Area2D" parent="potionText"]
+collision_mask = 2
+
+[node name="col" type="CollisionShape2D" parent="potionText/potionArea"]
+position = Vector2(31.25, 12.0312)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_e47ju")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pshsw")
+}
+autoplay = "options"
+
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]
+[connection signal="area_exited" from="choicesHitbox" to="." method="_on_choices_hitbox_area_exited"]
+[connection signal="area_entered" from="weaponText/weaponArea" to="." method="_on_weapon_area_area_entered"]
+[connection signal="area_exited" from="weaponText/weaponArea" to="." method="_on_weapon_area_area_exited"]
+[connection signal="area_entered" from="potionText/potionArea" to="." method="_on_potion_area_area_entered"]
+[connection signal="area_exited" from="potionText/potionArea" to="." method="_on_potion_area_area_exited"]

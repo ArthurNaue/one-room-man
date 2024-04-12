@@ -66,6 +66,7 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_x53mp")
 
 [node name="pickupText" type="Label" parent="."]
+visible = false
 texture_filter = 1
 offset_left = -2.0
 offset_top = -20.0

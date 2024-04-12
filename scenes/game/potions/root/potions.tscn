@@ -6,5 +6,5 @@
 
 [node name="potions" type="Node2D"]
 script = ExtResource("1_mchr0")
-healthPotion = ExtResource("2_1y6ly")
-maxHealthPotion = ExtResource("3_4368x")
+health = ExtResource("2_1y6ly")
+maxHealth = ExtResource("3_4368x")

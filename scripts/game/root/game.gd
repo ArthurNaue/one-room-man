@@ -47,16 +47,9 @@ func spawnWeaponPickup(choosenWeaponPickupScene: PackedScene, image: Texture, de
 	add_child(weaponPickup)
 
 #funcao de spawnar uma pocao no chao
-func spawnPotionPickup(desiredPosition: Vector2, type: String):
+func spawnPotionPickup(desiredPosition: Vector2, type: PackedScene):
 	#cria o objeto de pocao
-	var potionPickup
-	#verifica o tipo da pocao
-	if type == "health":
-		#muda o tipo do objeto de pocao
-		potionPickup = Potions.healthPotion.instantiate() as StaticBody2D
-	elif type == "maxHealth":
-		#muda o tipo do objeto de pocao
-		potionPickup = Potions.maxHealthPotion.instantiate() as StaticBody2D
+	var potionPickup = type.instantiate() as StaticBody2D
 	#define a posicao do objeto da pocao
 	potionPickup.global_position = desiredPosition
 	#spawna o objeto da pocao
