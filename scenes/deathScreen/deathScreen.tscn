@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cdo5k2wdae4yo"]
+
+[node name="deathScreen" type="Node2D"]
+
+[node name="deathText" type="Label" parent="."]
+offset_left = 242.0
+offset_top = 308.0
+offset_right = 384.0
+offset_bottom = 357.0
+pivot_offset = Vector2(73, 24)
+theme_override_colors/font_color = Color(0.941176, 0.964706, 0.941176, 1)
+text = "OH NO! YOU DIED
+F5 FOR REPLAY"
+horizontal_alignment = 1
