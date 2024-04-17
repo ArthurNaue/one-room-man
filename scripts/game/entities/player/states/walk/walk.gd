@@ -56,7 +56,9 @@ func Physics_Update(_delta):
 	if Input.is_action_just_pressed("space"):
 		#verifica se o cooldown do roll acabou
 		if rollCooldown <= 0:
-			#define a direcao do roll
-			player.rollDirection = inputVector
-			#muda o estado para o de roll
-			Transitioned.emit(self, "roll")
+			#verifica se o player ta parado
+			if player.velocity != Vector2.ZERO:
+				#define a direcao do roll
+				player.rollDirection = inputVector
+				#muda o estado para o de roll
+				Transitioned.emit(self, "roll")
