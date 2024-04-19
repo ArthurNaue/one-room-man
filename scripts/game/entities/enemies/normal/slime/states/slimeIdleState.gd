@@ -1,9 +1,12 @@
 extends State
 class_name SlimeIdleState
 
+#variaveis
 @export var animation: AnimatedSprite2D
 @export var enemy: CharacterBody2D
+
 @onready var idleTimer = $idleTimer
+@onready var jumpSound = enemy.get_node("jumpSound")
 
 func Enter():
 	#zera a velocidade do inimigo
@@ -22,6 +25,8 @@ func Exit():
 	animation.animation = "jumpGround"
 	#toca a animacao
 	animation.play()
+	#toca o som de pulo
+	jumpSound.play()
 
 func _on_idle_timer_timeout():
 	#muda para o estado de pulo

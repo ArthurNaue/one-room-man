@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bersffu6sd8mk"]
+[gd_scene load_steps=22 format=3 uid="uid://bersffu6sd8mk"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/normal/slime/root/slime.gd" id="1_cfiwa"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_fe6xg"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dpo7e5gsnvpxl" path="res://scenes/game/healthbar/healthbar.tscn" id="5_628kn"]
 [ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="6_ujsl8"]
 [ext_resource type="Shader" uid="uid://jig5yuqtndky" path="res://assets/shaders/hitFlash/shader/hitFlash.tres" id="7_qlrou"]
+[ext_resource type="AudioStream" uid="uid://b4cxrf32blfav" path="res://assets/audio/game/entities/enemies/normal/slime/slimeJump.wav" id="15_6v85k"]
 [ext_resource type="Script" path="res://scripts/game/stateMachine/stateMachine.gd" id="17_jhm7y"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/normal/slime/states/slimeIdleState.gd" id="18_tkxp8"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/normal/slime/states/slimeJumpState.gd" id="19_mob7m"]
@@ -165,6 +166,9 @@ script = ExtResource("19_mob7m")
 speed = 200
 enemy = NodePath("../..")
 animation = NodePath("../../sprite")
+
+[node name="jumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_6v85k")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="stateMachine/idle/idleTimer" to="stateMachine/idle" method="_on_idle_timer_timeout"]
