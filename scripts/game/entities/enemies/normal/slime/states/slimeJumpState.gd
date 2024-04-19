@@ -4,24 +4,27 @@ class_name SlimeJumpState
 @export var speed: int
 @export var enemy: CharacterBody2D
 @export var animation: AnimatedSprite2D
+
 @onready var player = get_tree().get_first_node_in_group("player")
+
 var playerPosition: Vector2
-var enemyPosition: Vector2
+var distance
 
 func Enter():
-	#seta a posicao do player
+	#define a posicao do player
 	playerPosition = player.global_position
-	#define a direcao como a diferenca entre a posicao do player e do inimigo
-	var moveDirection = playerPosition - enemy.global_position
+	#define a distancia entre o inimigo e o player
+	distance = Enemies.getDistance(playerPosition, enemy.global_position)
 	#faz o inimigo andar na direcao
-	enemy.velocity = moveDirection.normalized() * speed
+	Enemies.follow(distance, enemy, speed)
 	#muda a animacao para a de pulo
 	animation.animation = "jumping"
 	#toca a animacao
 	animation.play()
 
 func Physics_Update(_delta):
-	enemyPosition = enemy.global_position
-	var direction = enemy.global_position - playerPosition
-	if direction.length() < 2:
+	#define a distancia entre o inimigo e o player
+	distance = Enemies.getDistance(playerPosition, enemy.global_position)
+	#verifica a distancia
+	if distance.length() < 2:
 		Transitioned.emit(self, "idle")
