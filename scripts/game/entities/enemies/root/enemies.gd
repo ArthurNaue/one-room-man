@@ -16,13 +16,19 @@ class_name EnemiesNode
 @onready var game = get_tree().get_first_node_in_group("game")
 @onready var player = get_tree().get_first_node_in_group("player")
 
-func follow(target: Vector2, enemy: Node2D, moveSpeed: int):
-	#define a direcao como a diferenca entre a posicao do player e do inimigo
-	var direction = target - enemy.global_position
+#funcao de pegar a distancia 
+func getDistance(target: Vector2, enemy: Vector2):
+	#define a distancia
+	var distance = target - enemy
+	#retorna a distancia
+	return distance
 
+#funcao de seguir
+func follow(distance, enemy: Node2D, moveSpeed: int):
 	#faz o inimigo andar na direcao
-	enemy.velocity = direction.normalized() * moveSpeed
+	enemy.velocity = distance.normalized() * moveSpeed
 
+#funcao de atirar
 func shoot(spawnLocation: Vector2, desiredLocation: Vector2, type: String, speed: int):
 	#cria a variavel da cena do tiro
 	var shootScene

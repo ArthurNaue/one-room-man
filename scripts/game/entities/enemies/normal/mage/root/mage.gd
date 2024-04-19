@@ -9,14 +9,15 @@ class_name Mage
 
 func _physics_process(_delta):
 	#cria a variavel de distancia
-	var distance = player.global_position - global_position
+	var distance = Enemies.getDistance(player.global_position, global_position)
+
 	#verifica a distancia entre o inimigo e o destino
 	if distance.length() < 100:
-		#inverte a velocidade aplicada no inimigo
+		#faz o inimigo ficar parado
 		velocity = Vector2.ZERO
 	else:
 		#faz o inimigo ir ate o player
-		velocity = distance * 0.2
+		Enemies.follow(distance, self, speed)
 
 	move_and_slide()
 

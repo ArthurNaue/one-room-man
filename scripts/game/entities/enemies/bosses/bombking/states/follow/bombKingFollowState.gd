@@ -17,11 +17,10 @@ func Enter():
 	enemy.get_node("sprite").play()
 
 func Physics_Update(_delta):
-	#define a direcao como a diferenca entre a posicao do player e do inimigo
-	var direction = player.global_position - enemy.global_position
-
-	#faz o inimigo andar na direcao
-	enemy.velocity = direction.normalized() * moveSpeed
+	#define a distancia entre o inimigo e o player
+	var distance = Enemies.getDistance(player.global_position, enemy.global_position)
+	#faz o inimigo seguir o player
+	Enemies.follow(distance, enemy, moveSpeed)
 
 func _on_state_timer_timeout():
 	#escolhe o proximo estado

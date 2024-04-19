@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://ch188vsguxgha" path="res://assets/images/game/hud/rounds/rounds19.png" id="27_kajve"]
 [ext_resource type="AudioStream" uid="uid://cs2hi2iqdvqum" path="res://assets/audio/game/coin/coinPickupSound.wav" id="29_nqrkw"]
 [ext_resource type="PackedScene" uid="uid://grvfschmesxo" path="res://scenes/game/mapObjects/weaponUpgrader/weaponUpgrader.tscn" id="29_svd33"]
-[ext_resource type="PackedScene" uid="uid://bql38jl280n2v" path="res://scenes/game/entities/enemies/bosses/shadowcat/root/shadowcat.tscn" id="33_q5y2x"]
+[ext_resource type="PackedScene" uid="uid://yd75o3dv3oel" path="res://scenes/game/entities/enemies/normal/mage/root/mage.tscn" id="33_dtdck"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xh7d"]
 animations = [{
@@ -159,5 +159,5 @@ position = Vector2(154, 241)
 [node name="coinPickupSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("29_nqrkw")
 
-[node name="shadowcat" parent="." instance=ExtResource("33_q5y2x")]
-position = Vector2(105, 127)
+[node name="mage" parent="." instance=ExtResource("33_dtdck")]
+position = Vector2(90, 116)
