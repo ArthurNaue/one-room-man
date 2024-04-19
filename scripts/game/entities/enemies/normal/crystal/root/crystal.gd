@@ -4,6 +4,7 @@ class_name Crystal
 #variaveis
 @onready var spinningAnim = $spinningAnim
 @onready var shootTimer = $shootTimer
+@onready var crystalShoot = $crystalShoot
 
 var x: float
 var y: float
@@ -17,6 +18,8 @@ func _on_shoot_timer_timeout():
 	spinningAnim.play("spinning")
 	#espera 0.4 segundos
 	await get_tree().create_timer(0.4).timeout
+	#toca o som de atirar os cristais
+	crystalShoot.play()
 	#atira os cristais
 	shoot_crystal(Vector2((x + 1), y))
 	shoot_crystal(Vector2((x - 1), y))

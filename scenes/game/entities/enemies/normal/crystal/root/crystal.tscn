@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cvhhn2je4h6vj"]
+[gd_scene load_steps=22 format=3 uid="uid://cvhhn2je4h6vj"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_t6uhv"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/normal/crystal/root/crystal.gd" id="1_yacd3"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://btksra2mv38rs" path="res://scenes/game/entities/components/damageIndicatorComponent.tscn" id="6_bvv5u"]
 [ext_resource type="Shader" uid="uid://jig5yuqtndky" path="res://assets/shaders/hitFlash/shader/hitFlash.tres" id="7_fj7py"]
 [ext_resource type="Texture2D" uid="uid://bgol4f6q6m07x" path="res://assets/images/game/entities/enemies/normal/crystal/root/crystal.png" id="7_h5x8u"]
+[ext_resource type="AudioStream" uid="uid://ddio0f6ncnpu3" path="res://assets/audio/game/entities/enemies/normal/crystal/crystalShoot.wav" id="10_7ca6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6m4u"]
 size = Vector2(11, 12)
@@ -242,6 +243,9 @@ shape = SubResource("RectangleShape2D_l6m4u")
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="crystalShoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_7ca6l")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="animation_finished" from="spinningAnim" to="." method="_on_spinning_anim_animation_finished"]
