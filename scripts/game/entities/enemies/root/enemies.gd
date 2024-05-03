@@ -11,6 +11,7 @@ const mid = Vector2(152, 152)
 
 @export var shadowcat: PackedScene
 @export var bombking: PackedScene
+@export var wingedcrystal: PackedScene
 
 @export var bombScene: PackedScene
 @export var bulletScene: PackedScene

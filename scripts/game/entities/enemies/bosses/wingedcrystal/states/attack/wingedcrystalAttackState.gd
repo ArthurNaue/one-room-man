@@ -5,6 +5,7 @@ class_name wingedCrystalAttackState
 @onready var enemy = get_parent().get_parent()
 @onready var enemyHealth = enemy.get_node("health")
 @onready var attackAnim = enemy.get_node("attackAnim")
+@onready var readyForShoot = true
 
 var pos: Vector2
 var bulletPosition: Vector2
@@ -13,10 +14,13 @@ var bulletDirection: Vector2
 func Enter():
 	#atualiza a posicao do inimigo
 	pos = enemy.global_position
-	#ataca
-	attack()
 
 func Update(_delta):
+	if readyForShoot == true:
+		#desativa o ataque
+		readyForShoot = false
+		#ataca
+		attack()
 	#verifica se a vida do inimigo esta na metade
 	if enemyHealth.health <= (enemyHealth.maxHealth * 0.75):
 		Transitioned.emit(self, "secondAttack")
@@ -41,9 +45,8 @@ func attack():
 			bulletPosition = Vector2(pos.x + 8, pos.y + 4)
 			bulletDirection = Vector2((bulletPosition.x + 1), (bulletPosition.y + 1))
 			attackAnim.play("bottomRight")
-
-func _on_attack_anim_animation_finished(_anim_name):
-	attack()
-
-func _on_attack_anim_animation_started(_anim_name):
+	
+	#atira
 	Enemies.shoot(bulletPosition, bulletDirection, "crystalBullet", 80)
+	await get_tree().create_timer(1).timeout
+	readyForShoot = true

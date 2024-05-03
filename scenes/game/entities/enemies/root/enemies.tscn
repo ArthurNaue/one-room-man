@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://0yj50uwiio7u"]
+[gd_scene load_steps=12 format=3 uid="uid://0yj50uwiio7u"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/root/enemies.gd" id="1_ax23a"]
 [ext_resource type="PackedScene" uid="uid://ia5h2t4fo243" path="res://scenes/game/entities/enemies/normal/eye/root/eye.tscn" id="2_db7uh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bguc2vlbjg3jv" path="res://scenes/game/entities/enemies/bosses/bombking/root/bombKing.tscn" id="6_5a68f"]
 [ext_resource type="PackedScene" uid="uid://blkyxc4kquubw" path="res://scenes/game/entities/enemies/bosses/bombking/bombAttack/bomb/bombKingBomb.tscn" id="7_x3my6"]
 [ext_resource type="PackedScene" uid="uid://dux0jt7344boy" path="res://scenes/game/entities/enemies/bullet/enemyBullet.tscn" id="8_e6jj4"]
+[ext_resource type="PackedScene" uid="uid://u5f2vw80oyds" path="res://scenes/game/entities/enemies/bosses/wingedcrystal/wingedcrystal.tscn" id="8_t55sa"]
 [ext_resource type="PackedScene" uid="uid://0l586trvmm8a" path="res://scenes/game/entities/enemies/normal/crystal/bullet/crystalBullet.tscn" id="9_cmx8l"]
 
 [node name="enemies" type="Node2D"]
@@ -19,6 +20,7 @@ mage = ExtResource("5_2en2f")
 crystal = ExtResource("5_2gb7f")
 shadowcat = ExtResource("3_8y2t3")
 bombking = ExtResource("6_5a68f")
+wingedcrystal = ExtResource("8_t55sa")
 bombScene = ExtResource("7_x3my6")
 bulletScene = ExtResource("8_e6jj4")
 crystalScene = ExtResource("9_cmx8l")
