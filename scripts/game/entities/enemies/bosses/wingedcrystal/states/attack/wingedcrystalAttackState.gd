@@ -3,6 +3,7 @@ class_name wingedCrystalAttackState
 
 #variaveis
 @onready var enemy = get_parent().get_parent()
+@onready var enemyHealth = enemy.get_node("health")
 @onready var attackAnim = enemy.get_node("attackAnim")
 
 var pos: Vector2
@@ -14,6 +15,11 @@ func Enter():
 	pos = enemy.global_position
 	#ataca
 	attack()
+
+func Update(_delta):
+	#verifica se a vida do inimigo esta na metade
+	if enemyHealth.health <= (enemyHealth.maxHealth * 0.75):
+		Transitioned.emit(self, "secondAttack")
 
 func attack():
 	#seleciona o braco
