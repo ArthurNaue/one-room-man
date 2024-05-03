@@ -1,6 +1,9 @@
 extends Node2D
 class_name EnemiesNode
 
+#variaveis
+const mid = Vector2(152, 152)
+
 @export var eye: PackedScene
 @export var slime: PackedScene
 @export var mage: PackedScene

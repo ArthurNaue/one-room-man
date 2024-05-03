@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://ch188vsguxgha" path="res://assets/images/game/hud/rounds/rounds19.png" id="27_kajve"]
 [ext_resource type="AudioStream" uid="uid://cs2hi2iqdvqum" path="res://assets/audio/game/coin/coinPickupSound.wav" id="29_nqrkw"]
 [ext_resource type="PackedScene" uid="uid://grvfschmesxo" path="res://scenes/game/mapObjects/weaponUpgrader/weaponUpgrader.tscn" id="29_svd33"]
-[ext_resource type="PackedScene" uid="uid://bersffu6sd8mk" path="res://scenes/game/entities/enemies/normal/slime/slime.tscn" id="33_ka6ge"]
+[ext_resource type="PackedScene" uid="uid://u5f2vw80oyds" path="res://scenes/game/entities/enemies/bosses/wingedcrystal/wingedcrystal.tscn" id="33_cwemi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xh7d"]
 animations = [{
@@ -159,5 +159,5 @@ position = Vector2(154, 241)
 [node name="coinPickupSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("29_nqrkw")
 
-[node name="slime" parent="." instance=ExtResource("33_ka6ge")]
-position = Vector2(67, 129)
+[node name="wingedcrystal" parent="." instance=ExtResource("33_cwemi")]
+position = Vector2(69, 70)

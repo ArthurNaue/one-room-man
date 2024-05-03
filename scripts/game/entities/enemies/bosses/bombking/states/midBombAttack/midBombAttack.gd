@@ -5,11 +5,10 @@ class_name bombKingMidBombAttack
 @export var moveSpeed: int
 @onready var enemy = get_parent().get_parent()
 @onready var midBombAttackSound = $midBombAttackSound
-var midLoc = Vector2(152, 152)
 
 func Physics_Update(_delta):
 	#define a direcao que o player tem que ir
-	var direction = (midLoc - enemy.global_position)
+	var direction = (Enemies.mid - enemy.global_position)
 	#verifica a distancio entre o player e o meio
 	if direction.length() < 1:
 		#faz o inimigo parar
