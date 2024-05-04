@@ -1,12 +1,15 @@
 extends Node2D
 class_name Dagger
 
-@export var weaponCooldown: float
-@export var attackEffect: PackedScene
-@export var upgradedAttackEffect: PackedScene
+@onready var attackEffect = load("res://scenes/game/entities/player/weapons/dagger/effect/daggerEffect.tscn")
+@onready var upgradedAttackEffect = load("res://scenes/game/entities/player/weapons/dagger/upgradedEffect/upgradedDaggerEffect.tscn")
+
 @onready var weaponsNode = get_parent()
 @onready var player = get_parent().get_parent()
 @onready var anim = $anim
+
+const weaponCooldown = 2
+
 var upgraded: bool
 
 func _ready():

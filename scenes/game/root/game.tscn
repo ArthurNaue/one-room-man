@@ -1,13 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://cxvmdr7u32nj3"]
+[gd_scene load_steps=32 format=3 uid="uid://cxvmdr7u32nj3"]
 
 [ext_resource type="Script" path="res://scripts/game/root/game.gd" id="1_8ckrm"]
 [ext_resource type="PackedScene" uid="uid://ccfqa7gl05jnd" path="res://scenes/game/entities/player/root/player.tscn" id="2_0pf0n"]
 [ext_resource type="TileSet" uid="uid://i6hidr2rf12c" path="res://assets/images/game/tileset/tileset.tres" id="3_18gqc"]
 [ext_resource type="Script" path="res://scripts/game/camera/camera.gd" id="4_e3v2g"]
-[ext_resource type="PackedScene" uid="uid://cjwjwtjallm3k" path="res://scenes/game/coin/coin.tscn" id="5_lpqej"]
 [ext_resource type="PackedScene" uid="uid://dlyuy8ass0ctn" path="res://scenes/game/mapObjects/button/button.tscn" id="5_rccql"]
 [ext_resource type="PackedScene" uid="uid://1fvj2efha2hp" path="res://scenes/game/mapObjects/shop/shop.tscn" id="6_uk1fs"]
-[ext_resource type="PackedScene" uid="uid://bva7lrsw2bkx3" path="res://scenes/game/pickups/weaponsPickup/root/weaponPickup.tscn" id="7_8wu3q"]
 [ext_resource type="Texture2D" uid="uid://bp5icjdar2j8e" path="res://assets/images/game/coins/coin.png" id="7_p0fmq"]
 [ext_resource type="Texture2D" uid="uid://6y325i0fypj" path="res://assets/images/game/hud/rounds/rounds1.png" id="9_5q5jx"]
 [ext_resource type="Script" path="res://scripts/game/hud/coinText/coinText.gd" id="9_nbedm"]
@@ -101,8 +99,6 @@ animations = [{
 [node name="Game" type="Node2D" groups=["game"]]
 texture_filter = 1
 script = ExtResource("1_8ckrm")
-weaponPickupScene = ExtResource("7_8wu3q")
-coinScene = ExtResource("5_lpqej")
 
 [node name="tilemap" type="TileMap" parent="."]
 z_index = -2

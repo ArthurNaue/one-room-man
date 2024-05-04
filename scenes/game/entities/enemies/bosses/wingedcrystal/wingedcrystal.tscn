@@ -707,7 +707,7 @@ shape = SubResource("CircleShape2D_tvvec")
 
 [node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("2_3m5tw")
-maxHealth = 50
+maxHealth = 100
 healthBar = NodePath("../healthBar")
 deathParticleScene = ExtResource("3_plrnb")
 damageSoundScene = ExtResource("4_as81t")

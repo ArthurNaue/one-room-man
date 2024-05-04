@@ -2,12 +2,11 @@ extends Node2D
 class_name Game
 
 #variaveis
-@export var weaponPickupScene: PackedScene
-@export var coinScene: PackedScene
-@export var coins: int
-
+@onready var weaponPickupScene = load("res://scenes/game/pickups/weaponsPickup/root/weaponPickup.tscn")
+@onready var coinScene = load("res://scenes/game/coin/coin.tscn")
 @onready var hudRounds = $hudRounds
 
+var coins: int
 var rounds: int
 var entitiesAlive: int
 

@@ -2,12 +2,14 @@ extends Node2D
 class_name Bow
 
 #variaveis
-@export var bowCooldown: float
-@export var arrowScene: PackedScene
-@export var upgradedArrowScene: PackedScene
+@onready var arrowScene = load("res://scenes/game/entities/player/weapons/bow/arrow/arrow.tscn")
+@onready var upgradedArrowScene = load("res://scenes/game/entities/player/weapons/bow/upgradedArrow/upgradedArrow.tscn")
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $sprite
 @onready var bowAudio = $bowAudio
+
+const bowCooldown = 1
+
 var upgraded: bool
 var charge: int
 

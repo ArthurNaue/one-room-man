@@ -1,11 +1,13 @@
 extends Node2D
 class_name Bomb
 
-@export var weaponCooldown: float
-@export var projectileScene: PackedScene
-@export var upgradedProjectileScene: PackedScene
+@onready var projectileScene = load("res://scenes/game/entities/player/weapons/bomb/projectile/bombProjectile.tscn")
+@onready var upgradedProjectileScene = load("res://scenes/game/entities/player/weapons/bomb/upgradedExplosion/upgradedBombExplosion.tscn")
 @onready var player = get_parent().get_parent()
 @onready var anim = $anim
+
+const weaponCooldown = 5
+
 var upgraded: bool
 
 func _ready():

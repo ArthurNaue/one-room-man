@@ -2,12 +2,15 @@ extends Node2D
 class_name Pistol
 
 #variaveis
-@export var weaponCooldown: float
-@export var bulletScene: PackedScene
-@export var upgradedBulletScene: PackedScene
+@onready var bulletScene = load("res://scenes/game/entities/player/weapons/pistol/bullet/pistolBullet.tscn")
+@onready var upgradedBulletScene = load("res://scenes/game/entities/player/weapons/pistol/upgradedBullet/upgradedBullet.tscn")
+
 @onready var player = get_parent().get_parent()
 @onready var anim = $anim
 @onready var shootSound = $shootSound
+
+const weaponCooldown = 1
+
 var upgraded: bool
 
 func _ready():
