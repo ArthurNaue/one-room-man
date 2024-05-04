@@ -4,18 +4,18 @@ class_name EnemiesNode
 #variaveis
 const mid = Vector2(152, 152)
 
-@export var eye: PackedScene
-@export var slime: PackedScene
-@export var mage: PackedScene
-@export var crystal: PackedScene
+@onready var eye = load("res://scenes/game/entities/enemies/normal/eye/root/eye.tscn")
+@onready var slime = load("res://scenes/game/entities/enemies/normal/slime/slime.tscn")
+@onready var mage = load("res://scenes/game/entities/enemies/normal/mage/root/mage.tscn")
+@onready var crystal = load("res://scenes/game/entities/enemies/normal/crystal/root/crystal.tscn")
 
-@export var shadowcat: PackedScene
-@export var bombking: PackedScene
-@export var wingedcrystal: PackedScene
+@onready var shadowcat = load("res://scenes/game/entities/enemies/bosses/shadowcat/root/shadowcat.tscn")
+@onready var bombking = load("res://scenes/game/entities/enemies/bosses/bombking/root/bombKing.tscn")
+@onready var wingedcrystal = load("res://scenes/game/entities/enemies/bosses/wingedcrystal/wingedcrystal.tscn")
 
-@export var bombScene: PackedScene
-@export var bulletScene: PackedScene
-@export var crystalScene: PackedScene
+@onready var bulletScene = load("res://scenes/game/entities/enemies/bullet/enemyBullet.tscn")
+@onready var bombScene = load("res://scenes/game/entities/enemies/bosses/bombking/bombAttack/bomb/bombKingBomb.tscn")
+@onready var crystalScene = load("res://scenes/game/entities/enemies/normal/crystal/bullet/crystalBullet.tscn")
 
 @onready var game = get_tree().get_first_node_in_group("game")
 @onready var player = get_tree().get_first_node_in_group("player")
