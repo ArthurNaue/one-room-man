@@ -174,7 +174,7 @@ shape = SubResource("CircleShape2D_gf42k")
 
 [node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("2_s3gyn")
-maxHealth = 50
+maxHealth = 25
 healthBar = NodePath("../healthBar")
 deathParticleScene = ExtResource("3_bpb1s")
 damageSoundScene = ExtResource("4_gn5qk")

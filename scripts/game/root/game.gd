@@ -100,22 +100,33 @@ func nextRound():
 			spawnEntitie(Enemies.bombking)
 		6:
 			spawnEntitie(Enemies.mage)
-			spawnEntitie(Enemies.slime)
 		7:
-			for i in 2:
-				spawnEntitie(Enemies.mage)
+			spawnEntitie(Enemies.slime)
+			spawnEntitie(Enemies.mage)
 		8:
-			spawnEntitie(Enemies.crystal)
 			for i in 2:
 				spawnEntitie(Enemies.mage)
 		9:
-			for i in 2:
-				spawnEntitie(Enemies.crystal)
-			for i in 2:
+			for i in 3:
 				spawnEntitie(Enemies.mage)
 		10:
 			spawnEntitie(Enemies.shadowcat)
 		11:
-			get_tree().change_scene_to_file("res://scenes/demoEndScreen/demoEndScreen.tscn")
+			for i in 3:
+				spawnEntitie(Enemies.mage)
+			spawnEntitie(Enemies.slime)
+		12:
+			for i in 2:
+				spawnEntitie(Enemies.crystal)
+		13:
+			for i in 2:
+				spawnEntitie(Enemies.crystal)
+			spawnEntitie(Enemies.mage)
+		14:
+			for i in 4:
+				spawnEntitie(Enemies.crystal)
+			spawnEntitie(Enemies.mage)
 		15:
 			spawnEntitie(Enemies.wingedcrystal)
+		16:
+			get_tree().change_scene_to_file("res://scenes/demoEndScreen/demoEndScreen.tscn")

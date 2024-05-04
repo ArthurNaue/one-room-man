@@ -22,7 +22,7 @@ func Update(_delta):
 		#ataca
 		attack()
 	#verifica se a vida do inimigo esta na metade
-	if enemyHealth.health <= (enemyHealth.maxHealth * 0.75):
+	if enemyHealth.health <= (enemyHealth.maxHealth * 0.85):
 		Transitioned.emit(self, "secondAttack")
 
 func attack():
