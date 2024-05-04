@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://u5f2vw80oyds"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_5mt3e"]
-[ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/wingedcrystal/wingedcrystal.gd" id="1_8yj46"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/wingedcrystal/root/wingedcrystal.gd" id="1_8yj46"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/healthComponent.gd" id="2_3m5tw"]
 [ext_resource type="PackedScene" uid="uid://dfa4namf7euwk" path="res://scenes/game/entities/enemies/particles/enemyDeathParticle/enemyDeathParticle.tscn" id="3_plrnb"]
 [ext_resource type="PackedScene" uid="uid://d2iyywv1qgbw3" path="res://scenes/game/entities/enemies/damageSound/enemyDamageSound.tscn" id="4_as81t"]
@@ -707,7 +707,7 @@ shape = SubResource("CircleShape2D_tvvec")
 
 [node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("2_3m5tw")
-maxHealth = 100
+maxHealth = 10
 healthBar = NodePath("../healthBar")
 deathParticleScene = ExtResource("3_plrnb")
 damageSoundScene = ExtResource("4_as81t")

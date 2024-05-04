@@ -7,7 +7,7 @@ class_name Game
 @onready var hudRounds = $hudRounds
 
 var coins: int
-var rounds: int
+var rounds=14
 var entitiesAlive: int
 
 func _ready():
