@@ -21,7 +21,7 @@ func Update(_delta):
 		readyForShoot = false
 		#ataca
 		attack()
-	#verifica se a vida do inimigo esta na metade
+	#verifica se a vida do inimigo esta em 85%
 	if enemyHealth.health <= (enemyHealth.maxHealth * 0.85):
 		Transitioned.emit(self, "secondAttack")
 
@@ -48,5 +48,5 @@ func attack():
 	
 	#atira
 	Enemies.shoot(bulletPosition, bulletDirection, "crystalBullet", 80)
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.6).timeout
 	readyForShoot = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://u5f2vw80oyds"]
+[gd_scene load_steps=46 format=3 uid="uid://u5f2vw80oyds"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="1_5mt3e"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/wingedcrystal/root/wingedcrystal.gd" id="1_8yj46"]
@@ -17,9 +17,68 @@
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/wingedcrystal/states/attack/wingedcrystalAttackState.gd" id="15_jjnbb"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/wingedcrystal/states/mid/mid.gd" id="16_mvb3l"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/wingedcrystal/states/secondAttack/secondAttack.gd" id="17_lfbdj"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/shadowcat/slashAttack/direction.gd" id="18_30bl2"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/wingedcrystal/states/thirdAttack/thirdAttack.gd" id="19_0a5i4"]
+[ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/wingedcrystal/states/fourthAttack/fourthAttack.gd" id="20_3kprr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_diaj4"]
+shader = ExtResource("7_w8dsq")
+shader_parameter/ENABLED = false
+shader_parameter/tint = Color(0.941176, 0.964706, 0.941176, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tvvec"]
 radius = 17.0294
+
+[sub_resource type="Animation" id="Animation_ppsx5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bodySprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("direction/thirdPhaseArm:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hitbox/col:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hitbox/col:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, -0.5)]
+}
 
 [sub_resource type="Animation" id="Animation_24g82"]
 resource_name = "secondPhaseInit"
@@ -157,9 +216,103 @@ tracks/10/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_mjw13"]
+resource_name = "thirdAttack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bottomLeftArm:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bottomRightArm:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("direction:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bodySprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tyoen"]
+resource_name = "fourthPhaseAnim"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("direction/thirdPhaseArm:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitbox/col:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hitbox/col:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, -0.5)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4mb84"]
 _data = {
-"secondPhaseInit": SubResource("Animation_24g82")
+"RESET": SubResource("Animation_ppsx5"),
+"fourthPhaseInit": SubResource("Animation_tyoen"),
+"secondPhaseInit": SubResource("Animation_24g82"),
+"thirdPhaseInit": SubResource("Animation_mjw13")
 }
 
 [sub_resource type="Animation" id="Animation_uk6vq"]
@@ -344,6 +497,78 @@ tracks/14/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("bottomLeftArm:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("bottomRightArm:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("direction:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("direction/thirdPhaseArm:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -4)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("direction/thirdPhaseArm:material:shader_parameter/ENABLED")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("bodySprite:rotation")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_rlhv8"]
 resource_name = "bottomLeft"
@@ -459,6 +684,34 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_jg06e"]
+resource_name = "thirdAttackAnim"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("direction/thirdPhaseArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, -4), Vector2(4, -4), Vector2(2, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("direction/thirdPhaseArm:material:shader_parameter/ENABLED")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_tpmpy"]
 resource_name = "topLeft"
 length = 0.4
@@ -515,13 +768,32 @@ tracks/1/keys = {
 "values": [false, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_vvnb2"]
+resource_name = "spinning"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bodySprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.5708, -3.14159, -6.28319]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2erlf"]
 _data = {
 "RESET": SubResource("Animation_uk6vq"),
 "bottomLeft": SubResource("Animation_rlhv8"),
 "bottomRight": SubResource("Animation_rh8h7"),
+"fourthAttackAnim": SubResource("Animation_vvnb2"),
 "secondAttackWalk": SubResource("Animation_77ayo"),
 "startAnim": SubResource("Animation_ev3x6"),
+"thirdAttackAnim": SubResource("Animation_jg06e"),
 "topLeft": SubResource("Animation_tpmpy"),
 "topRight": SubResource("Animation_cmq65")
 }
@@ -694,6 +966,16 @@ texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_8yj46")
 
+[node name="direction" type="Node2D" parent="."]
+visible = false
+script = ExtResource("18_30bl2")
+
+[node name="thirdPhaseArm" type="Sprite2D" parent="direction"]
+material = SubResource("ShaderMaterial_diaj4")
+position = Vector2(2, -4)
+rotation = 0.872665
+texture = ExtResource("9_sx31o")
+
 [node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitAnim", "health", "damageIndicator") groups=["enemy"]]
 collision_layer = 4
 collision_mask = 2
@@ -703,17 +985,19 @@ health = NodePath("../health")
 damageIndicator = NodePath("../damageIndicatorComponent")
 
 [node name="col" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0.5, -0.5)
 shape = SubResource("CircleShape2D_tvvec")
 
 [node name="health" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("2_3m5tw")
-maxHealth = 10
+maxHealth = 100
 healthBar = NodePath("../healthBar")
 deathParticleScene = ExtResource("3_plrnb")
 damageSoundScene = ExtResource("4_as81t")
 enemyType = 10
 
 [node name="healthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("5_kdcn2")]
+z_index = -1
 offset_left = -14.0
 offset_top = 11.0
 offset_right = 15.0
@@ -776,10 +1060,19 @@ script = ExtResource("15_jjnbb")
 [node name="secondAttack" type="Node" parent="stateMachine"]
 script = ExtResource("17_lfbdj")
 
+[node name="thirdAttack" type="Node" parent="stateMachine"]
+script = ExtResource("19_0a5i4")
+
+[node name="thirdAttackTimer" type="Timer" parent="stateMachine/thirdAttack"]
+wait_time = 0.5
+
+[node name="fourthAttack" type="Node" parent="stateMachine"]
+script = ExtResource("20_3kprr")
+
 [node name="stateTimer" type="Timer" parent="stateMachine"]
 wait_time = 5.0
 one_shot = true
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="animation_finished" from="phasesAnim" to="stateMachine/secondAttack" method="_on_phases_anim_animation_finished"]
+[connection signal="timeout" from="stateMachine/thirdAttack/thirdAttackTimer" to="stateMachine/thirdAttack" method="_on_third_attack_timer_timeout"]
 [connection signal="timeout" from="stateMachine/stateTimer" to="stateMachine/attack" method="_on_state_timer_timeout"]

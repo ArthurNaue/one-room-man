@@ -3,7 +3,8 @@ class_name ShadowCatSlashAttack
 
 #variaveis
 @export var direction: enemyDirection
-@export var slashAttackScene: PackedScene
+
+@onready var slashAttackScene = load("res://scenes/game/entities/enemies/bosses/shadowcat/slashAttack/shadowCatSlashAttack.tscn")
 @onready var enemy = get_parent().get_parent()
 @onready var game = get_tree().get_first_node_in_group("game")
 

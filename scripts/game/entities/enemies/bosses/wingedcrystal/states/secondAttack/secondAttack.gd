@@ -3,6 +3,7 @@ class_name wingedCrystalSecondAttackState
 
 #variaveis
 @onready var enemy = get_parent().get_parent()
+@onready var enemyHealth = enemy.get_node("health")
 
 const moveSpeed = 150
 
@@ -13,7 +14,21 @@ var direction: Vector2
 func Enter():
 	#toca a animacao de entrar na segunda fase
 	enemy.get_node("phasesAnim").play("secondPhaseInit")
+	#espera a animacao acabar
+	await get_tree().create_timer(5).timeout
+	#ativa a variavel que sinaliza que a animacao de inicio acabou
+	phaseInitFinished = true
+	#toca a animacao de ataque da segunda fase
+	enemy.get_node("attackAnim").play("secondAttackWalk")
+	#escolhe uma direcao para ir
+	chooseCorner()
 	
+
+func Update(_delta):
+	#verifica se a vida do inimigo esta na metade
+	if enemyHealth.health <= (enemyHealth.maxHealth * 0.5):
+		Transitioned.emit(self, "thirdAttack")
+
 func Physics_Update(_delta):
 	#verfica se a animacao de entrada da segunda fase acabou
 	if phaseInitFinished == true:
@@ -26,14 +41,6 @@ func Physics_Update(_delta):
 		else:
 			#escolhe uma direcao para ir
 			chooseCorner()
-
-func _on_phases_anim_animation_finished(_anim_name):
-	#ativa a variavel que sinaliza que a animacao de inicio acabou
-	phaseInitFinished = true
-	#toca a animacao de ataque da segunda fase
-	enemy.get_node("attackAnim").play("secondAttackWalk")
-	#escolhe uma direcao para ir
-	chooseCorner()
 
 func chooseCorner():
 	#escolhe um lado para ir

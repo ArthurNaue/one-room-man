@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bql38jl280n2v"]
+[gd_scene load_steps=30 format=3 uid="uid://bql38jl280n2v"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/shadowcat/root/shadowcat.gd" id="1_b13qf"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/shadowcat/slashAttack/direction.gd" id="2_ww752"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/shadowcat/states/handAttack/shadowCatHandAttack.gd" id="5_7k644"]
 [ext_resource type="PackedScene" uid="uid://bqhjmtojt74cb" path="res://scenes/game/entities/enemies/bosses/shadowcat/handAttack/shadowCatHandAttack.tscn" id="6_r1rd4"]
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/shadowcat/states/slashAttack/shadowCatSlashAttack.gd" id="7_i5iwf"]
-[ext_resource type="PackedScene" uid="uid://d0xq8uv8usabh" path="res://scenes/game/entities/enemies/bosses/shadowcat/slashAttack/shadowCatSlashAttack.tscn" id="8_27chm"]
 [ext_resource type="Shader" uid="uid://jig5yuqtndky" path="res://assets/shaders/hitFlash/shader/hitFlash.tres" id="10_v3gop"]
 [ext_resource type="Texture2D" uid="uid://cv8j2g4teb7jd" path="res://assets/images/game/entities/enemies/bosses/shadowcat/follow/shadowcat1.png" id="11_tpv6w"]
 [ext_resource type="Texture2D" uid="uid://6avhyremw5m8" path="res://assets/images/game/entities/enemies/bosses/shadowcat/follow/shadowcat2.png" id="12_qcc6k"]
@@ -157,7 +156,6 @@ wait_time = 0.5
 [node name="slashAttack" type="Node" parent="stateMachine" node_paths=PackedStringArray("direction")]
 script = ExtResource("7_i5iwf")
 direction = NodePath("../../direction")
-slashAttackScene = ExtResource("8_27chm")
 
 [node name="stateTimer" type="Timer" parent="stateMachine"]
 wait_time = 5.0

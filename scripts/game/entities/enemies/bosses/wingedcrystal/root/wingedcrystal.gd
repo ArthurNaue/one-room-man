@@ -1,7 +1,12 @@
 extends CharacterBody2D
 class_name WingedCrystal
 
+#variaveis
+@onready var direction = $direction
+
 func _physics_process(_delta):
+	#atualiza a direcao
+	direction.Direction()
 	#faz o player se mover
 	move_and_slide()
 
