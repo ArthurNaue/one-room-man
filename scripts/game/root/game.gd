@@ -89,12 +89,12 @@ func nextRound():
 		3:
 			for i in 2:
 				spawnEntitie(Enemies.eye)
-			spawnEntitie(Enemies.slime)
+			spawnEntitie(Enemies.bombinion)
 		4:
 			for i in 1:
 				spawnEntitie(Enemies.eye)
 			for i in 2:
-				spawnEntitie(Enemies.slime)
+				spawnEntitie(Enemies.bombinion)
 		5:
 			spawnEntitie(Enemies.bombking)
 		6:
@@ -105,9 +105,11 @@ func nextRound():
 		8:
 			for i in 2:
 				spawnEntitie(Enemies.mage)
+			spawnEntitie(Enemies.slime)
 		9:
 			for i in 3:
 				spawnEntitie(Enemies.mage)
+			spawnEntitie(Enemies.slime)
 		10:
 			spawnEntitie(Enemies.shadowcat)
 		11:

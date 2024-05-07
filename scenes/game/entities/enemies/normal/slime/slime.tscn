@@ -131,7 +131,7 @@ maxHealth = 2
 healthBar = NodePath("../healthBar")
 deathParticleScene = ExtResource("3_1pht5")
 damageSoundScene = ExtResource("4_abue6")
-enemyType = 1
+enemyType = 2
 
 [node name="healthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("5_628kn")]
 offset_left = -7.0

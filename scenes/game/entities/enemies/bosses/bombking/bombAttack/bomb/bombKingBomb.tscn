@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://blkyxc4kquubw"]
+[gd_scene load_steps=8 format=3 uid="uid://blkyxc4kquubw"]
 
 [ext_resource type="Script" path="res://scripts/game/entities/enemies/bosses/bombking/states/bombAttack/bomb/bombKingBomb.gd" id="1_kh1eq"]
 [ext_resource type="Texture2D" uid="uid://eme1ehju77su" path="res://assets/images/game/entities/player/weapons/bomb/root/bomb.png" id="1_pmtmm"]
-[ext_resource type="PackedScene" uid="uid://b80gtbdlmehhm" path="res://scenes/game/entities/enemies/bosses/bombking/bombAttack/bomb/explosion/bombKingBombExplosion.tscn" id="2_sssix"]
 [ext_resource type="Script" path="res://scripts/game/entities/components/hitboxComponent.gd" id="4_soeqb"]
 
 [sub_resource type="Animation" id="Animation_tgq5n"]
@@ -51,7 +50,6 @@ texture_filter = 1
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_kh1eq")
-explosionScene = ExtResource("2_sssix")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_pmtmm")

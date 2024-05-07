@@ -4,15 +4,19 @@ class_name EnemiesNode
 #variaveis
 const mid = Vector2(152, 152)
 
+#normal enemies
 @onready var eye = load("res://scenes/game/entities/enemies/normal/eye/root/eye.tscn")
 @onready var slime = load("res://scenes/game/entities/enemies/normal/slime/slime.tscn")
 @onready var mage = load("res://scenes/game/entities/enemies/normal/mage/root/mage.tscn")
 @onready var crystal = load("res://scenes/game/entities/enemies/normal/crystal/root/crystal.tscn")
+@onready var bombinion = load("res://scenes/game/entities/enemies/normal/bombinion/bombinion.tscn")
 
+#bosses
 @onready var shadowcat = load("res://scenes/game/entities/enemies/bosses/shadowcat/root/shadowcat.tscn")
 @onready var bombking = load("res://scenes/game/entities/enemies/bosses/bombking/root/bombKing.tscn")
 @onready var wingedcrystal = load("res://scenes/game/entities/enemies/bosses/wingedcrystal/wingedcrystal.tscn")
 
+#bullets
 @onready var bulletScene = load("res://scenes/game/entities/enemies/bullet/enemyBullet.tscn")
 @onready var bombScene = load("res://scenes/game/entities/enemies/bosses/bombking/bombAttack/bomb/bombKingBomb.tscn")
 @onready var crystalScene = load("res://scenes/game/entities/enemies/normal/crystal/bullet/crystalBullet.tscn")

@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name bombKingBomb
 
 #variaveis
-@export var explosionScene: PackedScene
+@onready var explosionScene = load("res://scenes/game/entities/enemies/bosses/bombking/bombAttack/bomb/explosion/bombKingBombExplosion.tscn")
 @onready var game = get_tree().get_first_node_in_group("game")
 var speed
 var desiredLocation

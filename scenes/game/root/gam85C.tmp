@@ -1,0 +1,159 @@
+[gd_scene load_steps=33 format=3 uid="uid://cxvmdr7u32nj3"]
+
+[ext_resource type="Script" path="res://scripts/game/root/game.gd" id="1_8ckrm"]
+[ext_resource type="PackedScene" uid="uid://ccfqa7gl05jnd" path="res://scenes/game/entities/player/root/player.tscn" id="2_0pf0n"]
+[ext_resource type="TileSet" uid="uid://i6hidr2rf12c" path="res://assets/images/game/tileset/tileset.tres" id="3_18gqc"]
+[ext_resource type="Script" path="res://scripts/game/camera/camera.gd" id="4_e3v2g"]
+[ext_resource type="PackedScene" uid="uid://dlyuy8ass0ctn" path="res://scenes/game/mapObjects/button/button.tscn" id="5_rccql"]
+[ext_resource type="PackedScene" uid="uid://1fvj2efha2hp" path="res://scenes/game/mapObjects/shop/shop.tscn" id="6_uk1fs"]
+[ext_resource type="Texture2D" uid="uid://bp5icjdar2j8e" path="res://assets/images/game/coins/coin.png" id="7_p0fmq"]
+[ext_resource type="Texture2D" uid="uid://6y325i0fypj" path="res://assets/images/game/hud/rounds/rounds1.png" id="9_5q5jx"]
+[ext_resource type="Script" path="res://scripts/game/hud/coinText/coinText.gd" id="9_nbedm"]
+[ext_resource type="PackedScene" uid="uid://bml1qftn0bn5q" path="res://scenes/game/mapObjects/weaponBuyer/weaponBuyer.tscn" id="10_l0wmb"]
+[ext_resource type="Texture2D" uid="uid://d37a1wrpfwgod" path="res://assets/images/game/hud/rounds/rounds2.png" id="10_wcbco"]
+[ext_resource type="Texture2D" uid="uid://8prb8pydk0fb" path="res://assets/images/game/hud/rounds/rounds3.png" id="11_8wslt"]
+[ext_resource type="Texture2D" uid="uid://ccd2q8hiijx14" path="res://assets/images/game/hud/rounds/rounds4.png" id="12_jh6tt"]
+[ext_resource type="Texture2D" uid="uid://b336jkfo82bs" path="res://assets/images/game/hud/rounds/rounds5.png" id="13_aqhp0"]
+[ext_resource type="Texture2D" uid="uid://cote71pq24gpd" path="res://assets/images/game/hud/rounds/rounds6.png" id="14_4b6st"]
+[ext_resource type="Texture2D" uid="uid://chgpg4bhi8rc3" path="res://assets/images/game/hud/rounds/rounds7.png" id="15_0b8vi"]
+[ext_resource type="Texture2D" uid="uid://mhwvvrthi3o0" path="res://assets/images/game/hud/rounds/rounds8.png" id="16_c5rag"]
+[ext_resource type="Texture2D" uid="uid://h2u2bp7wu0nk" path="res://assets/images/game/hud/rounds/rounds9.png" id="17_ppiei"]
+[ext_resource type="Texture2D" uid="uid://bulw7yf4p612f" path="res://assets/images/game/hud/rounds/rounds10.png" id="18_37qjw"]
+[ext_resource type="Texture2D" uid="uid://csaj4jdpxe5nj" path="res://assets/images/game/hud/rounds/rounds11.png" id="19_m6b8g"]
+[ext_resource type="Texture2D" uid="uid://bca3jrow8ui62" path="res://assets/images/game/hud/rounds/rounds12.png" id="20_60hor"]
+[ext_resource type="Texture2D" uid="uid://b0ffeb0fcdcte" path="res://assets/images/game/hud/rounds/rounds13.png" id="21_pebrg"]
+[ext_resource type="Texture2D" uid="uid://dgv6oduuy1784" path="res://assets/images/game/hud/rounds/rounds14.png" id="22_w0u1v"]
+[ext_resource type="Texture2D" uid="uid://bd38e8peuoiif" path="res://assets/images/game/hud/rounds/rounds15.png" id="23_dkxrj"]
+[ext_resource type="Texture2D" uid="uid://ce6ainpfqqxrk" path="res://assets/images/game/hud/rounds/rounds16.png" id="24_hprx0"]
+[ext_resource type="Texture2D" uid="uid://dmlndygjkde7t" path="res://assets/images/game/hud/rounds/rounds17.png" id="25_y1e04"]
+[ext_resource type="Texture2D" uid="uid://4c2f8aavkm5c" path="res://assets/images/game/hud/rounds/rounds18.png" id="26_fagad"]
+[ext_resource type="Texture2D" uid="uid://ch188vsguxgha" path="res://assets/images/game/hud/rounds/rounds19.png" id="27_kajve"]
+[ext_resource type="AudioStream" uid="uid://cs2hi2iqdvqum" path="res://assets/audio/game/coin/coinPickupSound.wav" id="29_nqrkw"]
+[ext_resource type="PackedScene" uid="uid://grvfschmesxo" path="res://scenes/game/mapObjects/weaponUpgrader/weaponUpgrader.tscn" id="29_svd33"]
+[ext_resource type="PackedScene" uid="uid://biw5siokx82i2" path="res://scenes/game/entities/enemies/normal/bombinion/bombinion.tscn" id="31_0q27d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xh7d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5q5jx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wcbco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8wslt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jh6tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_aqhp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4b6st")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_0b8vi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_c5rag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ppiei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_37qjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_m6b8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_60hor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_pebrg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_w0u1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_dkxrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_hprx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_y1e04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_fagad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_kajve")
+}],
+"loop": false,
+"name": &"rounds",
+"speed": 0.0
+}]
+
+[node name="Game" type="Node2D" groups=["game"]]
+texture_filter = 1
+script = ExtResource("1_8ckrm")
+
+[node name="tilemap" type="TileMap" parent="."]
+z_index = -2
+texture_filter = 1
+tile_set = ExtResource("3_18gqc")
+format = 2
+layer_0/tile_data = PackedInt32Array(1048592, 720896, 3, 983056, 720896, 2, 917520, 720896, 2, 851984, 720896, 2, 786448, 720896, 2, 720912, 720896, 2, 655376, 720896, 2, 589840, 720896, 2, 524304, 720896, 2, 458768, 720896, 2, 393232, 720896, 2, 327696, 720896, 2, 262160, 720896, 2, 196624, 720896, 2, 1048591, 589824, 3, 983055, 589824, 2, 917519, 655360, 1, 851983, 655360, 1, 786447, 655360, 1, 720911, 655360, 1, 655375, 655360, 1, 589839, 655360, 1, 524303, 655360, 1, 458767, 655360, 1, 393231, 655360, 1, 327695, 655360, 1, 262159, 655360, 1, 196623, 589824, 2, 1048590, 589824, 3, 983054, 589824, 2, 917518, 589824, 2, 851982, 589824, 2, 786446, 655360, 1, 720910, 589824, 2, 655374, 655360, 1, 589838, 655360, 1, 524302, 655360, 1, 458766, 655360, 1, 393230, 589824, 2, 327694, 589824, 2, 262158, 589824, 2, 196622, 589824, 2, 1048589, 589824, 3, 983053, 589824, 2, 917517, 655360, 1, 851981, 655360, 1, 786445, 589824, 2, 720909, 589824, 2, 655373, 589824, 2, 589837, 589824, 2, 524301, 589824, 2, 458765, 655360, 1, 393229, 655360, 1, 327693, 655360, 1, 262157, 589824, 2, 196621, 655360, 1, 1048588, 589824, 3, 983052, 655360, 1, 917516, 589824, 2, 851980, 589824, 2, 786444, 589824, 2, 720908, 655360, 1, 655372, 655360, 1, 589836, 589824, 2, 524300, 655360, 1, 458764, 655360, 1, 393228, 655360, 1, 327692, 589824, 2, 262156, 655360, 1, 196620, 589824, 2, 1048587, 589824, 3, 983051, 589824, 2, 917515, 655360, 1, 851979, 655360, 1, 786443, 655360, 1, 720907, 655360, 1, 655371, 655360, 1, 589835, 655360, 1, 524299, 655360, 1, 458763, 589824, 2, 393227, 589824, 2, 327691, 655360, 1, 262155, 655360, 1, 196619, 655360, 1, 1048586, 589824, 3, 983050, 655360, 1, 917514, 589824, 2, 851978, 589824, 2, 786442, 589824, 2, 720906, 655360, 1, 655370, 589824, 2, 589834, 655360, 1, 524298, 655360, 1, 458762, 655360, 1, 393226, 589824, 2, 327690, 655360, 1, 262154, 655360, 1, 196618, 589824, 2, 1048585, 589824, 3, 983049, 655360, 1, 917513, 589824, 2, 851977, 589824, 2, 786441, 655360, 1, 720905, 655360, 1, 655369, 655360, 1, 589833, 655360, 1, 524297, 589824, 2, 458761, 589824, 2, 393225, 655360, 1, 327689, 589824, 2, 262153, 655360, 1, 196617, 589824, 2, 1048584, 589824, 3, 983048, 655360, 1, 917512, 655360, 1, 851976, 655360, 1, 786440, 655360, 1, 720904, 589824, 2, 655368, 589824, 2, 589832, 655360, 1, 524296, 589824, 2, 458760, 589824, 2, 393224, 589824, 2, 327688, 655360, 1, 262152, 589824, 2, 196616, 589824, 2, 1048583, 589824, 3, 983047, 655360, 1, 917511, 589824, 2, 851975, 589824, 2, 786439, 589824, 2, 720903, 655360, 1, 655367, 655360, 1, 589831, 589824, 2, 524295, 589824, 2, 458759, 655360, 1, 393223, 589824, 2, 327687, 589824, 2, 262151, 655360, 1, 196615, 655360, 1, 1048582, 589824, 3, 983046, 589824, 2, 917510, 655360, 1, 851974, 655360, 1, 786438, 589824, 2, 720902, 655360, 1, 655366, 655360, 1, 589830, 589824, 2, 524294, 589824, 2, 458758, 589824, 2, 393222, 655360, 1, 327686, 655360, 1, 262150, 655360, 1, 196614, 589824, 2, 1048581, 589824, 3, 983045, 589824, 2, 917509, 589824, 2, 851973, 589824, 2, 786437, 655360, 1, 720901, 589824, 2, 655365, 589824, 2, 589829, 589824, 2, 524293, 589824, 2, 458757, 655360, 1, 393221, 589824, 2, 327685, 589824, 2, 262149, 655360, 1, 196613, 655360, 1, 1048580, 589824, 3, 983044, 655360, 1, 917508, 589824, 2, 851972, 589824, 2, 786436, 655360, 1, 720900, 589824, 2, 655364, 655360, 1, 589828, 655360, 1, 524292, 655360, 1, 458756, 655360, 1, 393220, 655360, 1, 327684, 655360, 1, 262148, 589824, 2, 196612, 655360, 1, 1048579, 589824, 3, 983043, 655360, 1, 917507, 655360, 1, 851971, 589824, 2, 786435, 655360, 1, 720899, 589824, 2, 655363, 589824, 2, 589827, 589824, 2, 524291, 589824, 2, 458755, 655360, 1, 393219, 589824, 2, 327683, 589824, 2, 262147, 655360, 1, 196611, 589824, 2, 1048578, 524288, 3, 983042, 524288, 1, 917506, 524288, 1, 851970, 524288, 1, 786434, 524288, 1, 720898, 524288, 1, 655362, 524288, 1, 589826, 524288, 1, 524290, 524288, 1, 458754, 524288, 1, 393218, 524288, 1, 327682, 524288, 1, 262146, 524288, 1, 196610, 524288, 1, 131088, 720896, 0, 131087, 655360, 0, 131086, 655360, 0, 131085, 655360, 0, 131084, 655360, 0, 131083, 655360, 0, 131082, 655360, 0, 131081, 655360, 0, 131080, 655360, 0, 131079, 655360, 0, 131078, 655360, 0, 131077, 655360, 0, 131076, 655360, 0, 131075, 655360, 0, 131074, 524288, 0)
+
+[node name="button" parent="." instance=ExtResource("5_rccql")]
+position = Vector2(240, 251)
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2(152, 152)
+zoom = Vector2(2, 2)
+script = ExtResource("4_e3v2g")
+
+[node name="hudCoin" type="Sprite2D" parent="."]
+position = Vector2(39, 287)
+texture = ExtResource("7_p0fmq")
+
+[node name="hudRounds" type="AnimatedSprite2D" parent="."]
+position = Vector2(240, 283)
+sprite_frames = SubResource("SpriteFrames_8xh7d")
+animation = &"rounds"
+autoplay = "rounds"
+
+[node name="coinsText" type="Label" parent="."]
+offset_left = 46.0
+offset_top = 281.0
+offset_right = 56.0
+offset_bottom = 304.0
+scale = Vector2(0.5, 0.5)
+text = "1"
+script = ExtResource("9_nbedm")
+
+[node name="shop" parent="." instance=ExtResource("6_uk1fs")]
+position = Vector2(150, 21)
+
+[node name="weaponBuyer" parent="." node_paths=PackedStringArray("game", "player") instance=ExtResource("10_l0wmb")]
+position = Vector2(75, 21)
+game = NodePath("..")
+player = NodePath("../player")
+
+[node name="weaponUpgrader" parent="." node_paths=PackedStringArray("game", "player", "weaponBuyer") instance=ExtResource("29_svd33")]
+position = Vector2(225, 21)
+game = NodePath("..")
+player = NodePath("../player")
+weaponBuyer = NodePath("../weaponBuyer")
+
+[node name="player" parent="." instance=ExtResource("2_0pf0n")]
+position = Vector2(154, 241)
+
+[node name="coinPickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("29_nqrkw")
+
+[node name="bombinion" parent="." instance=ExtResource("31_0q27d")]
+position = Vector2(80, 83)
